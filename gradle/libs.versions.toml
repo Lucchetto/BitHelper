@@ -6,7 +6,7 @@ sqldelightVersion = "1.5.3"
 
 buildscript-sqlDelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelightVersion" }
 
-runtime-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
+common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
 
 android-sqlDelight = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelightVersion" }
 

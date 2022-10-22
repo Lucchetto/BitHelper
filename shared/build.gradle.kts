@@ -28,7 +28,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.runtime.sqlDelight)
+                implementation(libs.common.sqlDelight)
             }
         }
         val commonTest by getting {

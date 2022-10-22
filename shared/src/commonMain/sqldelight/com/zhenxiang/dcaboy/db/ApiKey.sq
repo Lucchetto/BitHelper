@@ -1,6 +1,6 @@
 import com.zhenxiang.dcaboy.model.Exchange;
 
-CREATE TABLE ApiKey (
+CREATE TABLE apiKey (
   apiKey TEXT NOT NULL PRIMARY KEY,
   exchange TEXT AS Exchange NOT NULL,
   label TEXT UNIQUE NOT NULL,
@@ -8,3 +8,9 @@ CREATE TABLE ApiKey (
   creationTimestamp INTEGER AS Long NOT NULL,
   readOnly INTEGER AS Boolean DEFAULT NULL
 );
+
+selectAll:
+    SELECT * FROM apiKey;
+
+insert:
+    INSERT INTO apiKey VALUES ?;
