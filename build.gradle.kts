@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath(libs.buildscript.sqlDelight)
+    }
+}
+
 plugins {
     //trick: for the same plugin versions in all sub-modules
     id("com.android.application").version("7.3.1").apply(false)

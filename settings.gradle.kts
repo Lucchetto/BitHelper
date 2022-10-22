@@ -13,6 +13,8 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 rootProject.name = "DCABoy"
 include(":Android")
 include(":shared")

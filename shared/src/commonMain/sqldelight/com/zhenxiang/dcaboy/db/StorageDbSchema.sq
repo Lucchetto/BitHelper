@@ -1,0 +1,10 @@
+import com.zhenxiang.dcaboy.model.Exchange;
+
+CREATE TABLE ApiKey (
+  apiKey TEXT NOT NULL PRIMARY KEY,
+  exchange TEXT AS Exchange NOT NULL,
+  label TEXT UNIQUE NOT NULL,
+  secretKey TEXT,
+  creationTimestamp INTEGER AS Long NOT NULL,
+  readOnly INTEGER AS Boolean DEFAULT NULL
+);
