@@ -35,5 +35,5 @@ Pod::Spec.new do |spec|
             SCRIPT
         }
     ]
-                
+    spec.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-lsqlite3' }
 end

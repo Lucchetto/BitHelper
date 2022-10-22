@@ -20,8 +20,11 @@ kotlin {
         framework {
             baseName = "shared"
         }
+
+        // Fix sqlite3 linker error
+        extraSpecAttributes["user_target_xcconfig"] = "{ 'OTHER_LDFLAGS' => '-lsqlite3' }"
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {
