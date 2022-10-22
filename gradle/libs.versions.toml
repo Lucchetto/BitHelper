@@ -1,13 +1,17 @@
 [versions]
 
 sqldelightVersion = "1.5.3"
+koinVersion = "3.2.0"
 
 [libraries]
 
 buildscript-sqlDelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelightVersion" }
 
+common-koin = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
+common-koinTest = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
 common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
 
+android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 android-sqlDelight = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelightVersion" }
 
 native-sqlDelight = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelightVersion" }

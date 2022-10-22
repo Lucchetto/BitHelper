@@ -1,7 +1,10 @@
 package com.zhenxiang.dcaboy
 
-class Greeting {
-    private val platform: Platform = getPlatform()
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+
+class Greeting : KoinComponent {
+    private val platform: Platform by inject()
 
     fun greeting(): String {
         return "Hello, ${platform.name}!"

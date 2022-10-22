@@ -29,10 +29,13 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.common.sqlDelight)
+                implementation(libs.common.koin)
             }
         }
         val commonTest by getting {
             dependencies {
+                implementation(libs.common.koinTest)
+
                 implementation(kotlin("test"))
             }
         }
