@@ -3,9 +3,9 @@ package com.zhenxiang.dcaboy.android.pages.apikeyslist
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
@@ -15,14 +15,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.zhenxiang.dcaboy.db.ApiKey
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
+@OptIn(ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewModel) {
 
     val apiKeysListState = viewModel.apiKeysListFlow.collectAsStateWithLifecycle(
         emptyList()
     )
-
 
     Scaffold(
         topBar = { TopBar() },
@@ -35,6 +34,7 @@ fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewMode
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopBar() {
     return TopAppBar(

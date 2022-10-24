@@ -2,6 +2,7 @@
 
 accompanistVersion = "0.25.1"
 androidXLifecycleVersion = "2.6.0-alpha01"
+composeMaterial3Version = "1.0.0"
 composeNavigationVersion = "2.5.2"
 jkuatdscFormBuilderVersion = "1.0.5"
 sqldelightVersion = "1.5.3"
@@ -18,6 +19,7 @@ common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions
 
 android-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanistVersion" }
 android-androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidXLifecycleVersion" }
+android-composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3Version" }
 android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }
 android-jkuatdscFormBuilder = { module = "com.github.jkuatdsc:form-builder", version.ref = "jkuatdscFormBuilderVersion" }
 android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
