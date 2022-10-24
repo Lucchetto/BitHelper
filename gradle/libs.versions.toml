@@ -1,5 +1,9 @@
 [versions]
 
+accompanistVersion = "0.25.1"
+androidXLifecycleVersion = "2.6.0-alpha01"
+composeNavigationVersion = "2.5.2"
+jkuatdscFormBuilderVersion = "1.0.5"
 sqldelightVersion = "1.5.3"
 koinVersion = "3.2.0"
 
@@ -10,7 +14,12 @@ buildscript-sqlDelight = { module = "com.squareup.sqldelight:gradle-plugin", ver
 common-koin = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 common-koinTest = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
 common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
+common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelightVersion" }
 
+android-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanistVersion" }
+android-androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidXLifecycleVersion" }
+android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }
+android-jkuatdscFormBuilder = { module = "com.github.jkuatdsc:form-builder", version.ref = "jkuatdscFormBuilderVersion" }
 android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 android-sqlDelight = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelightVersion" }
 
