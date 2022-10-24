@@ -40,5 +40,10 @@ dependencies {
     implementation("androidx.compose.material:material:1.2.1")
     implementation("androidx.activity:activity-compose:1.5.1")
 
+    implementation(libs.android.accompanistNavigation)
+    implementation(libs.android.androidXLifecycle)
+    implementation(libs.android.composeNavigation)
+    implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
+    implementation(libs.common.sqlDelightExt)
 }

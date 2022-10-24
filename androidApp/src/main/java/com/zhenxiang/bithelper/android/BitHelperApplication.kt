@@ -2,12 +2,13 @@ package com.zhenxiang.bithelper.android
 
 import android.app.Application
 import com.zhenxiang.bithelper.DependencyInjectionHelper
+import org.koin.android.ext.koin.androidContext
 
 class BitHelperApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        DependencyInjectionHelper.initKoin()
+        DependencyInjectionHelper.initKoin().androidContext(applicationContext)
     }
 }
