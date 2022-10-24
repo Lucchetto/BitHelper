@@ -12,6 +12,6 @@ enum class Exchange(val id: String) {
         override fun decode(databaseValue: String): Exchange =
             enumValues.first { it.id == databaseValue }
 
-        override fun encode(value: Exchange): String = value.name
+        override fun encode(value: Exchange): String = value.id
     }
 }
