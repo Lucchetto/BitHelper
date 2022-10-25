@@ -13,6 +13,8 @@ dependencyResolutionManagement {
     }
 }
 
+enableFeaturePreview("VERSION_CATALOGS")
+
 rootProject.name = "BitHelper"
 include(":androidApp")
 include(":shared")

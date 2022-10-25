@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.squareup.sqldelight")
 }
 
 kotlin {
@@ -18,22 +19,34 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            isStatic = false
         }
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.runtime.sqlDelight)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.android.sqlDelight)
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
+            dependencies {
+                implementation(libs.native.sqlDelight)
+            }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
@@ -57,5 +70,12 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 32
+    }
+}
+
+sqldelight {
+    database("StorageDb") {
+        packageName = "com.zhenxiang.bithelper.db"
+        sourceFolders = listOf("sqldelight")
     }
 }
