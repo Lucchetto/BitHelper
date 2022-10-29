@@ -15,8 +15,4 @@ class ApiKeysListViewModel : ViewModel(), KoinComponent {
 
     val apiKeysListFlow: Flow<List<ApiKey>>
         get() = storageDb.apiKeyQueries.selectAll().asFlow().mapToListOnIO()
-
-    fun addApiKey(apiKey: ApiKey) {
-        storageDb.apiKeyQueries.insert(apiKey)
-    }
 }
