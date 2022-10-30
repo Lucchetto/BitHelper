@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,13 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */; };
+		AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */; };
+		AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */; };
+		AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */; };
+		AA47E0B3290F13DF007BCC1F /* IdentifiableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */; };
+		AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */; };
+		AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */; };
 		D61BDBBCC89038BFBF1A76AB /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2826F13C5B3393B525CC8D50 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +31,13 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageViewModel.swift; sourceTree = "<group>"; };
+		AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowExtensions.swift; sourceTree = "<group>"; };
+		AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
+		AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageView.swift; sourceTree = "<group>"; };
+		AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableWrapper.swift; sourceTree = "<group>"; };
+		AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetView.swift; sourceTree = "<group>"; };
+		AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +66,6 @@
 				9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */,
 				371474C0C832CF9398100237 /* Pods-iosApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -77,6 +90,9 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA47E0AC290F0EE9007BCC1F /* Utils */,
+				AA47E0A9290ED42B007BCC1F /* Flow */,
+				AA47E0A5290ED19F007BCC1F /* Pages */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -84,6 +100,50 @@
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = iosApp;
+			sourceTree = "<group>";
+		};
+		AA47E0A5290ED19F007BCC1F /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				AA47E0B4290F1A12007BCC1F /* AddApiKeySheet */,
+				AA47E0A6290ED1AC007BCC1F /* ApiKeysListPage */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		AA47E0A6290ED1AC007BCC1F /* ApiKeysListPage */ = {
+			isa = PBXGroup;
+			children = (
+				AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */,
+				AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */,
+			);
+			path = ApiKeysListPage;
+			sourceTree = "<group>";
+		};
+		AA47E0A9290ED42B007BCC1F /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		AA47E0AC290F0EE9007BCC1F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */,
+				AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AA47E0B4290F1A12007BCC1F /* AddApiKeySheet */ = {
+			isa = PBXGroup;
+			children = (
+				AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */,
+				AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */,
+			);
+			path = AddApiKeySheet;
 			sourceTree = "<group>";
 		};
 		C2CE6BE0E8D453DCB9DAEE5F /* Frameworks */ = {
@@ -208,8 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
+				AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */,
+				AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */,
+				AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */,
+				AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */,
+				AA47E0B3290F13DF007BCC1F /* IdentifiableWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
