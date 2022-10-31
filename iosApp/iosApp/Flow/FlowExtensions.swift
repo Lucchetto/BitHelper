@@ -9,7 +9,7 @@
 import Combine
 import shared
 
-func asPublisher<T>(_ flow: CFlow<T>) -> AnyPublisher<T, Never> {
+func asPublisher<T>(_ flow: FlowWrapper<T>) -> AnyPublisher<T, Never> {
     return Deferred<Publishers.HandleEvents<PassthroughSubject<T, Never>>> {
         let subject = PassthroughSubject<T, Never>()
         let closable = flow.watch { next in

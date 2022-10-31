@@ -1,12 +1,17 @@
 package com.zhenxiang.bithelper.flow
 
 import com.squareup.sqldelight.db.Closeable
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-fun <T> Flow<T>.wrap(): CFlow<T> = CFlow(this)
+fun <T> Flow<T>.wrap(): FlowWrapper<T> = FlowWrapper(this)
 
-class CFlow<T>(private val origin: Flow<T>) : Flow<T> by origin {
+actual class FlowWrapper<T> actual constructor(source: Flow<T>) : Flow<T> by source {
+
     fun watch(block: (T) -> Unit): Closeable {
         val job = Job()
 

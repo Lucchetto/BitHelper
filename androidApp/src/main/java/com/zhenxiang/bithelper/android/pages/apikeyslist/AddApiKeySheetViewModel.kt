@@ -6,14 +6,12 @@ import com.dsc.form_builder.TextFieldState
 import com.dsc.form_builder.Validators
 import com.zhenxiang.bithelper.android.form.getValueOfTextField
 import com.zhenxiang.bithelper.db.ApiKey
-import com.zhenxiang.bithelper.db.StorageDb
 import com.zhenxiang.bithelper.model.Exchange
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import com.zhenxiang.bithelper.repository.ApiKeysRepository
 
-class AddApiKeySheetViewModel: ViewModel(), KoinComponent {
+class AddApiKeySheetViewModel: ViewModel() {
 
-    private val storageDb: StorageDb by inject()
+    private val apiKeysRepository = ApiKeysRepository()
 
     val formState = FormState(
         fields = listOf(
@@ -29,7 +27,7 @@ class AddApiKeySheetViewModel: ViewModel(), KoinComponent {
     )
 
     fun addApiKey(): Boolean = if (formState.validate()) {
-        storageDb.apiKeyQueries.insert(
+        apiKeysRepository.addApiKey(
             ApiKey(
                 apiKey = formState.getValueOfTextField(API_KEY_FORM_FIELD),
                 exchange = Exchange.BINANCE,

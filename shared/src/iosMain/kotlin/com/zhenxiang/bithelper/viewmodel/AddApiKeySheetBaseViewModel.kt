@@ -1,15 +1,13 @@
 package com.zhenxiang.bithelper.viewmodel
 
 import com.zhenxiang.bithelper.db.ApiKey
-import com.zhenxiang.bithelper.db.StorageDb
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import com.zhenxiang.bithelper.repository.ApiKeysRepository
 
-open class AddApiKeySheetBaseViewModel: KoinComponent {
+open class AddApiKeySheetBaseViewModel {
 
-    private val storageDb: StorageDb by inject()
+    private val apiKeysRepository = ApiKeysRepository()
 
     fun addApiKey(apiKey: ApiKey) {
-        storageDb.apiKeyQueries.insert(apiKey)
+        apiKeysRepository.addApiKey(apiKey)
     }
 }

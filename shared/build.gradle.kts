@@ -28,6 +28,7 @@ kotlin {
             dependencies {
                 implementation(libs.common.coroutines)
                 implementation(libs.common.sqlDelight)
+                implementation(libs.common.sqlDelightExt)
                 implementation(libs.common.koin)
             }
         }
@@ -50,7 +51,6 @@ kotlin {
         val iosMain by creating {
             dependencies {
                 implementation(libs.native.sqlDelight)
-                implementation(libs.common.sqlDelightExt)
             }
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
