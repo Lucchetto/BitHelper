@@ -26,6 +26,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.common.coroutines)
                 implementation(libs.common.sqlDelight)
                 implementation(libs.common.koin)
             }

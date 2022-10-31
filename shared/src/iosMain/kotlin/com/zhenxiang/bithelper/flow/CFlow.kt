@@ -12,7 +12,7 @@ class CFlow<T>(private val origin: Flow<T>) : Flow<T> by origin {
 
         onEach {
             block(it)
-        }.launchIn(CoroutineScope(NSLooperDispatcher + job))
+        }.launchIn(CoroutineScope(Dispatchers.Default + job))
 
         return object : Closeable {
             override fun close() {
