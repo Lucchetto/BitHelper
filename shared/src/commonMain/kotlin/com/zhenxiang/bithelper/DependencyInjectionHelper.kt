@@ -8,6 +8,6 @@ import org.koin.core.context.startKoin
 object DependencyInjectionHelper {
 
     fun initKoin(): KoinApplication = startKoin {
-        modules(platformModule + databaseModule + repositoryModule)
+        modules(databaseModule + repositoryModule)
     }
 }
