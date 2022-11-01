@@ -10,7 +10,6 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */; };
 		AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */; };
 		AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */; };
@@ -28,7 +27,6 @@
 		2826F13C5B3393B525CC8D50 /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		371474C0C832CF9398100237 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageViewModel.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				AA47E0A9290ED42B007BCC1F /* Flow */,
 				AA47E0A5290ED19F007BCC1F /* Pages */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -270,7 +267,6 @@
 			files = (
 				AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
 				AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */,
 				AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */,
