@@ -10,10 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.db.ApiKey
+import com.zhenxiang.bithelper.res.SharedRes
 
 @OptIn(ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +40,7 @@ fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewMode
 @Composable
 private fun TopBar() {
     return TopAppBar(
-        title = { Text(text = "Api keys list") },
+        title = { Text(text = stringResource(id = SharedRes.strings.api_keys_list_page_title.resourceId)) },
     )
 }
 

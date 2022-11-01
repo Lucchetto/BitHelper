@@ -6,16 +6,20 @@ composeMaterial3Version = "1.0.0"
 composeNavigationVersion = "2.5.2"
 coroutinesVersion = "1.6.3-native-mt"
 jkuatdscFormBuilderVersion = "1.0.5"
+mokoResourcesVersion="0.20.1"
 sqldelightVersion = "1.5.3"
 koinVersion = "3.2.0"
 
 [libraries]
 
+buildscript-mokoResources = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResourcesVersion" }
 buildscript-sqlDelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelightVersion" }
 
 common-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
 common-koin = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 common-koinTest = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
+common-mokoResources = { module = "dev.icerock.moko:resources", version.ref = "mokoResourcesVersion" }
+common-mokoResourcesTest = { module = "dev.icerock.moko:resources-test", version.ref = "mokoResourcesVersion" }
 common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
 common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelightVersion" }
 
@@ -25,6 +29,7 @@ android-composeMaterial3 = { module = "androidx.compose.material3:material3", ve
 android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }
 android-jkuatdscFormBuilder = { module = "com.github.jkuatdsc:form-builder", version.ref = "jkuatdscFormBuilderVersion" }
 android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
+android-mokoResources = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResourcesVersion" }
 android-sqlDelight = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelightVersion" }
 
 native-sqlDelight = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelightVersion" }

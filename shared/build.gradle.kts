@@ -3,6 +3,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 kotlin {
@@ -20,12 +21,16 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = false
+
+            export(libs.common.mokoResources)
         }
     }
     
     sourceSets {
         val commonMain by getting {
             dependencies {
+                api(libs.common.mokoResources)
+
                 implementation(libs.common.coroutines)
                 implementation(libs.common.sqlDelight)
                 implementation(libs.common.sqlDelightExt)
@@ -35,6 +40,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(libs.common.koinTest)
+                implementation(libs.common.mokoResourcesTest)
 
                 implementation(kotlin("test"))
             }
@@ -83,4 +89,9 @@ sqldelight {
         packageName = "com.zhenxiang.bithelper.db"
         sourceFolders = listOf("sqldelight")
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.zhenxiang.bithelper.res"
+    multiplatformResourcesClassName = "SharedRes"
 }

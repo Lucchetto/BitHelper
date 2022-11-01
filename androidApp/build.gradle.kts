@@ -45,4 +45,5 @@ dependencies {
     implementation(libs.android.composeNavigation)
     implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
+    implementation(libs.android.mokoResources)
 }

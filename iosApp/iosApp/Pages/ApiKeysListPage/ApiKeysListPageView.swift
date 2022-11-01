@@ -21,7 +21,9 @@ struct ApiKeysListPageView: View {
                     ApiKeyView(apiKey: item.value)
                 }
             }
-            .navigationTitle("API keys list")
+            .navigationTitle(
+                Text(LocalizedStringKey(SharedRes.strings().api_keys_list_page_title.resourceId), bundle: SharedRes.strings().nsBundle)
+            )
             .navigationBarItems(trailing:
                 Button(action: {
                     showSheet = true
