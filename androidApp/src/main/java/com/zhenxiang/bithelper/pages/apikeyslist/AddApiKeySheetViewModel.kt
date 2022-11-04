@@ -1,10 +1,10 @@
-package com.zhenxiang.bithelper.android.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.apikeyslist
 
 import androidx.lifecycle.ViewModel
 import com.dsc.form_builder.FormState
 import com.dsc.form_builder.TextFieldState
 import com.dsc.form_builder.Validators
-import com.zhenxiang.bithelper.android.form.getValueOfTextField
+import com.zhenxiang.bithelper.form.getValueOfTextField
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.repository.ApiKeysRepository

@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.theme
+package com.zhenxiang.bithelper.theme
 
 import android.app.Activity
 import android.os.Build

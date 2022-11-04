@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android
+package com.zhenxiang.bithelper
 
 import android.app.Application
 import com.zhenxiang.bithelper.shared.DependencyInjectionHelper

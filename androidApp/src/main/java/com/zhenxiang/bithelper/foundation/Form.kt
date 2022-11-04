@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.foundation
+package com.zhenxiang.bithelper.foundation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField

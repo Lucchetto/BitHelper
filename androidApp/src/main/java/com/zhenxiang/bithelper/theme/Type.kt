@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.theme
+package com.zhenxiang.bithelper.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

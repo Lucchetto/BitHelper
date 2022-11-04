@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.form
+package com.zhenxiang.bithelper.form
 
 import com.dsc.form_builder.FormState
 import com.dsc.form_builder.TextFieldState

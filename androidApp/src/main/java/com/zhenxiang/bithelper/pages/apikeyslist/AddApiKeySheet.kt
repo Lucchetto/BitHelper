@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.apikeyslist
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,7 +8,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
-import com.zhenxiang.bithelper.android.foundation.FormStateOutlinedTextField
+import com.zhenxiang.bithelper.foundation.FormStateOutlinedTextField
 
 @Composable
 fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewModel) {

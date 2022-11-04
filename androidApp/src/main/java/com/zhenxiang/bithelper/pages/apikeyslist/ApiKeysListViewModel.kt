@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.android.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.apikeyslist
 
 import androidx.lifecycle.ViewModel
 import com.zhenxiang.bithelper.shared.db.ApiKey

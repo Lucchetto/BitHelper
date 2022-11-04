@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "com.zhenxiang.bithelper.android"
+    namespace = "com.zhenxiang.bithelper"
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.zhenxiang.bithelper.android"
+        applicationId = "com.zhenxiang.bithelper"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
