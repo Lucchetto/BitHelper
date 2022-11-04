@@ -1,7 +1,6 @@
-package com.zhenxiang.bithelper.shared.flow
+package com.zhenxiang.bithelper.ios.flow
 
 import com.squareup.sqldelight.db.Closeable
-import com.zhenxiang.bithelper.shared.flow.FlowWrapper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -11,7 +10,7 @@ import kotlinx.coroutines.flow.onEach
 
 fun <T> Flow<T>.wrap(): FlowWrapper<T> = FlowWrapper(this)
 
-actual class FlowWrapper<T> actual constructor(source: Flow<T>) : Flow<T> by source {
+class FlowWrapper<T>(source: Flow<T>) : Flow<T> by source {
 
     fun watch(block: (T) -> Unit): Closeable {
         val job = Job()
