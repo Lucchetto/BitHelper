@@ -16,10 +16,8 @@ struct ApiKeysListPageView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List(viewModel.apiKeysList) { item in
-                    ApiKeyView(apiKey: item.value)
-                }
+            List(viewModel.apiKeysList) { item in
+                ApiKeyView(apiKey: item.value)
             }
             .navigationTitle(
                 Text(LocalizedStringKey(SharedRes.strings().api_keys_list_page_title.resourceId), bundle: SharedRes.strings().nsBundle)
