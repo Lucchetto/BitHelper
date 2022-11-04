@@ -20,7 +20,7 @@ struct ApiKeysListPageView: View {
                 ApiKeyView(apiKey: item.value)
             }
             .navigationTitle(
-                Text(LocalizedStringKey(SharedRes.strings().api_keys_list_page_title.resourceId), bundle: SharedRes.strings().nsBundle)
+                MokoText(resource: MokoStrings.api_keys_list_page_title)
             )
             .navigationBarItems(trailing:
                 Button(action: {
