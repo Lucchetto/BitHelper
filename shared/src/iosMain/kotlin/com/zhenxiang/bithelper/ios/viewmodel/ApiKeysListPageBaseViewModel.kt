@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.shared.viewmodel
+package com.zhenxiang.bithelper.ios.viewmodel
 
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.flow.FlowWrapper
