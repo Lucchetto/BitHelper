@@ -5,9 +5,9 @@ import com.dsc.form_builder.FormState
 import com.dsc.form_builder.TextFieldState
 import com.dsc.form_builder.Validators
 import com.zhenxiang.bithelper.android.form.getValueOfTextField
-import com.zhenxiang.bithelper.db.ApiKey
-import com.zhenxiang.bithelper.model.Exchange
-import com.zhenxiang.bithelper.repository.ApiKeysRepository
+import com.zhenxiang.bithelper.shared.db.ApiKey
+import com.zhenxiang.bithelper.shared.model.Exchange
+import com.zhenxiang.bithelper.shared.repository.ApiKeysRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

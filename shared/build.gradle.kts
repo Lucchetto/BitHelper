@@ -76,7 +76,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.zhenxiang.bithelper"
+    namespace = "com.zhenxiang.bithelper.shared"
     compileSdk = 32
     defaultConfig {
         minSdk = 21
@@ -86,12 +86,12 @@ android {
 
 sqldelight {
     database("StorageDb") {
-        packageName = "com.zhenxiang.bithelper.db"
+        packageName = "com.zhenxiang.bithelper.shared.db"
         sourceFolders = listOf("sqldelight")
     }
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "com.zhenxiang.bithelper.res"
+    multiplatformResourcesPackage = "com.zhenxiang.bithelper.shared.res"
     multiplatformResourcesClassName = "SharedRes"
 }

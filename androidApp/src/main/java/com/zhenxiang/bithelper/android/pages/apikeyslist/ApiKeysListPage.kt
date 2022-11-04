@@ -14,8 +14,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.zhenxiang.bithelper.db.ApiKey
-import com.zhenxiang.bithelper.res.SharedRes
+import com.zhenxiang.bithelper.shared.db.ApiKey
+import com.zhenxiang.bithelper.shared.res.SharedRes
 
 @OptIn(ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class)
 @Composable
