@@ -1,24 +1,18 @@
 package com.zhenxiang.bithelper.pages.apikeyslist
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.zhenxiang.bithelper.foundation.ButtonBar
-import com.zhenxiang.bithelper.foundation.FormStateOutlinedTextField
-import com.zhenxiang.bithelper.foundation.ModalBottomSheetDefaults
-import com.zhenxiang.bithelper.foundation.spacing
+import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewModel) {
 
@@ -27,13 +21,21 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
     Column(
         modifier = Modifier.padding(ModalBottomSheetDefaults.contentPadding)
     ) {
-        FormStateOutlinedTextField(
-            formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
-            SharedRes.strings.label_title.composeResource()
+        BottomSheetDragHandle()
+        TopAppBar(
+            title = {
+                Text(SharedRes.strings.add_api_key_sheet_title.composeResource())
+            },
         )
         FormStateOutlinedTextField(
-            formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
-            SharedRes.strings.api_key_title.composeResource()
+            modifier = Modifier.fillMaxWidth(),
+            state = formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
+            label = SharedRes.strings.label_title.composeResource()
+        )
+        FormStateOutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
+            label = SharedRes.strings.api_key_title.composeResource()
         )
         ButtonBar(
             modifier = Modifier.padding(top = MaterialTheme.spacing.level6)
