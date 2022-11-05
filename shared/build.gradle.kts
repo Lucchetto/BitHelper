@@ -88,6 +88,8 @@ sqldelight {
     database("StorageDb") {
         packageName = "com.zhenxiang.bithelper.shared.db"
         sourceFolders = listOf("sqldelight")
+        schemaOutputDirectory = file("src/commonMain/sqldelight/schemas")
+        verifyMigrations = true
     }
 }
 
