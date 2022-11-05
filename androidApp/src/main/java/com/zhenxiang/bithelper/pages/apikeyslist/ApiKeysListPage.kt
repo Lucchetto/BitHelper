@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
@@ -40,7 +41,7 @@ fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewMode
 @Composable
 private fun TopBar() {
     return TopAppBar(
-        title = { Text(text = stringResource(id = SharedRes.strings.api_keys_list_page_title.resourceId)) },
+        title = { Text(text = SharedRes.strings.api_keys_list_page_title.composeResource()) },
     )
 }
 

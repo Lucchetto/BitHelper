@@ -10,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.FormStateOutlinedTextField
+import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
 @Composable
@@ -20,20 +21,20 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
     Column {
         FormStateOutlinedTextField(
             formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
-            stringResource(id = SharedRes.strings.label_title.resourceId)
+            SharedRes.strings.label_title.composeResource()
         )
         FormStateOutlinedTextField(
             formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
-            stringResource(id = SharedRes.strings.api_key_title.resourceId)
+            SharedRes.strings.api_key_title.composeResource()
         )
         Row {
             Button(
                 onClick = { if (viewModel.addApiKey()) navController.popBackStack() }
             ) {
-                Text(stringResource(id = SharedRes.strings.add.resourceId))
+                Text(SharedRes.strings.add.composeResource())
             }
             TextButton(onClick = { navController.popBackStack() }) {
-                Text(stringResource(id = SharedRes.strings.cancel.resourceId))
+                Text(SharedRes.strings.cancel.composeResource())
             }
         }
     }
