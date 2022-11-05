@@ -50,7 +50,7 @@ private fun Fab(onClick: () -> Unit) {
     return FloatingActionButton(
         onClick = onClick
     ) {
-        Icon(imageVector = Icons.Outlined.Add, "Add")
+        Icon(imageVector = Icons.Outlined.Add, SharedRes.strings.add.composeResource())
     }
 }
 

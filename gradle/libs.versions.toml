@@ -1,8 +1,8 @@
 [versions]
 
-accompanistVersion = "0.25.1"
+accompanistVersion = "0.27.0"
 androidXLifecycleVersion = "2.6.0-alpha01"
-composeMaterial3Version = "1.0.0"
+composeMaterial3Version = "1.1.0-alpha01"
 composeNavigationVersion = "2.5.2"
 coroutinesVersion = "1.6.3-native-mt"
 jkuatdscFormBuilderVersion = "1.0.5"
