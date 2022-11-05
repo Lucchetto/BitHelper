@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="label_title">Label</string>
+    <string name="api_key_title">API key</string>
+
     <string name="api_keys_list_page_title">API keys list</string>
+    <string name="add_api_key_sheet_title">Add new API key</string>
 </resources>

@@ -20,7 +20,7 @@ struct ApiKeysListPageView: View {
                 ApiKeyView(apiKey: item.value)
             }
             .navigationTitle(
-                MokoText(resource: MokoStrings.api_keys_list_page_title)
+                MokoText(MokoStrings.api_keys_list_page_title)
             )
             .navigationBarItems(trailing:
                 Button(action: {

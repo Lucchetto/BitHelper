@@ -17,14 +17,16 @@ struct AddApiKeySheet: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Label", text: $viewModel.label)
-                TextField("API key", text: $viewModel.apiKey)
+                TextField(MokoStrings.label_title.localized, text: $viewModel.label)
+                TextField(MokoStrings.api_key_title.localized, text: $viewModel.apiKey)
             }
-            .navigationTitle("Add new API key")
+            .navigationTitle(MokoText(MokoStrings.add_api_key_sheet_title))
             .navigationBarItems(
-                trailing: Button("Save") {
+                trailing: Button(action: {
                     viewModel.addApiKey()
                     presentationMode.wrappedValue.dismiss()
+                }) {
+                    MokoText(MokoStrings.add)
                 }
             )
         }
