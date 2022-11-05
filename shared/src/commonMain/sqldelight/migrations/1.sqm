@@ -1,6 +1,6 @@
 import com.zhenxiang.bithelper.shared.model.Exchange;
 
-CREATE TABLE apiKey (
+CREATE TABLE apiKey_copy (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   apiKey TEXT NOT NULL,
   exchange TEXT AS Exchange NOT NULL,
@@ -10,8 +10,7 @@ CREATE TABLE apiKey (
   readOnly INTEGER AS Boolean DEFAULT NULL
 );
 
-selectAll:
-    SELECT * FROM apiKey;
-
-insert:
-    INSERT INTO apiKey (apiKey, exchange, label, secretKey, creationTimestamp, readOnly) VALUES ?;
+INSERT INTO apiKey_copy (apiKey, exchange, label, secretKey, creationTimestamp, readOnly)
+  SELECT apiKey, exchange, label, secretKey, creationTimestamp, readOnly FROM apiKey;
+DROP TABLE apiKey;
+ALTER TABLE apiKey_copy RENAME TO apiKey;

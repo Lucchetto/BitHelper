@@ -31,6 +31,7 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
     fun addApiKey(): Boolean = if (formState.validate()) {
         apiKeysRepository.addApiKey(
             ApiKey(
+                id = 0,
                 apiKey = formState.getValueOfTextField(API_KEY_FORM_FIELD),
                 exchange = Exchange.BINANCE,
                 label = formState.getValueOfTextField(LABEL_FORM_FIELD),

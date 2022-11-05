@@ -17,6 +17,7 @@ import shared
     func addApiKey() {
         addApiKey(
             apiKey: ApiKey(
+                id: 0,
                 apiKey: apiKey,
                 exchange: Exchange.ftx,
                 label: label,
