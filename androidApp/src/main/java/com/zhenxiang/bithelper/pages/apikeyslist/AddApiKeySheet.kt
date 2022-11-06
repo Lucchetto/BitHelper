@@ -3,10 +3,13 @@ package com.zhenxiang.bithelper.pages.apikeyslist
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.*
@@ -21,7 +24,9 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
     val formState = remember { viewModel.formState }
 
     Column(
-        modifier = Modifier.padding(ModalBottomSheetDefaults.contentPadding)
+        modifier = Modifier
+            .padding(ModalBottomSheetDefaults.contentPadding)
+            .verticalScroll(rememberScrollState())
     ) {
         BottomSheetDragHandle()
         TopAppBar(
@@ -29,12 +34,14 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
                 Text(SharedRes.strings.add_api_key_sheet_title.composeResource())
             },
         )
-        FormStateOutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            state = formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
-            label = SharedRes.strings.label_title.composeResource(),
-            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
-        )
+        AutoFocus {
+            FormStateOutlinedTextField(
+                modifier = Modifier.fillMaxWidth().focusRequester(it),
+                state = formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
+                label = SharedRes.strings.label_title.composeResource(),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
+            )
+        }
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
