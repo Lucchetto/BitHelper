@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.dsc.form_builder.FormState
 import com.dsc.form_builder.TextFieldState
 import com.dsc.form_builder.Validators
+import com.zhenxiang.bithelper.form.CustomValidators
 import com.zhenxiang.bithelper.form.TypedChoiceState
+import com.zhenxiang.bithelper.form.ValidationMessages
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.repository.ApiKeysRepository
@@ -20,20 +22,20 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
         fields = listOf(
             TextFieldState(
                 name = LABEL_FORM_FIELD,
-                validators = listOf(Validators.Required()),
+                validators = listOf(CustomValidators.notBlank()),
             ),
             TextFieldState(
                 name = API_KEY_FORM_FIELD,
-                validators = listOf(Validators.Required()),
+                validators = listOf(CustomValidators.notBlank()),
             ),
             TextFieldState(
                 name = SECRET_KEY_FORM_FIELD,
-                validators = listOf(Validators.Required()),
+                validators = listOf(CustomValidators.notBlank()),
             ),
             TypedChoiceState<Exchange?>(
                 initial = null,
                 name = EXCHANGE_FORM_FIELD,
-                validators = listOf(Validators.Required()),
+                validators = listOf(Validators.Required(ValidationMessages.REQUIRED)),
             )
         )
     )
