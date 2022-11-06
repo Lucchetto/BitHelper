@@ -10,6 +10,7 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10141F2917C79200A417E1 /* StringExtensions.swift */; };
 		AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */; };
 		AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */; };
 		AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */; };
@@ -30,6 +31,7 @@
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		AA10141F2917C79200A417E1 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageViewModel.swift; sourceTree = "<group>"; };
 		AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowExtensions.swift; sourceTree = "<group>"; };
 		AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			children = (
 				AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */,
 				AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */,
+				AA10141F2917C79200A417E1 /* StringExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */,
 				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
 				AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */,
 				AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */,

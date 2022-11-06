@@ -41,7 +41,11 @@ private struct ApiKeyView: View {
     let apiKey: ApiKey
     
     var body: some View {
-        Text(apiKey.label)
+        VStack(alignment: .leading) {
+            Text(apiKey.label)
+            Text(apiKey.apiKey)
+            MokoText(apiKey.exchange.labelRes)
+        }
     }
 }
 

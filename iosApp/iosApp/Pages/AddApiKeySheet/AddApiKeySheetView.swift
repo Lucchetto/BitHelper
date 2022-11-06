@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import shared
 
 struct AddApiKeySheet: View {
     
@@ -19,6 +20,12 @@ struct AddApiKeySheet: View {
             Form {
                 TextField(MokoStrings.label_title.localized, text: $viewModel.label)
                 TextField(MokoStrings.api_key_title.localized, text: $viewModel.apiKey)
+                Picker(MokoStrings.exchange_title.localized, selection: $viewModel.selectedExchangeIndex) {
+                    MokoText(MokoStrings.select_an_exchange_hint).tag(-1).id(-1)
+                    ForEach(0 ..< viewModel.exchanges.count, id: \.self) { index in
+                        MokoText(viewModel.exchanges[index].labelRes)
+                    }
+                }
             }
             .navigationTitle(MokoText(MokoStrings.add_api_key_sheet_title))
             .navigationBarItems(
@@ -27,7 +34,7 @@ struct AddApiKeySheet: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     MokoText(MokoStrings.add)
-                }
+                }.disabled(viewModel.formInvalid)
             )
         }
     }

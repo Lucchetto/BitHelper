@@ -4,12 +4,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
+import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,6 +36,14 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
             modifier = Modifier.fillMaxWidth(),
             state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
             label = SharedRes.strings.api_key_title.composeResource()
+        )
+        FormStateOutlinedDropDownMenu<Exchange?>(
+            label = SharedRes.strings.exchange_title.composeResource(),
+            options = viewModel.exchanges,
+            state = formState.getState(AddApiKeySheetViewModel.EXCHANGE_FORM_FIELD),
+            toStringAdapter = {
+                it?.labelRes?.composeResource() ?: ""
+            }
         )
         ButtonBar(
             modifier = Modifier.padding(top = MaterialTheme.spacing.level6)

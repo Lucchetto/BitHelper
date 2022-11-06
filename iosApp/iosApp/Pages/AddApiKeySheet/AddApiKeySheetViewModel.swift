@@ -11,15 +11,22 @@ import shared
 
 @MainActor class AddApiKeySheetViewModel: AddApiKeySheetBaseViewModel, ObservableObject {
     
+    let exchanges = Array(Exchange.values())
+    
     @Published var apiKey: String = ""
     @Published var label: String = ""
+    @Published var selectedExchangeIndex: Int = -1
+    
+    var formInvalid: Bool {
+        apiKey.isBlank || label.isBlank || selectedExchangeIndex < 0
+    }
     
     func addApiKey() {
         addApiKey(
             apiKey: ApiKey(
                 id: 0,
                 apiKey: apiKey,
-                exchange: Exchange.ftx,
+                exchange: exchanges[selectedExchangeIndex],
                 label: label,
                 secretKey: nil,
                 creationTimestamp: Int64(NSDate().timeIntervalSince1970) * 1000,
