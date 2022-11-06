@@ -15,10 +15,11 @@ import shared
     
     @Published var apiKey: String = ""
     @Published var label: String = ""
+    @Published var secretKey: String = ""
     @Published var selectedExchangeIndex: Int = -1
     
     var formInvalid: Bool {
-        apiKey.isBlank || label.isBlank || selectedExchangeIndex < 0
+        apiKey.isBlank || label.isBlank || secretKey.isBlank || selectedExchangeIndex < 0
     }
     
     func addApiKey() {
@@ -28,7 +29,7 @@ import shared
                 apiKey: apiKey,
                 exchange: exchanges[selectedExchangeIndex],
                 label: label,
-                secretKey: nil,
+                secretKey: secretKey,
                 creationTimestamp: Int64(NSDate().timeIntervalSince1970) * 1000,
                 readOnly: nil
             )

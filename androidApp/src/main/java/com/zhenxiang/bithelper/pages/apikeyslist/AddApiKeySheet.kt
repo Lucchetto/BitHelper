@@ -37,6 +37,11 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
             state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
             label = SharedRes.strings.api_key_title.composeResource()
         )
+        FormStateOutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = formState.getState(AddApiKeySheetViewModel.SECRET_KEY_FORM_FIELD),
+            label = SharedRes.strings.secret_key_title.composeResource()
+        )
         FormStateOutlinedDropDownMenu<Exchange?>(
             label = SharedRes.strings.exchange_title.composeResource(),
             options = viewModel.exchanges,

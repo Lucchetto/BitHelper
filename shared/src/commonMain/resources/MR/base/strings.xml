@@ -4,6 +4,7 @@
     <string name="cancel">Cancel</string>
     <string name="label_title">Label</string>
     <string name="api_key_title">API key</string>
+    <string name="secret_key_title">Secret key</string>
     <string name="exchange_title">Exchange</string>
     <string name="select_an_exchange_hint">Select an exchange</string>
 

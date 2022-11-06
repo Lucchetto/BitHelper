@@ -26,6 +26,10 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
                 name = API_KEY_FORM_FIELD,
                 validators = listOf(Validators.Required()),
             ),
+            TextFieldState(
+                name = SECRET_KEY_FORM_FIELD,
+                validators = listOf(Validators.Required()),
+            ),
             TypedChoiceState<Exchange?>(
                 initial = null,
                 name = EXCHANGE_FORM_FIELD,
@@ -41,7 +45,7 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
                 apiKey = formState.getState<TextFieldState>(API_KEY_FORM_FIELD).value,
                 exchange = formState.getState<TypedChoiceState<Exchange>>(EXCHANGE_FORM_FIELD).value,
                 label = formState.getState<TextFieldState>(LABEL_FORM_FIELD).value,
-                secretKey = null,
+                secretKey = formState.getState<TextFieldState>(SECRET_KEY_FORM_FIELD).value,
                 creationTimestamp = System.currentTimeMillis(),
                 readOnly = null,
             )
@@ -54,6 +58,7 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
     companion object {
         const val LABEL_FORM_FIELD = "label"
         const val API_KEY_FORM_FIELD = "apiKey"
+        const val SECRET_KEY_FORM_FIELD = "secretKey"
         const val EXCHANGE_FORM_FIELD = "exchange"
     }
 }
