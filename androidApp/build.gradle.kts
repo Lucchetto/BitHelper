@@ -33,11 +33,11 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.compose.ui:ui:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling:1.2.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.2.1")
-    implementation("androidx.compose.foundation:foundation:1.2.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.compose.ui:ui:1.3.0")
+    implementation("androidx.compose.ui:ui-tooling:1.3.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.3.0")
+    implementation("androidx.compose.foundation:foundation:1.3.0")
+    implementation("androidx.activity:activity-compose:1.6.1")
 
     implementation(libs.android.accompanistNavigation)
     implementation(libs.android.androidXLifecycle)
