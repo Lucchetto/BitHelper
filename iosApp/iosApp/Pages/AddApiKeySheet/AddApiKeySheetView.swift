@@ -19,8 +19,8 @@ struct AddApiKeySheet: View {
         NavigationView {
             Form {
                 TextField(MokoStrings.label_title.localized, text: $viewModel.label)
-                TextField(MokoStrings.api_key_title.localized, text: $viewModel.apiKey)
-                TextField(MokoStrings.secret_key_title.localized, text: $viewModel.secretKey)
+                TextField(MokoStrings.api_key_title.localized, text: $viewModel.apiKey).autocorrectionDisabled(true)
+                TextField(MokoStrings.secret_key_title.localized, text: $viewModel.secretKey).autocorrectionDisabled(true)
                 Picker(MokoStrings.exchange_title.localized, selection: $viewModel.selectedExchangeIndex) {
                     MokoText(MokoStrings.select_an_exchange_hint).tag(-1).id(-1)
                     ForEach(0 ..< viewModel.exchanges.count, id: \.self) { index in

@@ -3,9 +3,11 @@ package com.zhenxiang.bithelper.pages.apikeyslist
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
@@ -30,17 +32,26 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             state = formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
-            label = SharedRes.strings.label_title.composeResource()
+            label = SharedRes.strings.label_title.composeResource(),
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
         )
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
-            label = SharedRes.strings.api_key_title.composeResource()
+            label = SharedRes.strings.api_key_title.composeResource(),
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                autoCorrect = false,
+            )
         )
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             state = formState.getState(AddApiKeySheetViewModel.SECRET_KEY_FORM_FIELD),
-            label = SharedRes.strings.secret_key_title.composeResource()
+            label = SharedRes.strings.secret_key_title.composeResource(),
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next,
+                autoCorrect = false,
+            )
         )
         FormStateOutlinedDropDownMenu<Exchange?>(
             label = SharedRes.strings.exchange_title.composeResource(),

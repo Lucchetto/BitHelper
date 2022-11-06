@@ -1,21 +1,30 @@
 package com.zhenxiang.bithelper.foundation
 
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import com.dsc.form_builder.TextFieldState
 import com.zhenxiang.bithelper.form.TypedChoiceState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormStateOutlinedTextField(modifier: Modifier = Modifier, state: TextFieldState, label: String) {
+fun FormStateOutlinedTextField(
+    modifier: Modifier = Modifier,
+    state: TextFieldState,
+    label: String,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+) {
     OutlinedTextField(
         modifier = modifier,
         value = state.value,
         isError = state.hasError,
         label = { Text(label) },
         onValueChange = { state.change(it) },
+        keyboardOptions = keyboardOptions,
     )
 }
 
@@ -41,6 +50,11 @@ fun <T> FormStateOutlinedDropDownMenu(
         OutlinedTextField(
             modifier = Modifier
                 .menuAnchor()
+                .onFocusChanged {
+                    if (it.isFocused) {
+                        expanded = true
+                    }
+                }
                 .fillMaxWidth(),
             readOnly = true,
             value = toStringAdapter(state.value),
