@@ -1,6 +1,6 @@
 [versions]
 
-accompanistVersion = "0.27.0"
+accompanistModVersion = "v0.27.0-mod"
 androidXLifecycleVersion = "2.6.0-alpha01"
 composeMaterial3Version = "1.1.0-alpha01"
 composeNavigationVersion = "2.5.2"
@@ -23,7 +23,7 @@ common-mokoResourcesTest = { module = "dev.icerock.moko:resources-test", version
 common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
 common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelightVersion" }
 
-android-accompanistNavigation = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanistVersion" }
+android-accompanistNavigationMod = { module = "com.github.Lucchetto:accompanist", version.ref = "accompanistModVersion" }
 android-androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidXLifecycleVersion" }
 android-composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3Version" }
 android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }

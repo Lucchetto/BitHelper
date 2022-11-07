@@ -39,7 +39,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.3.0")
     implementation("androidx.activity:activity-compose:1.6.1")
 
-    implementation(libs.android.accompanistNavigation)
+    implementation(libs.android.accompanistNavigationMod)
     implementation(libs.android.androidXLifecycle)
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.composeNavigation)
