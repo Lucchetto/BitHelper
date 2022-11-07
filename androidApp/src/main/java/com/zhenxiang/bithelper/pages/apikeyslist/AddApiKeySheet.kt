@@ -1,8 +1,6 @@
 package com.zhenxiang.bithelper.pages.apikeyslist
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -11,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
@@ -27,9 +26,12 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
         modifier = Modifier
             .padding(ModalBottomSheetDefaults.contentPadding)
             .verticalScroll(rememberScrollState())
+            .navigationBarsPadding()
+            .imePadding()
     ) {
         BottomSheetDragHandle()
         TopAppBar(
+            windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
             title = {
                 Text(SharedRes.strings.add_api_key_sheet_title.composeResource())
             },
