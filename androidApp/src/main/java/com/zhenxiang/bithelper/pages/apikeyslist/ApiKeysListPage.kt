@@ -14,14 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
 import com.zhenxiang.bithelper.moko.composeResource
+import com.zhenxiang.bithelper.navigation.RootNavigationSheet
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.res.SharedRes
+import dev.olshevski.navigation.reimagined.NavController
+import dev.olshevski.navigation.reimagined.navigate
 
 @OptIn(ExperimentalLifecycleComposeApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewModel) {
+fun ApiKeysListPage(sheetController: NavController<RootNavigationSheet>, viewModel: ApiKeysListViewModel) {
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val apiKeysListState = viewModel.apiKeysListFlow.collectAsStateWithLifecycle(
@@ -33,7 +35,7 @@ fun ApiKeysListPage(navController: NavController, viewModel: ApiKeysListViewMode
         topBar = { TopBar(scrollBehavior) },
         floatingActionButton = {
             Fab {
-                navController.navigate("add")
+                sheetController.navigate(RootNavigationSheet.AddAccount)
             }
         },
         content = { ApiKeysList(it, apiKeysListState) }

@@ -10,15 +10,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
+import com.zhenxiang.bithelper.navigation.RootNavigationSheet
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.res.SharedRes
+import dev.olshevski.navigation.reimagined.NavController
+import dev.olshevski.navigation.reimagined.pop
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewModel) {
+fun AddApiKeySheet(sheetController: NavController<RootNavigationSheet>, viewModel: AddApiKeySheetViewModel) {
 
     val formState = remember { viewModel.formState }
 
@@ -26,7 +28,7 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
         modifier = Modifier
             .padding(ModalBottomSheetDefaults.contentPadding)
             .verticalScroll(rememberScrollState())
-            .navigationBarsPadding()
+            .systemBarsPadding()
             .imePadding()
     ) {
         BottomSheetDragHandle()
@@ -74,11 +76,11 @@ fun AddApiKeySheet(navController: NavController, viewModel: AddApiKeySheetViewMo
             modifier = Modifier.padding(top = MaterialTheme.spacing.level6)
         ) {
             Button(
-                onClick = { if (viewModel.addApiKey()) navController.popBackStack() }
+                onClick = { if (viewModel.addApiKey()) sheetController.pop() }
             ) {
                 Text(SharedRes.strings.add.composeResource())
             }
-            TextButton(onClick = { navController.popBackStack() }) {
+            TextButton(onClick = { sheetController.pop() }) {
                 Text(SharedRes.strings.cancel.composeResource())
             }
         }
