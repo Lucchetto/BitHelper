@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
-import com.zhenxiang.bithelper.navigation.RootNavigationSheet
+import com.zhenxiang.bithelper.navigation.MainNavigationSheet
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.res.SharedRes
 import dev.olshevski.navigation.reimagined.NavController
@@ -20,7 +20,7 @@ import dev.olshevski.navigation.reimagined.pop
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddApiKeySheet(sheetController: NavController<RootNavigationSheet>, viewModel: AddApiKeySheetViewModel) {
+fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewModel: AddApiKeySheetViewModel) {
 
     val formState = remember { viewModel.formState }
 
