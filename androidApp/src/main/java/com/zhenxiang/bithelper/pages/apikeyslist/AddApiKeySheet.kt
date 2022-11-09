@@ -26,10 +26,10 @@ fun AddApiKeySheet(sheetController: NavController<RootNavigationSheet>, viewMode
 
     Column(
         modifier = Modifier
-            .padding(ModalBottomSheetDefaults.contentPadding)
             .verticalScroll(rememberScrollState())
             .systemBarsPadding()
             .imePadding()
+            .padding(ModalBottomSheetDefaults.contentPadding)
     ) {
         BottomSheetDragHandle()
         TopAppBar(
