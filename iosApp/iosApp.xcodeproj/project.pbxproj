@@ -20,6 +20,7 @@
 		AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */; };
 		AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */; };
 		AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */; };
+		AAD04CBA292016580036104B /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD04CB9292016580036104B /* MainNavigationView.swift */; };
 		D61BDBBCC89038BFBF1A76AB /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2826F13C5B3393B525CC8D50 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetView.swift; sourceTree = "<group>"; };
 		AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetViewModel.swift; sourceTree = "<group>"; };
 		AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesExtensions.swift; sourceTree = "<group>"; };
+		AAD04CB9292016580036104B /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				AAD04CB6292015B70036104B /* Navigation */,
 				AABD6AC32915B975004F190D /* MokoResources */,
 				AA47E0AC290F0EE9007BCC1F /* Utils */,
 				AA47E0A9290ED42B007BCC1F /* Flow */,
@@ -158,6 +161,14 @@
 				AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */,
 			);
 			path = MokoResources;
+			sourceTree = "<group>";
+		};
+		AAD04CB6292015B70036104B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				AAD04CB9292016580036104B /* MainNavigationView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		C2CE6BE0E8D453DCB9DAEE5F /* Frameworks */ = {
@@ -289,6 +300,7 @@
 				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
 				AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */,
 				AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */,
+				AAD04CBA292016580036104B /* MainNavigationView.swift in Sources */,
 				AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */,
 				AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */,
 				AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */,
