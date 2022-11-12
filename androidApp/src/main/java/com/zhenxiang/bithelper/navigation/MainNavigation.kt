@@ -30,13 +30,14 @@ import kotlinx.parcelize.Parcelize
 fun MainNavigationComponent(
 ) {
 
-    val navController = rememberNavController<MainNavigationScreen>(MainNavigationScreen.Accounts,)
+    val initialRoute = MainNavigationScreen.Accounts
+    val navController = rememberNavController<MainNavigationScreen>(initialRoute)
     val sheetController = rememberNavController<MainNavigationSheet>(emptyList())
 
     val accountsRouteBuilder = createSharedScaffoldRouteBuilder(
         fab = {
             AccountsPage.Fab {
-                sheetController.navigate(MainNavigationSheet.AddAccount)
+                sheetController.replaceAll(MainNavigationSheet.AddAccount)
             }
         }
     ) {
@@ -49,7 +50,7 @@ fun MainNavigationComponent(
         MainNavigationScreen.Accounts -> accountsRouteBuilder
     }
 
-    NavBackHandler(navController)
+    NavigationBarBackHandler(navController, initialRoute)
 
     Scaffold(
         topBar = { TopBar(currentNavigationBarItem, currentRouteBuilder.scrollBehavior) },
@@ -58,9 +59,7 @@ fun MainNavigationComponent(
             BottomNavigation(
                 currentDestination,
             ) { screen ->
-                if (!navController.moveToTop { it == screen }) {
-                    navController.navigate(screen)
-                }
+                navController.bringToTopOrNavigate(screen)
             }
         }
     ) {
@@ -140,8 +139,8 @@ private val MainNavigationScreensMap = mapOf(
     MainNavigationScreen.Accounts to NavigationBarItem(SharedRes.strings.accounts_page_title, Icons.Outlined.AccountCircle)
 )
 
-sealed class MainNavigationSheet : Parcelable {
+sealed interface MainNavigationSheet : Parcelable {
 
     @Parcelize
-    object AddAccount : MainNavigationSheet()
+    object AddAccount : MainNavigationSheet
 }
