@@ -18,8 +18,8 @@ import com.zhenxiang.bithelper.foundation.top
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.navigation.model.NavigationBarItem
 import com.zhenxiang.bithelper.navigation.model.createSharedScaffoldRouteBuilder
-import com.zhenxiang.bithelper.pages.apikeyslist.AddApiKeySheet
-import com.zhenxiang.bithelper.pages.apikeyslist.ApiKeysListPage
+import com.zhenxiang.bithelper.pages.accounts.AddAccountSheet
+import com.zhenxiang.bithelper.pages.accounts.AccountsPage
 import com.zhenxiang.bithelper.shared.res.SharedRes
 import dev.olshevski.navigation.reimagined.*
 import dev.olshevski.navigation.reimagined.material.BottomSheetNavHost
@@ -30,23 +30,23 @@ import kotlinx.parcelize.Parcelize
 fun MainNavigationComponent(
 ) {
 
-    val navController = rememberNavController<MainNavigationScreen>(MainNavigationScreen.ApiKeysList,)
+    val navController = rememberNavController<MainNavigationScreen>(MainNavigationScreen.Accounts,)
     val sheetController = rememberNavController<MainNavigationSheet>(emptyList())
 
-    val apiKeysListRouteBuilder = createSharedScaffoldRouteBuilder(
+    val accountsRouteBuilder = createSharedScaffoldRouteBuilder(
         fab = {
-            ApiKeysListPage.Fab {
+            AccountsPage.Fab {
                 sheetController.navigate(MainNavigationSheet.AddAccount)
             }
         }
     ) {
-        ApiKeysListPage.RouteContent(viewModel())
+        AccountsPage.RouteContent(viewModel())
     }
 
     val currentDestination = navController.backstack.entries.last().destination
     val currentNavigationBarItem = MainNavigationScreensMap[currentDestination]
     val currentRouteBuilder = when (currentDestination) {
-        MainNavigationScreen.ApiKeysList -> apiKeysListRouteBuilder
+        MainNavigationScreen.Accounts -> accountsRouteBuilder
     }
 
     NavBackHandler(navController)
@@ -71,7 +71,7 @@ fun MainNavigationComponent(
         ) {
             NavHost(navController) { screen ->
                 when (screen) {
-                    MainNavigationScreen.ApiKeysList -> apiKeysListRouteBuilder.content()
+                    MainNavigationScreen.Accounts -> accountsRouteBuilder.content()
                 }
             }
         }
@@ -92,7 +92,7 @@ fun MainNavigationComponent(
         sheetPropertiesSpec = NavigationConstants.bottomSheetSpec,
     ) { destination ->
         when (destination) {
-            MainNavigationSheet.AddAccount -> AddApiKeySheet(sheetController = sheetController, viewModel = viewModel())
+            MainNavigationSheet.AddAccount -> AddAccountSheet(sheetController = sheetController, viewModel = viewModel())
         }
     }
 }
@@ -133,11 +133,11 @@ private fun BottomNavigation(
 sealed interface MainNavigationScreen : Parcelable {
 
     @Parcelize
-    object ApiKeysList : MainNavigationScreen
+    object Accounts : MainNavigationScreen
 }
 
 private val MainNavigationScreensMap = mapOf(
-    MainNavigationScreen.ApiKeysList to NavigationBarItem(SharedRes.strings.api_keys_list_page_title, Icons.Outlined.AccountCircle)
+    MainNavigationScreen.Accounts to NavigationBarItem(SharedRes.strings.accounts_page_title, Icons.Outlined.AccountCircle)
 )
 
 sealed class MainNavigationSheet : Parcelable {

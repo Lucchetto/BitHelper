@@ -12,6 +12,7 @@
     <string name="binance_exchange">Binance</string>
     <string name="ftx_exchange">FTX</string>
 
-    <string name="api_keys_list_page_title">API keys list</string>
-    <string name="add_api_key_sheet_title">Add new API key</string>
+    <!-- Accounts page -->
+    <string name="accounts_page_title">Accounts</string>
+    <string name="add_account_sheet_title">Add new account</string>
 </resources>

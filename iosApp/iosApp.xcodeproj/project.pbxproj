@@ -12,13 +12,13 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10141F2917C79200A417E1 /* StringExtensions.swift */; };
 		AA10142329183C0600A417E1 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10142229183C0600A417E1 /* ViewExtensions.swift */; };
-		AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */; };
+		AA47E0A8290ED1C3007BCC1F /* AccountsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* AccountsPageViewModel.swift */; };
 		AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */; };
 		AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */; };
-		AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */; };
+		AA47E0B0290F0FD9007BCC1F /* AccountsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AF290F0FD9007BCC1F /* AccountsPageView.swift */; };
 		AA47E0B3290F13DF007BCC1F /* IdentifiableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */; };
-		AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */; };
-		AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */; };
+		AA47E0B6290F1A20007BCC1F /* AddAccountSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B5290F1A20007BCC1F /* AddAccountSheetView.swift */; };
+		AA47E0B8290F1A33007BCC1F /* AddAccountSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0B7290F1A33007BCC1F /* AddAccountSheetViewModel.swift */; };
 		AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */; };
 		AAD04CBA292016580036104B /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD04CB9292016580036104B /* MainNavigationView.swift */; };
 		D61BDBBCC89038BFBF1A76AB /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2826F13C5B3393B525CC8D50 /* Pods_iosApp.framework */; };
@@ -35,13 +35,13 @@
 		9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA10141F2917C79200A417E1 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		AA10142229183C0600A417E1 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageViewModel.swift; sourceTree = "<group>"; };
+		AA47E0A7290ED1C3007BCC1F /* AccountsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPageViewModel.swift; sourceTree = "<group>"; };
 		AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowExtensions.swift; sourceTree = "<group>"; };
 		AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
-		AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeysListPageView.swift; sourceTree = "<group>"; };
+		AA47E0AF290F0FD9007BCC1F /* AccountsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPageView.swift; sourceTree = "<group>"; };
 		AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableWrapper.swift; sourceTree = "<group>"; };
-		AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetView.swift; sourceTree = "<group>"; };
-		AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddApiKeySheetViewModel.swift; sourceTree = "<group>"; };
+		AA47E0B5290F1A20007BCC1F /* AddAccountSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSheetView.swift; sourceTree = "<group>"; };
+		AA47E0B7290F1A33007BCC1F /* AddAccountSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSheetViewModel.swift; sourceTree = "<group>"; };
 		AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesExtensions.swift; sourceTree = "<group>"; };
 		AAD04CB9292016580036104B /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,19 +112,19 @@
 		AA47E0A5290ED19F007BCC1F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				AA47E0B4290F1A12007BCC1F /* AddApiKeySheet */,
-				AA47E0A6290ED1AC007BCC1F /* ApiKeysListPage */,
+				AA47E0B4290F1A12007BCC1F /* AddAccountSheet */,
+				AA47E0A6290ED1AC007BCC1F /* AccountsPage */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
 		};
-		AA47E0A6290ED1AC007BCC1F /* ApiKeysListPage */ = {
+		AA47E0A6290ED1AC007BCC1F /* AccountsPage */ = {
 			isa = PBXGroup;
 			children = (
-				AA47E0A7290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift */,
-				AA47E0AF290F0FD9007BCC1F /* ApiKeysListPageView.swift */,
+				AA47E0A7290ED1C3007BCC1F /* AccountsPageViewModel.swift */,
+				AA47E0AF290F0FD9007BCC1F /* AccountsPageView.swift */,
 			);
-			path = ApiKeysListPage;
+			path = AccountsPage;
 			sourceTree = "<group>";
 		};
 		AA47E0A9290ED42B007BCC1F /* Flow */ = {
@@ -146,13 +146,13 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		AA47E0B4290F1A12007BCC1F /* AddApiKeySheet */ = {
+		AA47E0B4290F1A12007BCC1F /* AddAccountSheet */ = {
 			isa = PBXGroup;
 			children = (
-				AA47E0B5290F1A20007BCC1F /* AddApiKeySheetView.swift */,
-				AA47E0B7290F1A33007BCC1F /* AddApiKeySheetViewModel.swift */,
+				AA47E0B5290F1A20007BCC1F /* AddAccountSheetView.swift */,
+				AA47E0B7290F1A33007BCC1F /* AddAccountSheetViewModel.swift */,
 			);
-			path = AddApiKeySheet;
+			path = AddAccountSheet;
 			sourceTree = "<group>";
 		};
 		AABD6AC32915B975004F190D /* MokoResources */ = {
@@ -294,15 +294,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA10142329183C0600A417E1 /* ViewExtensions.swift in Sources */,
-				AA47E0A8290ED1C3007BCC1F /* ApiKeysListPageViewModel.swift in Sources */,
+				AA47E0A8290ED1C3007BCC1F /* AccountsPageViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */,
 				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
-				AA47E0B6290F1A20007BCC1F /* AddApiKeySheetView.swift in Sources */,
+				AA47E0B6290F1A20007BCC1F /* AddAccountSheetView.swift in Sources */,
 				AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */,
 				AAD04CBA292016580036104B /* MainNavigationView.swift in Sources */,
-				AA47E0B0290F0FD9007BCC1F /* ApiKeysListPageView.swift in Sources */,
-				AA47E0B8290F1A33007BCC1F /* AddApiKeySheetViewModel.swift in Sources */,
+				AA47E0B0290F0FD9007BCC1F /* AccountsPageView.swift in Sources */,
+				AA47E0B8290F1A33007BCC1F /* AddAccountSheetViewModel.swift in Sources */,
 				AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */,
 				AA47E0B3290F13DF007BCC1F /* IdentifiableWrapper.swift in Sources */,
 			);

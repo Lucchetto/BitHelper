@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.lifecycle.ViewModel
 import com.zhenxiang.bithelper.shared.db.ApiKey
@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class ApiKeysListViewModel : ViewModel(), KoinComponent {
+class AccountsViewModel : ViewModel(), KoinComponent {
 
     private val apiKeysRepository: ApiKeysRepository by inject()
 
-    val apiKeysListFlow: Flow<List<ApiKey>> = apiKeysRepository.apiKeysListFlow
+    val accountListFlow: Flow<List<ApiKey>> = apiKeysRepository.apiKeysListFlow
 }

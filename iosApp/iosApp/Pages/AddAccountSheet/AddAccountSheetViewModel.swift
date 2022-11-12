@@ -1,5 +1,5 @@
 //
-//  AddApiKeySheetViewModel.swift
+//  AddAccountSheetViewModel.swift
 //  iosApp
 //
 //  Created by Zhenxiang Chen on 30/10/22.
@@ -9,7 +9,7 @@
 import Foundation
 import shared
 
-@MainActor class AddApiKeySheetViewModel: AddApiKeySheetBaseViewModel, ObservableObject {
+@MainActor class AddAccountSheetViewModel: AddAccountSheetBaseViewModel, ObservableObject {
     
     let exchanges = Array(Exchange.values())
     
@@ -22,8 +22,8 @@ import shared
         apiKey.isBlank || label.isBlank || secretKey.isBlank || selectedExchangeIndex < 0
     }
     
-    func addApiKey() {
-        addApiKey(
+    func addAccount() {
+        addAccount(
             apiKey: ApiKey(
                 id: 0,
                 apiKey: apiKey,

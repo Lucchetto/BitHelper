@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,15 +15,15 @@ import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
-object ApiKeysListPage {
+object AccountsPage {
 
     @OptIn(ExperimentalLifecycleComposeApi::class)
     @Composable
-    fun RouteContent(viewModel: ApiKeysListViewModel) {
+    fun RouteContent(viewModel: AccountsViewModel) {
 
-        val apiKeysListState = viewModel.apiKeysListFlow.collectAsStateWithLifecycle(emptyList())
+        val accountListState = viewModel.accountListFlow.collectAsStateWithLifecycle(emptyList())
 
-        ApiKeysList(apiKeysListState)
+        AccountList(accountListState)
     }
     @Composable
     fun Fab(onClick: () -> Unit) {
@@ -35,7 +35,7 @@ object ApiKeysListPage {
     }
 
     @Composable
-    private fun ApiKeysList(state: State<List<ApiKey>>) {
+    private fun AccountList(state: State<List<ApiKey>>) {
         val list: List<ApiKey> by state
 
         LazyColumn(

@@ -14,10 +14,10 @@ struct MainNavigationView: View {
     @State private var selectedTab = 0
     var body: some View {
         TabView(selection: $selectedTab) {
-            ApiKeysListPageView()
+            AccountsPageView()
                 .tabItem({
-                    Label(MokoStrings.api_keys_list_page_title.localized, systemImage: "person.circle")
-                    MokoText(MokoStrings.api_keys_list_page_title)
+                    Label(MokoStrings.accounts_page_title.localized, systemImage: "person.circle")
+                    MokoText(MokoStrings.accounts_page_title)
                 })
                 .tag(0)
         }

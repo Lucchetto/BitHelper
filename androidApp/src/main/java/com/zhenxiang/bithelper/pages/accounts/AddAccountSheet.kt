@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,7 +20,7 @@ import dev.olshevski.navigation.reimagined.pop
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewModel: AddApiKeySheetViewModel) {
+fun AddAccountSheet(sheetController: NavController<MainNavigationSheet>, viewModel: AddAccountSheetViewModel) {
 
     val formState = remember { viewModel.formState }
 
@@ -35,20 +35,20 @@ fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewMode
         TopAppBar(
             windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
             title = {
-                Text(SharedRes.strings.add_api_key_sheet_title.composeResource())
+                Text(SharedRes.strings.add_account_sheet_title.composeResource())
             },
         )
         AutoFocus {
             FormStateOutlinedTextField(
                 modifier = Modifier.fillMaxWidth().focusRequester(it),
-                state = formState.getState(AddApiKeySheetViewModel.LABEL_FORM_FIELD),
+                state = formState.getState(AddAccountSheetViewModel.LABEL_FORM_FIELD),
                 label = SharedRes.strings.label_title.composeResource(),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
         }
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            state = formState.getState(AddApiKeySheetViewModel.API_KEY_FORM_FIELD),
+            state = formState.getState(AddAccountSheetViewModel.API_KEY_FORM_FIELD),
             label = SharedRes.strings.api_key_title.composeResource(),
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
@@ -57,7 +57,7 @@ fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewMode
         )
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            state = formState.getState(AddApiKeySheetViewModel.SECRET_KEY_FORM_FIELD),
+            state = formState.getState(AddAccountSheetViewModel.SECRET_KEY_FORM_FIELD),
             label = SharedRes.strings.secret_key_title.composeResource(),
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
@@ -67,7 +67,7 @@ fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewMode
         FormStateOutlinedDropDownMenu<Exchange?>(
             label = SharedRes.strings.exchange_title.composeResource(),
             options = viewModel.exchanges,
-            state = formState.getState(AddApiKeySheetViewModel.EXCHANGE_FORM_FIELD),
+            state = formState.getState(AddAccountSheetViewModel.EXCHANGE_FORM_FIELD),
             toStringAdapter = {
                 it?.labelRes?.composeResource() ?: ""
             }
@@ -76,7 +76,7 @@ fun AddApiKeySheet(sheetController: NavController<MainNavigationSheet>, viewMode
             modifier = Modifier.padding(top = MaterialTheme.spacing.level6)
         ) {
             Button(
-                onClick = { if (viewModel.addApiKey()) sheetController.pop() }
+                onClick = { if (viewModel.addAccount()) sheetController.pop() }
             ) {
                 Text(SharedRes.strings.add.composeResource())
             }

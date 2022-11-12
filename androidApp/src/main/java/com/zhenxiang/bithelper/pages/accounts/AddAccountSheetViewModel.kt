@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.pages.apikeyslist
+package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.lifecycle.ViewModel
 import com.dsc.form_builder.FormState
@@ -13,7 +13,7 @@ import com.zhenxiang.bithelper.shared.repository.ApiKeysRepository
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
+class AddAccountSheetViewModel : ViewModel(), KoinComponent {
 
     private val apiKeysRepository: ApiKeysRepository by inject()
     val exchanges = Exchange.values().toList()
@@ -40,7 +40,7 @@ class AddApiKeySheetViewModel : ViewModel(), KoinComponent {
         )
     )
 
-    fun addApiKey(): Boolean = if (formState.validate()) {
+    fun addAccount(): Boolean = if (formState.validate()) {
         apiKeysRepository.addApiKey(
             ApiKey(
                 id = 0,

@@ -1,5 +1,5 @@
 //
-//  AddApiKeySheet.swift
+//  AddAccountSheetView.swift
 //  iosApp
 //
 //  Created by Zhenxiang Chen on 30/10/22.
@@ -9,9 +9,9 @@
 import SwiftUI
 import shared
 
-struct AddApiKeySheet: View {
+struct AddAccountSheetView: View {
     
-    @StateObject var viewModel = AddApiKeySheetViewModel()
+    @StateObject var viewModel = AddAccountSheetViewModel()
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -28,10 +28,10 @@ struct AddApiKeySheet: View {
                     }
                 }
             }
-            .navigationTitle(MokoText(MokoStrings.add_api_key_sheet_title))
+            .navigationTitle(MokoText(MokoStrings.add_account_sheet_title))
             .navigationBarItems(
                 trailing: Button(action: {
-                    viewModel.addApiKey()
+                    viewModel.addAccount()
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     MokoText(MokoStrings.add)
@@ -41,8 +41,8 @@ struct AddApiKeySheet: View {
     }
 }
 
-struct AddApiKeySheet_Previews: PreviewProvider {
+struct AddAccountSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddApiKeySheet()
+        AddAccountSheetView()
     }
 }

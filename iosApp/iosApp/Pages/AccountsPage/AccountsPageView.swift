@@ -1,5 +1,5 @@
 //
-//  ApiKeysListPageView.swift
+//  AccountsPageView.swift
 //  iosApp
 //
 //  Created by Zhenxiang Chen on 30/10/22.
@@ -9,18 +9,18 @@
 import SwiftUI
 import shared
 
-struct ApiKeysListPageView: View {
+struct AccountsPageView: View {
     
     @State private var showSheet = false
-    @StateObject var viewModel = ApiKeysListPageViewModel()
+    @StateObject var viewModel = AccountsPageViewModel()
     
     var body: some View {
         NavigationView {
-            List(viewModel.apiKeysList) { item in
-                ApiKeyView(apiKey: item.value)
+            List(viewModel.accountList) { item in
+                AccountView(apiKey: item.value)
             }
             .navigationTitle(
-                MokoText(MokoStrings.api_keys_list_page_title)
+                MokoText(MokoStrings.accounts_page_title)
             )
             .navigationBarItems(trailing:
                 Button(action: {
@@ -30,13 +30,13 @@ struct ApiKeysListPageView: View {
                 }
             )
             .sheet(isPresented: $showSheet) {
-                AddApiKeySheet()
+                AddAccountSheetView()
             }
         }
     }
 }
 
-private struct ApiKeyView: View {
+private struct AccountView: View {
     
     let apiKey: ApiKey
     
@@ -49,8 +49,8 @@ private struct ApiKeyView: View {
     }
 }
 
-struct ApiKeysListPageView_Previews: PreviewProvider {
+struct AccountsPageView_Previews: PreviewProvider {
     static var previews: some View {
-        ApiKeysListPageView()
+        AccountsPageView()
     }
 }
