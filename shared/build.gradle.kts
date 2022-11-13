@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("com.squareup.sqldelight")
     id("dev.icerock.mobile.multiplatform-resources")
+    id("com.google.devtools.ksp") version "1.7.21-1.0.8"
 }
 
 kotlin {
@@ -32,6 +33,9 @@ kotlin {
                 api(libs.common.mokoResources)
 
                 implementation(libs.common.coroutines)
+                implementation(libs.common.ktorContentNegotiation)
+                implementation(libs.common.ktorJsonSerialization)
+                implementation(libs.common.ktorfit)
                 implementation(libs.common.sqlDelight)
                 implementation(libs.common.sqlDelightExt)
                 implementation(libs.common.koin)
@@ -82,6 +86,10 @@ android {
         minSdk = 21
         targetSdk = 33
     }
+}
+
+dependencies {
+    add("kspCommonMainMetadata", libs.common.ktorfit)
 }
 
 sqldelight {
