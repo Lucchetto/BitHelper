@@ -2,6 +2,7 @@ buildscript {
     dependencies {
         classpath(libs.buildscript.sqlDelight)
         classpath(libs.buildscript.mokoResources)
+        classpath("org.jetbrains.kotlin:kotlin-serialization:1.7.20")
     }
 }
 

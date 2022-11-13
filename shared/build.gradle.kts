@@ -4,7 +4,8 @@ plugins {
     id("com.android.library")
     id("com.squareup.sqldelight")
     id("dev.icerock.mobile.multiplatform-resources")
-    id("com.google.devtools.ksp") version "1.7.21-1.0.8"
+    id("com.google.devtools.ksp") version "1.7.20-1.0.8"
+    id("kotlinx-serialization")
 }
 
 kotlin {
@@ -89,7 +90,8 @@ android {
 }
 
 dependencies {
-    add("kspCommonMainMetadata", libs.common.ktorfit)
+    add("kspCommonMainMetadata", libs.common.ktorfitKsp)
+    add("kspAndroid", libs.common.ktorfitKsp)
 }
 
 sqldelight {

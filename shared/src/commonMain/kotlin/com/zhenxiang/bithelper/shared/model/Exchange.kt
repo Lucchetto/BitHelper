@@ -9,7 +9,7 @@ enum class Exchange(
     val labelRes: StringResource,
     val apiUrl: String,
     ) {
-    BINANCE("binance", SharedRes.strings.binance_exchange, "https://api.binance.com"),
+    BINANCE("binance", SharedRes.strings.binance_exchange, "https://api.binance.com/"),
     FTX("ftx", SharedRes.strings.ftx_exchange, "none");
 
     class ColumnAdapter : CustomEnumColumnAdapter<Exchange> {

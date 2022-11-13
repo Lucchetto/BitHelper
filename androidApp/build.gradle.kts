@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
+    implementation(libs.android.koinCompose)
     implementation(libs.android.mokoResources)
     implementation(libs.android.olshevskiNavigationMaterial)
 }

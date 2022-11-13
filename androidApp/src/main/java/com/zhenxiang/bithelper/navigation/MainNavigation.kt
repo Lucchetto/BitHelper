@@ -1,6 +1,7 @@
 package com.zhenxiang.bithelper.navigation
 
 import android.os.Parcelable
+import android.provider.DocumentsContract.Root
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -28,6 +29,7 @@ import kotlinx.parcelize.Parcelize
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 fun MainNavigationComponent(
+    rootNavController: NavController<RootNavigationScreen>
 ) {
 
     val initialRoute = MainNavigationScreen.Accounts
@@ -41,7 +43,7 @@ fun MainNavigationComponent(
             }
         }
     ) {
-        AccountsPage.RouteContent(viewModel())
+        AccountsPage.RouteContent(rootNavController, viewModel())
     }
 
     val currentDestination = navController.backstack.entries.last().destination
