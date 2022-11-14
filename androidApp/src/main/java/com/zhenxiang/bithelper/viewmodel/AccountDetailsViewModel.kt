@@ -1,14 +1,11 @@
 package com.zhenxiang.bithelper.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.zhenxiang.bithelper.shared.model.Asset
-import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
+import com.zhenxiang.bithelper.shared.db.ApiKey
+import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import kotlinx.coroutines.flow.Flow
 
-class AccountDetailsViewModel(
-    private val repository: AccountDataRepository
-) : ViewModel() {
+abstract class AccountDetailsViewModel: ViewModel() {
 
-    val accountBalance: Flow<List<Asset>>
-        get() = repository.getBalances()
+    abstract val accountApiKeyFlow: Flow<ResultWrapper<ApiKey, Throwable>>
 }

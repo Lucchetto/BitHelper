@@ -24,6 +24,7 @@ fun RootNavigationComponent(
         when (screen) {
             RootNavigationScreen.Main -> MainNavigationComponent(navController)
             is RootNavigationScreen.AccountDetails -> AccountDetailsPage(
+                navController,
                 koinViewModel(
                     parameters = { parametersOf(screen.apiKeyId) }
                 )
