@@ -1,10 +1,8 @@
 package com.zhenxiang.bithelper.pages.accountdetails
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBalanceWallet
 import androidx.compose.material.icons.outlined.Event
@@ -12,6 +10,7 @@ import androidx.compose.material.icons.outlined.Key
 import androidx.compose.material.icons.outlined.LocalOffer
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,14 +24,16 @@ import com.zhenxiang.bithelper.foundation.spacing
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.navigation.RootNavigationScreen
 import com.zhenxiang.bithelper.shared.db.ApiKey
+import com.zhenxiang.bithelper.shared.model.Asset
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
+import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.res.SharedRes
 import com.zhenxiang.bithelper.viewmodel.AccountDetailsViewModel
 import com.zhenxiang.bithelper.viewmodel.preview.AccountDetailsViewModelPreviewImpl
 import dev.olshevski.navigation.reimagined.NavController
 import dev.olshevski.navigation.reimagined.pop
 import dev.olshevski.navigation.reimagined.rememberNavController
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +49,7 @@ fun AccountDetailsPage(navController: NavController<RootNavigationScreen>, viewM
         TabItem(
             title = { Text(SharedRes.strings.assets_title.composeResource()) }
         ) {
+            AssetsTab(viewModel.accountBalances)
         }
     )
 
@@ -55,7 +57,9 @@ fun AccountDetailsPage(navController: NavController<RootNavigationScreen>, viewM
         topBar = { TopBar(navController, scrollBehavior) }
     ) {
         PagerTabView(
-            modifier = Modifier.padding(it).nestedScroll(scrollBehavior.nestedScrollConnection),
+            modifier = Modifier
+                .padding(it)
+                .nestedScroll(scrollBehavior.nestedScrollConnection),
             tabs = pages
         )
     }
@@ -77,8 +81,8 @@ private fun TopBar(navController: NavController<RootNavigationScreen>, scrollBeh
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-private fun OverviewTab(flow: Flow<ResultWrapper<ApiKey, Throwable>>) {
-    val accountApiKeyWrapper: ResultWrapper<ApiKey, Throwable> by flow.collectAsStateWithLifecycle(ResultWrapper.Loading())
+private fun OverviewTab(flow: StateFlow<ResultWrapper<ApiKey, Throwable>>) {
+    val accountApiKeyWrapper: ResultWrapper<ApiKey, Throwable> by flow.collectAsStateWithLifecycle()
     val dataItemSpacing = Modifier.padding(MaterialTheme.spacing.level3)
     val value = when (val it = accountApiKeyWrapper) {
         is ResultWrapper.Loading -> null
@@ -89,7 +93,9 @@ private fun OverviewTab(flow: Flow<ResultWrapper<ApiKey, Throwable>>) {
     }
 
     LazyColumn(
-        modifier = Modifier.padding(horizontal = MaterialTheme.spacing.level3).fillMaxHeight(),
+        modifier = Modifier
+            .padding(horizontal = MaterialTheme.spacing.level3)
+            .fillMaxHeight(),
     ) {
 
         item {
@@ -129,6 +135,29 @@ private fun OverviewTab(flow: Flow<ResultWrapper<ApiKey, Throwable>>) {
                 title = SharedRes.strings.api_key_title.composeResource(),
                 value = value?.apiKey ?: ""
             )
+        }
+    }
+}
+
+@OptIn(ExperimentalLifecycleComposeApi::class)
+@Composable
+private fun AssetsTab(flow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>) {
+    val result by flow.collectAsStateWithLifecycle()
+
+    when (val it = result) {
+        is ResultWrapper.Loading -> Box(Modifier.fillMaxSize()) {
+            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        }
+        is ResultWrapper.Error -> Box(Modifier.fillMaxSize()) {
+            Text(
+                modifier = Modifier.align(Alignment.Center),
+                text = "Error"
+            )
+        }
+        is ResultWrapper.Success -> LazyColumn {
+            items(it.data) { item ->
+                Text(item.ticker)
+            }
         }
     }
 }
