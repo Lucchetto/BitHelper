@@ -5,6 +5,7 @@ import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.request.CoreResponseConverter
 import io.ktor.client.*
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.koin.core.component.KoinComponent
@@ -26,6 +27,10 @@ class KtorfitFactoryImpl : KtorfitFactory, KoinComponent {
         httpClient {
             install(ContentNegotiation) {
                 json(json)
+            }
+            install(Logging) {
+                logger = Logger.SIMPLE
+                level = LogLevel.ALL
             }
 
             extraHttpClientConfig()

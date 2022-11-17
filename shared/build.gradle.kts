@@ -34,8 +34,10 @@ kotlin {
                 api(libs.common.mokoResources)
 
                 implementation(libs.common.coroutines)
+                implementation(libs.common.kotlinDatetime)
                 implementation(libs.common.ktorContentNegotiation)
                 implementation(libs.common.ktorJsonSerialization)
+                implementation(libs.common.ktorLogging)
                 implementation(libs.common.ktorfit)
                 implementation(libs.common.sqlDelight)
                 implementation(libs.common.sqlDelightExt)
