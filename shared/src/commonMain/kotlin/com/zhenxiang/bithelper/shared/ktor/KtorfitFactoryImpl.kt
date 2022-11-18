@@ -4,8 +4,10 @@ import com.zhenxiang.bithelper.shared.db.ApiKey
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.request.CoreResponseConverter
 import io.ktor.client.*
+import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
+import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 import org.koin.core.component.KoinComponent
@@ -18,13 +20,9 @@ class KtorfitFactoryImpl : KtorfitFactory, KoinComponent {
     override fun createKtorfitInstance(
         apiKey: ApiKey,
         responseConverter: CoreResponseConverter?,
-        extraHttpClientConfig: HttpClientConfig<*>.() -> Unit
-    ) = Ktorfit.Builder().build {
-        baseUrl(apiKey.exchange.apiUrl)
-        responseConverter?.let {
-            responseConverter(it)
-        }
-        httpClient {
+        requestModifier: HttpRequestBuilder.() -> Unit
+    ): Ktorfit {
+        val httpClient = HttpClient {
             install(ContentNegotiation) {
                 json(json)
             }
@@ -32,8 +30,19 @@ class KtorfitFactoryImpl : KtorfitFactory, KoinComponent {
                 logger = Logger.SIMPLE
                 level = LogLevel.ALL
             }
+        }.apply {
+            plugin(HttpSend).intercept { request ->
+                requestModifier(request)
+                execute(request)
+            }
+        }
 
-            extraHttpClientConfig()
+        return Ktorfit.Builder().build {
+            baseUrl(apiKey.exchange.apiUrl)
+            responseConverter?.let {
+                responseConverter(it)
+            }
+            httpClient(httpClient)
         }
     }
 }

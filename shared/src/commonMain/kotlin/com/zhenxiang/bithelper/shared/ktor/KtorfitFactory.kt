@@ -4,19 +4,19 @@ import com.zhenxiang.bithelper.shared.db.ApiKey
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.request.CoreResponseConverter
 import de.jensklingenberg.ktorfit.create
-import io.ktor.client.*
+import io.ktor.client.request.*
 
 interface KtorfitFactory {
 
     fun createKtorfitInstance(
         apiKey: ApiKey,
         responseConverter: CoreResponseConverter?,
-        extraHttpClientConfig: HttpClientConfig<*>.() -> Unit
+        requestModifier: HttpRequestBuilder.() -> Unit
     ): Ktorfit
 }
 
 inline fun <reified T> KtorfitFactory.createApiInstance(
     apiKey: ApiKey,
     responseConverter: CoreResponseConverter? = null,
-    noinline extraHttpClientConfig: HttpClientConfig<*>.() -> Unit
-): T = createKtorfitInstance(apiKey, responseConverter, extraHttpClientConfig).create()
+    noinline requestModifier: HttpRequestBuilder.() -> Unit
+): T = createKtorfitInstance(apiKey, responseConverter, requestModifier).create()
