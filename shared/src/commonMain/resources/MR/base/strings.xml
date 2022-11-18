@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+    <!-- Generics -->
     <string name="overview_title">Overview</string>
     <string name="assets_title">Assets</string>
     <string name="go_back_hint">Go back</string>
@@ -11,6 +12,9 @@
     <string name="added_on_title">Added on</string>
     <string name="exchange_title">Exchange</string>
     <string name="select_an_exchange_hint">Select an exchange</string>
+
+    <!-- Utils -->
+    <string name="value_and_unit">%s %s</string>
 
     <!-- Exchanges -->
     <string name="binance_exchange">Binance</string>

@@ -35,6 +35,7 @@ common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = 
 common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelightVersion" }
 
 android-accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistVersion" }
+android-accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanistVersion" }
 android-androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidXLifecycleVersion" }
 android-composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3Version" }
 android-composeMaterialIcons = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMaterialIconsVersion" }

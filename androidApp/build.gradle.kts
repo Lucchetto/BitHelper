@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
 
     implementation(libs.android.accompanistPager)
+    implementation(libs.android.accompanistPlaceholder)
     implementation(libs.android.androidXLifecycle)
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.composeMaterialIcons)

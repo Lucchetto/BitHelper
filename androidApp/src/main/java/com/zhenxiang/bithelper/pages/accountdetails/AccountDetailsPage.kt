@@ -16,10 +16,8 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.zhenxiang.bithelper.component.DataItem
-import com.zhenxiang.bithelper.component.NavBackButton
-import com.zhenxiang.bithelper.component.PagerTabView
-import com.zhenxiang.bithelper.component.TabItem
+import com.google.accompanist.placeholder.PlaceholderHighlight
+import com.zhenxiang.bithelper.component.*
 import com.zhenxiang.bithelper.foundation.spacing
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.navigation.RootNavigationScreen
@@ -30,6 +28,7 @@ import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.res.SharedRes
 import com.zhenxiang.bithelper.viewmodel.AccountDetailsViewModel
 import com.zhenxiang.bithelper.viewmodel.preview.AccountDetailsViewModelPreviewImpl
+import dev.icerock.moko.resources.format
 import dev.olshevski.navigation.reimagined.NavController
 import dev.olshevski.navigation.reimagined.pop
 import dev.olshevski.navigation.reimagined.rememberNavController
@@ -145,21 +144,43 @@ private fun AssetsTab(flow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiErro
     val result by flow.collectAsStateWithLifecycle()
 
     when (val it = result) {
-        is ResultWrapper.Loading -> Box(Modifier.fillMaxSize()) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-        }
         is ResultWrapper.Error -> Box(Modifier.fillMaxSize()) {
             Text(
                 modifier = Modifier.align(Alignment.Center),
                 text = "Error"
             )
         }
-        is ResultWrapper.Success -> LazyColumn {
-            items(it.data) { item ->
-                Text(item.ticker)
+        else -> LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            if (it is ResultWrapper.Success) {
+                items(it.data) { item ->
+                    AssetListItem(item)
+                }
+            } else {
+                items(6) {
+                    SkeletonAssetListItem()
+                }
             }
         }
     }
+}
+
+@Composable
+private fun SkeletonAssetListItem() {
+    SingleLineListDataItem(
+        title = "WBTC",
+        value = "69.000000 BTC",
+        skeleton = true
+    )
+}
+
+@Composable
+private fun AssetListItem(asset: Asset) {
+    SingleLineListDataItem(
+        title = asset.ticker,
+        value = SharedRes.strings.value_and_unit.format(asset.availableBalance, asset.ticker).composeResource()
+    )
 }
 
 @Preview(showSystemUi = true)
