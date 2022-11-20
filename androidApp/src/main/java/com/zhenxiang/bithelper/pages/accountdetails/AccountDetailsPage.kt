@@ -16,7 +16,6 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.zhenxiang.bithelper.component.*
 import com.zhenxiang.bithelper.foundation.spacing
 import com.zhenxiang.bithelper.moko.composeResource
@@ -48,7 +47,7 @@ fun AccountDetailsPage(navController: NavController<RootNavigationScreen>, viewM
         TabItem(
             title = { Text(SharedRes.strings.assets_title.composeResource()) }
         ) {
-            AssetsTab(viewModel.accountBalances)
+            AssetsTab(viewModel.accountBalancesFlow)
         }
     )
 

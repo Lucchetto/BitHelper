@@ -14,7 +14,7 @@ internal class AccountDetailsViewModelImpl(
 ) : AccountDetailsViewModel() {
 
     private val _accountBalances = MutableStateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>(ResultWrapper.Loading())
-    override val accountBalances: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>> = _accountBalances
+    override val accountBalancesFlow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>> = _accountBalances
 
     private val _accountApiKeyFlow = repository.apiKeyFlow.onEach {
         if (it is ResultWrapper.Success) {
