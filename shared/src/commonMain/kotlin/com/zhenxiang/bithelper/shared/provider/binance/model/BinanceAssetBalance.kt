@@ -1,16 +1,16 @@
 package com.zhenxiang.bithelper.shared.provider.binance.model
 
-import com.zhenxiang.bithelper.shared.model.Asset
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.provider.model.AssetNetworkModel
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class BinanceAsset(
+data class BinanceAssetBalance(
     val asset: String,
     val free: String
 ): AssetNetworkModel {
 
-    override fun toAsset(): Asset = Asset(
+    override fun toAsset(): AssetBalance = AssetBalance(
         asset,
         free.toDouble(),
     )

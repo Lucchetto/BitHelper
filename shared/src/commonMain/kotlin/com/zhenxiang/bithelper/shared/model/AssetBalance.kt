@@ -1,6 +1,6 @@
 package com.zhenxiang.bithelper.shared.model
 
-data class Asset(
+data class AssetBalance(
     val ticker: String,
     val availableBalance: Double,
 )

@@ -1,7 +1,7 @@
 package com.zhenxiang.bithelper.ios.viewmodel
 
 import com.zhenxiang.bithelper.ios.flow.wrap
-import com.zhenxiang.bithelper.shared.model.Asset
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
@@ -17,7 +17,7 @@ abstract class AccountDetailsPageBaseViewModel(apiKeyId: Long): CoroutineViewMod
 
     private val repository: AccountDataRepository by inject{ parametersOf(apiKeyId) }
 
-    private val _accountBalances = MutableStateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>(ResultWrapper.Loading())
+    private val _accountBalances = MutableStateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>(ResultWrapper.Loading())
     protected val accountBalancesFlow = _accountBalances.wrap()
 
     protected val accountApiKeyFlow = repository.apiKeyFlow.onEach {

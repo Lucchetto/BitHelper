@@ -1,7 +1,7 @@
 package com.zhenxiang.bithelper.viewmodel.preview
 
 import com.zhenxiang.bithelper.shared.db.ApiKey
-import com.zhenxiang.bithelper.shared.model.Asset
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.*
 
 class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
 
-    override val accountBalancesFlow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>
+    override val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>
         get() = MutableStateFlow(
             ResultWrapper.Success(
                 listOf(
-                    Asset("ETH", 69.420)
+                    AssetBalance("ETH", 69.420)
                 )
             )
         )
