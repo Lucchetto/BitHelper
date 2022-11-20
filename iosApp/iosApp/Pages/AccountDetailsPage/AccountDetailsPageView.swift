@@ -69,8 +69,8 @@ private struct Assets: View {
     var body: some View {
         switch accountBalances {
         case let it as ResultWrapperSuccess<NSArray, ExchangeApiError>:
-            let assets = it.data as! [Asset]
-            List(assets, id: \.self.ticker) { asset in
+            let assetBalances = it.data as! [AssetBalance]
+            List(assetBalances, id: \.self.ticker) { asset in
                 HStack {
                     Text(verbatim: asset.ticker)
                     Spacer()

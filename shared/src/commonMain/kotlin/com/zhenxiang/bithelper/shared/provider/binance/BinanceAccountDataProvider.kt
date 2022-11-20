@@ -4,7 +4,7 @@ import com.zhenxiang.bithelper.shared.crypto.HmacHash
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.ktor.KtorfitFactory
 import com.zhenxiang.bithelper.shared.ktor.createApiInstance
-import com.zhenxiang.bithelper.shared.model.Asset
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.mapToResult
 import com.zhenxiang.bithelper.shared.provider.ExchangeAccountDataProvider
 import com.zhenxiang.bithelper.shared.provider.model.ExchangeResultWrapper
@@ -32,7 +32,7 @@ internal class BinanceAccountDataProvider(private val apiKey: ApiKey) : Exchange
         }
     }
 
-    override suspend fun getBalances(): ExchangeResultWrapper<List<Asset>> = apiInstance.getUserAssets().mapToResult {
+    override suspend fun getBalances(): ExchangeResultWrapper<List<AssetBalance>> = apiInstance.getUserAssets().mapToResult {
         it.map { item -> item.toAsset() }
     }
 

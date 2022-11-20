@@ -21,7 +21,7 @@ import com.zhenxiang.bithelper.foundation.spacing
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.navigation.RootNavigationScreen
 import com.zhenxiang.bithelper.shared.db.ApiKey
-import com.zhenxiang.bithelper.shared.model.Asset
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.res.SharedRes
@@ -139,7 +139,7 @@ private fun OverviewTab(flow: StateFlow<ResultWrapper<ApiKey, Throwable>>) {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-private fun AssetsTab(flow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>) {
+private fun AssetsTab(flow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>) {
     val result by flow.collectAsStateWithLifecycle()
 
     when (val it = result) {
@@ -175,10 +175,10 @@ private fun SkeletonAssetListItem() {
 }
 
 @Composable
-private fun AssetListItem(asset: Asset) {
+private fun AssetListItem(balance: AssetBalance) {
     SingleLineListDataItem(
-        title = asset.ticker,
-        value = SharedRes.strings.value_and_unit.format(asset.availableBalance, asset.ticker).composeResource()
+        title = balance.ticker,
+        value = SharedRes.strings.value_and_unit.format(balance.availableBalance, balance.ticker).composeResource()
     )
 }
 
