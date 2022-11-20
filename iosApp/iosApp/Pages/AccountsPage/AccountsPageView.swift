@@ -17,7 +17,9 @@ struct AccountsPageView: View {
     var body: some View {
         NavigationView {
             List(viewModel.accountList) { item in
-                AccountView(apiKey: item.value)
+                NavigationLink(destination: AccountDetailsPageView(apiKeyId: item.value.id)) {
+                    AccountView(apiKey: item.value)
+                }
             }
             .navigationTitle(
                 MokoText(MokoStrings.accounts_page_title)

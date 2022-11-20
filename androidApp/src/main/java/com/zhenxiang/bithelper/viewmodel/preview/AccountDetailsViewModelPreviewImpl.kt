@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.*
 
 class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
 
-    override val accountBalances: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>
+    override val accountBalancesFlow: StateFlow<ResultWrapper<List<Asset>, ExchangeApiError>>
         get() = MutableStateFlow(
             ResultWrapper.Success(
                 listOf(

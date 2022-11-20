@@ -94,6 +94,8 @@ android {
 dependencies {
     add("kspCommonMainMetadata", libs.common.ktorfitKsp)
     add("kspAndroid", libs.common.ktorfitKsp)
+    add("kspIosX64", libs.common.ktorfitKsp)
+    add("kspIosArm64", libs.common.ktorfitKsp)
 }
 
 sqldelight {

@@ -45,7 +45,7 @@ fun AccountDetailsPage(rootNavController: NavHostController, viewModel: AccountD
         TabItem(
             title = { Text(SharedRes.strings.assets_title.composeResource()) }
         ) {
-            AssetsTab(viewModel.accountBalances)
+            AssetsTab(viewModel.accountBalancesFlow)
         }
     )
 
