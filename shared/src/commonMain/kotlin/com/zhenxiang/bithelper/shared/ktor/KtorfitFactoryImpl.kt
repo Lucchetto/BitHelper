@@ -1,6 +1,6 @@
 package com.zhenxiang.bithelper.shared.ktor
 
-import com.zhenxiang.bithelper.shared.db.ApiKey
+import com.zhenxiang.bithelper.shared.model.Exchange
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.request.CoreResponseConverter
 import io.ktor.client.*
@@ -18,7 +18,7 @@ class KtorfitFactoryImpl : KtorfitFactory, KoinComponent {
     private val json: Json by inject()
 
     override fun createKtorfitInstance(
-        apiKey: ApiKey,
+        exchange: Exchange,
         responseConverter: CoreResponseConverter?,
         requestModifier: HttpRequestBuilder.() -> Unit
     ): Ktorfit {
@@ -38,7 +38,7 @@ class KtorfitFactoryImpl : KtorfitFactory, KoinComponent {
         }
 
         return Ktorfit.Builder().build {
-            baseUrl(apiKey.exchange.apiUrl)
+            baseUrl(exchange.apiUrl)
             responseConverter?.let {
                 responseConverter(it)
             }
