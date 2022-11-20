@@ -22,7 +22,7 @@ internal class AccountDetailsViewModelImpl(
         }
     }.stateIn(
         viewModelScope,
-        SharingStarted.WhileSubscribed(),
+        SharingStarted.Eagerly,
         ResultWrapper.Loading()
     )
 

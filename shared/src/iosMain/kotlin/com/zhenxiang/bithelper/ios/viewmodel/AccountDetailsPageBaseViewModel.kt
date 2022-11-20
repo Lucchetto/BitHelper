@@ -26,7 +26,7 @@ abstract class AccountDetailsPageBaseViewModel(apiKeyId: Long): CoroutineViewMod
         }
     }.stateIn(
         viewModelScope,
-        SharingStarted.WhileSubscribed(),
+        SharingStarted.Eagerly,
         ResultWrapper.Loading()
     ).wrap()
 }
