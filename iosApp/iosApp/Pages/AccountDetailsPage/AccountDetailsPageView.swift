@@ -37,7 +37,9 @@ struct AccountDetailsPageView: View {
                 Overview(viewModel.accountApiKey).tag(AccountDetailsPageView.tabs[0].id)
                 Assets(accountBalances: viewModel.accountBalances).tag(AccountDetailsPageView.tabs[1].id)
             }.tabViewStyle(.page(indexDisplayMode: .never))
-        }.navigationTitle(MokoText(MokoStrings.account_details_page_title))
+        }.navigationTitle(MokoText(MokoStrings.account_details_page_title)).onDisappear {
+            viewModel.onDestroy()
+        }
     }
 }
 
