@@ -1,6 +1,5 @@
 package com.zhenxiang.bithelper.foundation
 
-import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -17,13 +16,18 @@ fun FormStateOutlinedTextField(
     state: TextFieldState,
     label: String,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    transform: ((String) -> String)? = null,
 ) {
     OutlinedTextField(
         modifier = modifier,
         value = state.value,
         isError = state.hasError,
         label = { Text(label) },
-        onValueChange = { state.change(it) },
+        onValueChange = if (transform != null) {
+            { state.change(transform(it)) }
+        } else {
+            { state.change(it) }
+        },
         keyboardOptions = keyboardOptions,
     )
 }

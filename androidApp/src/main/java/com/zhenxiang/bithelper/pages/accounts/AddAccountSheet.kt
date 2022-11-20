@@ -11,6 +11,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.zhenxiang.bithelper.form.StringTransformations
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
 import com.zhenxiang.bithelper.shared.model.Exchange
@@ -51,7 +52,8 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
                 autoCorrect = false,
-            )
+            ),
+            transform = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES,
         )
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -60,7 +62,8 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
                 autoCorrect = false,
-            )
+            ),
+            transform = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES,
         )
         FormStateOutlinedDropDownMenu<Exchange?>(
             label = SharedRes.strings.exchange_title.composeResource(),
