@@ -14,3 +14,12 @@ extension TextField {
         return disableAutocorrection(true).autocapitalization(.none)
     }
 }
+
+extension Binding<String> {
+    func trimWhitespaces() -> Binding<String> {
+        return Binding(
+            get: { self.wrappedValue },
+            set: { self.wrappedValue = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+        )
+    }
+}
