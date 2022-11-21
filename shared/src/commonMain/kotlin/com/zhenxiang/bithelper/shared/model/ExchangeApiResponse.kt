@@ -1,6 +1,6 @@
 package com.zhenxiang.bithelper.shared.model
 
-import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 
 sealed class ExchangeApiResponse<T> {
 

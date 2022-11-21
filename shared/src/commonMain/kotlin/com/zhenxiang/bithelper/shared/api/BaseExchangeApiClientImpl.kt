@@ -1,9 +1,8 @@
-package com.zhenxiang.bithelper.shared.provider
+package com.zhenxiang.bithelper.shared.api
 
 import com.zhenxiang.bithelper.shared.db.ApiKey
-import com.zhenxiang.bithelper.shared.model.Exchange
 
-internal abstract class BaseExchangeAccountDataProviderImpl(apiKey: ApiKey) : ExchangeAccountDataProvider {
+internal abstract class BaseExchangeApiClientImpl(apiKey: ApiKey) : ExchangeApiClient {
 
     private var _apiKey: ApiKey
 

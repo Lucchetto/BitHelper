@@ -5,14 +5,14 @@ import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.db.StorageDb
 import com.zhenxiang.bithelper.shared.db.mapToOneOrNullOnIO
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
-import com.zhenxiang.bithelper.shared.provider.ExchangeAccountDataProviderFactory
+import com.zhenxiang.bithelper.shared.api.ExchangeApiClientProvider
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class AccountDataRepository(
     val apiKeyId: Long,
     private val storageDb: StorageDb,
-    private val providerFactory: ExchangeAccountDataProviderFactory
+    private val apiClientProvider: ExchangeApiClientProvider
 ) {
 
     val apiKeyFlow: Flow<ResultWrapper<ApiKey, Throwable>>
@@ -24,5 +24,5 @@ class AccountDataRepository(
             }
         }
 
-    suspend fun getBalances(apiKey: ApiKey) = providerFactory.createInstance(apiKey).getBalances()
+    suspend fun getBalances(apiKey: ApiKey) = apiClientProvider.getInstance(apiKey).getBalances()
 }

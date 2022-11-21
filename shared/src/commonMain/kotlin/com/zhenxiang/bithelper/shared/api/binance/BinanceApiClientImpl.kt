@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.shared.provider.binance
+package com.zhenxiang.bithelper.shared.api.binance
 
 import com.zhenxiang.bithelper.shared.crypto.HmacHash
 import com.zhenxiang.bithelper.shared.db.ApiKey
@@ -7,14 +7,14 @@ import com.zhenxiang.bithelper.shared.ktor.createApiInstance
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.model.mapToResult
-import com.zhenxiang.bithelper.shared.provider.BaseExchangeAccountDataProviderImpl
-import com.zhenxiang.bithelper.shared.provider.model.ExchangeResultWrapper
+import com.zhenxiang.bithelper.shared.api.BaseExchangeApiClientImpl
+import com.zhenxiang.bithelper.shared.api.model.ExchangeResultWrapper
 import com.zhenxiang.bithelper.shared.utils.toHex
 import kotlinx.datetime.Clock
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
-internal class BinanceAccountDataProvider(apiKey: ApiKey) : BaseExchangeAccountDataProviderImpl(apiKey), KoinComponent {
+internal class BinanceApiClientImpl(apiKey: ApiKey) : BaseExchangeApiClientImpl(apiKey), KoinComponent {
 
     private val apiInstance by lazy {
         get<KtorfitFactory>().createApiInstance<BinanceApi>(apiKey.exchange, BinanceResponseConverter()) {
