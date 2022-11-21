@@ -1,7 +1,7 @@
-package com.zhenxiang.bithelper.shared.provider.binance
+package com.zhenxiang.bithelper.shared.api.binance
 
 import com.zhenxiang.bithelper.shared.model.ExchangeApiResponse
-import com.zhenxiang.bithelper.shared.provider.binance.model.BinanceAssetBalance
+import com.zhenxiang.bithelper.shared.api.binance.model.BinanceAssetBalance
 import de.jensklingenberg.ktorfit.http.POST
 import io.ktor.client.request.*
 

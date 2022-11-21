@@ -1,4 +1,4 @@
-package com.zhenxiang.bithelper.shared.provider.model
+package com.zhenxiang.bithelper.shared.api.model
 
 sealed class ExchangeApiError {
 

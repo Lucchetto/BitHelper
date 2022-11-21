@@ -3,7 +3,7 @@ package com.zhenxiang.bithelper.ios.viewmodel
 import com.zhenxiang.bithelper.ios.flow.wrap
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
-import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

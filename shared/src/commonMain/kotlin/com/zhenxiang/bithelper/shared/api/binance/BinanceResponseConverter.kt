@@ -1,7 +1,7 @@
-package com.zhenxiang.bithelper.shared.provider.binance
+package com.zhenxiang.bithelper.shared.api.binance
 
 import com.zhenxiang.bithelper.shared.model.ExchangeApiResponse
-import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.SuspendResponseConverter
 import de.jensklingenberg.ktorfit.internal.TypeData

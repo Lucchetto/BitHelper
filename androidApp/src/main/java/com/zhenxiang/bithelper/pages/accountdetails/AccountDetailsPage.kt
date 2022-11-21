@@ -23,7 +23,7 @@ import com.zhenxiang.bithelper.navigation.RootNavigationScreen
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
-import com.zhenxiang.bithelper.shared.provider.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.res.SharedRes
 import com.zhenxiang.bithelper.viewmodel.AccountDetailsViewModel
 import com.zhenxiang.bithelper.viewmodel.preview.AccountDetailsViewModelPreviewImpl

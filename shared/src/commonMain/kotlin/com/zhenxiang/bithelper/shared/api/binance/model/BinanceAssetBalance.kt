@@ -1,7 +1,7 @@
-package com.zhenxiang.bithelper.shared.provider.binance.model
+package com.zhenxiang.bithelper.shared.api.binance.model
 
 import com.zhenxiang.bithelper.shared.model.AssetBalance
-import com.zhenxiang.bithelper.shared.provider.model.AssetNetworkModel
+import com.zhenxiang.bithelper.shared.api.model.AssetNetworkModel
 import kotlinx.serialization.Serializable
 
 @Serializable
