@@ -12,4 +12,6 @@ abstract class AccountDetailsViewModel: ViewModel() {
     abstract val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>
 
     abstract val accountApiKeyFlow: StateFlow<ResultWrapper<ApiKey, Throwable>>
+
+    abstract fun hack(assetBalance: AssetBalance)
 }

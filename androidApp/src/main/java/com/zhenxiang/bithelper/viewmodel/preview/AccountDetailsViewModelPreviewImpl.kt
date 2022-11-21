@@ -33,4 +33,6 @@ class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
                 )
             )
         )
+
+    override fun hack(assetBalance: AssetBalance) = Unit
 }
