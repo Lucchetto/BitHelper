@@ -1,9 +1,7 @@
 package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -11,6 +9,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.zhenxiang.bithelper.component.BottomSheetContent
 import com.zhenxiang.bithelper.form.StringTransformations
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
@@ -23,14 +22,7 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
 
     val formState = remember { viewModel.formState }
 
-    Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState())
-            .navigationBarsPadding()
-            .imePadding()
-            .padding(ModalBottomSheetDefaults.contentPadding)
-    ) {
-        BottomSheetDragHandle()
+    BottomSheetContent {
         TopAppBar(
             windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
             title = {
@@ -39,7 +31,9 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
         )
         AutoFocus {
             FormStateOutlinedTextField(
-                modifier = Modifier.fillMaxWidth().focusRequester(it),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .focusRequester(it),
                 state = formState.getState(AddAccountSheetViewModel.LABEL_FORM_FIELD),
                 label = SharedRes.strings.label_title.composeResource(),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
