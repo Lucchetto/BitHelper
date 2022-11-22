@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.zhenxiang.bithelper.component.BottomSheetContent
 import com.zhenxiang.bithelper.form.StringTransformations
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
@@ -25,14 +26,7 @@ fun AddAccountSheet(sheetController: NavController<MainNavigationSheet>, viewMod
 
     val formState = remember { viewModel.formState }
 
-    Column(
-        modifier = Modifier
-            .verticalScroll(rememberScrollState())
-            .systemBarsPadding()
-            .imePadding()
-            .padding(ModalBottomSheetDefaults.contentPadding)
-    ) {
-        BottomSheetDragHandle()
+    BottomSheetContent {
         TopAppBar(
             windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
             title = {
@@ -41,7 +35,9 @@ fun AddAccountSheet(sheetController: NavController<MainNavigationSheet>, viewMod
         )
         AutoFocus {
             FormStateOutlinedTextField(
-                modifier = Modifier.fillMaxWidth().focusRequester(it),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .focusRequester(it),
                 state = formState.getState(AddAccountSheetViewModel.LABEL_FORM_FIELD),
                 label = SharedRes.strings.label_title.composeResource(),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
