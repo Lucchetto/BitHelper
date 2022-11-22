@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.StateFlow
 
 abstract class AccountDetailsViewModel: ViewModel() {
 
+    abstract val apiKeyId: Long
+
     abstract val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>
 
     abstract val accountApiKeyFlow: StateFlow<ResultWrapper<ApiKey, Throwable>>
-
-    abstract fun hack(assetBalance: AssetBalance)
 }

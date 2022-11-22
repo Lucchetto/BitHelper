@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.*
 
 class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
 
+    override val apiKeyId: Long = 0
+
     override val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>
         get() = MutableStateFlow(
             ResultWrapper.Success(
@@ -33,6 +35,4 @@ class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
                 )
             )
         )
-
-    override fun hack(assetBalance: AssetBalance) = Unit
 }

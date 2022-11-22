@@ -30,6 +30,7 @@ import com.zhenxiang.bithelper.viewmodel.AccountDetailsViewModel
 import com.zhenxiang.bithelper.viewmodel.preview.AccountDetailsViewModelPreviewImpl
 import dev.icerock.moko.resources.format
 import dev.olshevski.navigation.reimagined.NavController
+import dev.olshevski.navigation.reimagined.navigate
 import dev.olshevski.navigation.reimagined.pop
 import dev.olshevski.navigation.reimagined.rememberNavController
 import kotlinx.coroutines.flow.StateFlow
@@ -49,7 +50,7 @@ fun AccountDetailsPage(navController: NavController<RootNavigationScreen>, viewM
             title = { Text(SharedRes.strings.assets_title.composeResource()) }
         ) {
             AssetsTab(viewModel.accountBalancesFlow) {
-                viewModel.hack(it)
+                navController.navigate(RootNavigationScreen.Withdraw(viewModel.apiKeyId, it.ticker))
             }
         }
     )

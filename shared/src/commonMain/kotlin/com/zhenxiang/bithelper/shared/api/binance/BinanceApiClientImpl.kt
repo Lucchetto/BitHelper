@@ -41,8 +41,8 @@ internal class BinanceApiClientImpl(apiKey: ApiKey) : BaseExchangeApiClientImpl(
         it.map { item -> item.toAsset() }
     }
 
-    override suspend fun getAssetWithdrawMethods(asset: AssetBalance): ExchangeResultWrapper<List<WithdrawMethod>> = apiInstance.getAllAssetsDetails().mapToResult { result ->
-        result.first { it.coin == asset.ticker }.networkList.map { it.toWithdrawMethod() }
+    override suspend fun getAssetWithdrawMethods(assetTicker: String): ExchangeResultWrapper<List<WithdrawMethod>> = apiInstance.getAllAssetsDetails().mapToResult { result ->
+        result.first { it.coin == assetTicker }.networkList.map { it.toWithdrawMethod() }
     }
 
     companion object {

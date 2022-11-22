@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.zhenxiang.bithelper.pages.accountdetails.AccountDetailsPage
+import com.zhenxiang.bithelper.pages.withdraw.WithdrawSheet
 import dev.olshevski.navigation.reimagined.NavBackHandler
 import dev.olshevski.navigation.reimagined.NavHost
 import dev.olshevski.navigation.reimagined.rememberNavController
@@ -29,6 +30,11 @@ fun RootNavigationComponent(
                     parameters = { parametersOf(screen.apiKeyId) }
                 )
             )
+            is RootNavigationScreen.Withdraw -> WithdrawSheet(
+                koinViewModel(
+                    parameters = { parametersOf(screen.apiKeyId, screen.assetTicker) }
+                )
+            )
         }
     }
 }
@@ -40,4 +46,7 @@ sealed interface RootNavigationScreen : Parcelable {
 
     @Parcelize
     data class AccountDetails(val apiKeyId: Long) : RootNavigationScreen
+
+    @Parcelize
+    data class Withdraw(val apiKeyId: Long, val assetTicker: String) : RootNavigationScreen
 }
