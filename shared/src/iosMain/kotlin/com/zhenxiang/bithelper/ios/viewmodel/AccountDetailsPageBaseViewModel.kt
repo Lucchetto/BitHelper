@@ -20,7 +20,7 @@ abstract class AccountDetailsPageBaseViewModel(apiKeyId: Long): CoroutineViewMod
     private val _accountBalances = MutableStateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>(ResultWrapper.Loading())
     protected val accountBalancesFlow = _accountBalances.wrap()
 
-    protected val accountApiKeyFlow = repository.apiKeyFlow.onEach {
+    protected val accountApiKeyFlow = repository.getApiKeyFlow(apiKeyId).onEach {
         if (it is ResultWrapper.Success) {
             _accountBalances.emit(repository.getBalances(it.data))
         }

@@ -1,5 +1,6 @@
 package com.zhenxiang.bithelper.viewmodel.preview
 
+import androidx.lifecycle.SavedStateHandle
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.Exchange
@@ -8,7 +9,7 @@ import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.viewmodel.AccountDetailsViewModel
 import kotlinx.coroutines.flow.*
 
-class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel() {
+class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel(SavedStateHandle()) {
 
     override val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>
         get() = MutableStateFlow(

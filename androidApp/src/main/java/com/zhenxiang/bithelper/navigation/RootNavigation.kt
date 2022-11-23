@@ -18,7 +18,11 @@ import com.zhenxiang.bithelper.foundation.top
 import com.zhenxiang.bithelper.navigation.model.NavigationRoute
 import com.zhenxiang.bithelper.pages.accountdetails.AccountDetailsPage
 import com.zhenxiang.bithelper.pages.accounts.AddAccountSheet
+import com.zhenxiang.bithelper.viewmodel.impl.AccountDetailsViewModelImpl
+import org.koin.androidx.compose.getStateViewModel
+import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
+import org.koin.androidx.viewmodel.ext.android.toExtras
 import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
@@ -42,15 +46,10 @@ fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navContr
             }
 
             composable(
-                RootNavigationScreen.ACCOUNT_DETAILS.route + "/{api_key_id}",
-                arguments = listOf(navArgument("api_key_id") { type = NavType.LongType })
+                RootNavigationScreen.ACCOUNT_DETAILS.route + "/{${AccountDetailsViewModelImpl.API_KEY_ID_ARG}}",
+                arguments = listOf(navArgument(AccountDetailsViewModelImpl.API_KEY_ID_ARG) { type = NavType.LongType })
             ) {
-                AccountDetailsPage(
-                    navController,
-                    koinViewModel(
-                        parameters = { parametersOf(it.arguments?.getLong("api_key_id")) }
-                    )
-                )
+                AccountDetailsPage(navController, koinViewModel())
             }
         }
     }

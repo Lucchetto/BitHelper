@@ -10,13 +10,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class AccountDataRepository(
-    val apiKeyId: Long,
     private val storageDb: StorageDb,
     private val apiClientProvider: ExchangeApiClientProvider
 ) {
 
-    val apiKeyFlow: Flow<ResultWrapper<ApiKey, Throwable>>
-        get() = storageDb.apiKeyQueries.selectById(apiKeyId).asFlow().mapToOneOrNullOnIO().map {
+    fun getApiKeyFlow(apiKeyId: Long): Flow<ResultWrapper<ApiKey, Throwable>> =
+        storageDb.apiKeyQueries.selectById(apiKeyId).asFlow().mapToOneOrNullOnIO().map {
             if (it == null) {
                 ResultWrapper.Error(IllegalArgumentException("apiKeyId $apiKeyId is not valid in database !"))
             } else {
