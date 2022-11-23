@@ -4,6 +4,11 @@ import com.squareup.sqldelight.Query
 import kotlinx.coroutines.flow.Flow
 
 /**
+ * Util extension to use IO dispatcher when possible to execute the [Query]
+ */
+expect fun <T : Any> Flow<Query<T>>.mapToOneOrNullOnIO(): Flow<T?>
+
+/**
  * Util extension to use IO dispatcher when possible to execute the list [Query]
  */
 expect fun <T : Any> Flow<Query<T>>.mapToListOnIO(): Flow<List<T>>

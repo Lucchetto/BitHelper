@@ -37,7 +37,7 @@ fun MainNavigationComponent(
             }
         }
     ) {
-        AccountsPage.RouteContent(viewModel())
+        AccountsPage.RouteContent(rootNavController, viewModel())
     }
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()

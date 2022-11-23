@@ -10,6 +10,9 @@ CREATE TABLE apiKey (
   readOnly INTEGER AS Boolean DEFAULT NULL
 );
 
+selectById:
+    SELECT * FROM apiKey WHERE id = ?;
+
 selectAll:
     SELECT * FROM apiKey;
 

@@ -5,8 +5,10 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
@@ -14,7 +16,10 @@ import com.google.accompanist.navigation.material.bottomSheet
 import com.zhenxiang.bithelper.foundation.ModalBottomSheetDefaults
 import com.zhenxiang.bithelper.foundation.top
 import com.zhenxiang.bithelper.navigation.model.NavigationRoute
+import com.zhenxiang.bithelper.pages.accountdetails.AccountDetailsPage
 import com.zhenxiang.bithelper.pages.accounts.AddAccountSheet
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
 @Composable
@@ -35,6 +40,18 @@ fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navContr
             bottomSheet(RootNavigationScreen.ADD_ACCOUNT.route) {
                 AddAccountSheet(navController = navController, viewModel = viewModel())
             }
+
+            composable(
+                RootNavigationScreen.ACCOUNT_DETAILS.route + "/{api_key_id}",
+                arguments = listOf(navArgument("api_key_id") { type = NavType.LongType })
+            ) {
+                AccountDetailsPage(
+                    navController,
+                    koinViewModel(
+                        parameters = { parametersOf(it.arguments?.getLong("api_key_id")) }
+                    )
+                )
+            }
         }
     }
 }
@@ -44,5 +61,6 @@ enum class RootNavigationScreen(
 ): NavigationRoute {
 
     MAIN("."),
-    ADD_ACCOUNT("add_account")
+    ADD_ACCOUNT("add_account"),
+    ACCOUNT_DETAILS("account_details")
 }

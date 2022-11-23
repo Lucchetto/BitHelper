@@ -11,7 +11,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavHostController
 import com.zhenxiang.bithelper.moko.composeResource
+import com.zhenxiang.bithelper.navigation.RootNavigationScreen
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.res.SharedRes
 
@@ -19,11 +21,13 @@ object AccountsPage {
 
     @OptIn(ExperimentalLifecycleComposeApi::class)
     @Composable
-    fun RouteContent(viewModel: AccountsViewModel) {
+    fun RouteContent(rootNavController: NavHostController, viewModel: AccountsViewModel) {
 
         val accountListState = viewModel.accountListFlow.collectAsStateWithLifecycle(emptyList())
 
-        AccountList(accountListState)
+        AccountList(accountListState) {
+            rootNavController.navigate(RootNavigationScreen.ACCOUNT_DETAILS.route + "/${it.id}")
+        }
     }
     @Composable
     fun Fab(onClick: () -> Unit) {
@@ -34,15 +38,22 @@ object AccountsPage {
         }
     }
 
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    private fun AccountList(state: State<List<ApiKey>>) {
+    private fun AccountList(state: State<List<ApiKey>>, onItemClick: (ApiKey) -> Unit) {
         val list: List<ApiKey> by state
 
-        LazyColumn(
-            Modifier.fillMaxWidth()
-        ) {
+        LazyColumn {
             items(list.size) {
-                Text(list[it].toString())
+                val item = list[it]
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        onItemClick(item)
+                    }
+                ) {
+                    Text(item.toString())
+                }
             }
         }
     }

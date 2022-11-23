@@ -41,10 +41,14 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.6.1")
 
     implementation(libs.android.accompanistMaterialNav)
+    implementation(libs.android.accompanistPager)
+    implementation(libs.android.accompanistPlaceholder)
     implementation(libs.android.androidXLifecycle)
     implementation(libs.android.composeMaterial3)
+    implementation(libs.android.composeMaterialIcons)
     implementation(libs.android.composeNavigation)
     implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
+    implementation(libs.android.koinCompose)
     implementation(libs.android.mokoResources)
 }
