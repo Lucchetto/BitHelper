@@ -1,30 +1,48 @@
 package com.zhenxiang.bithelper.navigation
 
-import android.os.Parcelable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
-import dev.olshevski.navigation.reimagined.NavBackHandler
-import dev.olshevski.navigation.reimagined.NavHost
-import dev.olshevski.navigation.reimagined.rememberNavController
-import kotlinx.parcelize.Parcelize
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.material.BottomSheetNavigator
+import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
+import com.google.accompanist.navigation.material.ModalBottomSheetLayout
+import com.google.accompanist.navigation.material.bottomSheet
+import com.zhenxiang.bithelper.foundation.ModalBottomSheetDefaults
+import com.zhenxiang.bithelper.foundation.top
+import com.zhenxiang.bithelper.navigation.model.NavigationRoute
+import com.zhenxiang.bithelper.pages.accounts.AddAccountSheet
 
+@OptIn(ExperimentalMaterialNavigationApi::class)
 @Composable
-fun RootNavigationComponent(
-) {
-    val navController = rememberNavController<RootNavigationScreen>(
-        startDestination = RootNavigationScreen.Main,
-    )
+fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navController: NavHostController) {
 
-    NavBackHandler(navController)
+    ModalBottomSheetLayout(
+        bottomSheetNavigator,
+        sheetShape = MaterialTheme.shapes.extraLarge.top(),
+        sheetElevation = ModalBottomSheetDefaults.elevation,
+        sheetBackgroundColor = MaterialTheme.colorScheme.surface,
+        sheetContentColor = contentColorFor(MaterialTheme.colorScheme.surface),
+    ) {
+        NavHost(navController = navController, startDestination = RootNavigationScreen.MAIN.route) {
+            composable(RootNavigationScreen.MAIN.route) {
+                MainNavigationComponent(RootNavigationScreen.MAIN, navController)
+            }
 
-    NavHost(navController) { screen ->
-        when (screen) {
-            is RootNavigationScreen.Main -> MainNavigationComponent()
+            bottomSheet(RootNavigationScreen.ADD_ACCOUNT.route) {
+                AddAccountSheet(navController = navController, viewModel = viewModel())
+            }
         }
     }
 }
 
-sealed class RootNavigationScreen : Parcelable {
+enum class RootNavigationScreen(
+    override val route: String,
+): NavigationRoute {
 
-    @Parcelize
-    object Main : RootNavigationScreen()
+    MAIN("."),
+    ADD_ACCOUNT("add_account")
 }

@@ -10,24 +10,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.zhenxiang.bithelper.foundation.*
 import com.zhenxiang.bithelper.moko.composeResource
-import com.zhenxiang.bithelper.navigation.MainNavigationSheet
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.res.SharedRes
-import dev.olshevski.navigation.reimagined.NavController
-import dev.olshevski.navigation.reimagined.pop
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddAccountSheet(sheetController: NavController<MainNavigationSheet>, viewModel: AddAccountSheetViewModel) {
+fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheetViewModel) {
 
     val formState = remember { viewModel.formState }
 
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .systemBarsPadding()
+            .navigationBarsPadding()
             .imePadding()
             .padding(ModalBottomSheetDefaults.contentPadding)
     ) {
@@ -76,11 +74,11 @@ fun AddAccountSheet(sheetController: NavController<MainNavigationSheet>, viewMod
             modifier = Modifier.padding(top = MaterialTheme.spacing.level6)
         ) {
             Button(
-                onClick = { if (viewModel.addAccount()) sheetController.pop() }
+                onClick = { if (viewModel.addAccount()) navController.popBackStack() }
             ) {
                 Text(SharedRes.strings.add.composeResource())
             }
-            TextButton(onClick = { sheetController.pop() }) {
+            TextButton(onClick = { navController.popBackStack() }) {
                 Text(SharedRes.strings.cancel.composeResource())
             }
         }
