@@ -40,6 +40,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.3.0")
     implementation("androidx.activity:activity-compose:1.6.1")
 
+    implementation(libs.android.accompanistNavAnimation)
     implementation(libs.android.accompanistMaterialNav)
     implementation(libs.android.accompanistPager)
     implementation(libs.android.accompanistPlaceholder)

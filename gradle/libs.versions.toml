@@ -38,6 +38,7 @@ common-mokoResourcesTest = { module = "dev.icerock.moko:resources-test", version
 common-sqlDelight = { module = "com.squareup.sqldelight:runtime", version.ref = "sqldelightVersion" }
 common-sqlDelightExt = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqldelightVersion" }
 
+android-accompanistNavAnimation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanistVersion" }
 android-accompanistMaterialNav = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanistVersion" }
 android-accompanistPager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistVersion" }
 android-accompanistPlaceholder = { module = "com.google.accompanist:accompanist-placeholder", version.ref = "accompanistVersion" }
