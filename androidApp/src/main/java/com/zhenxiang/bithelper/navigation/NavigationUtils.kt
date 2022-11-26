@@ -26,8 +26,9 @@ fun NavGraphBuilder.animatedRouteComposable(
         arguments = arguments,
         deepLinks = deepLinks,
         enterTransition = {
-            slideInHorizontally(
-                tween(
+            slideIntoContainer(
+                towards = AnimatedContentScope.SlideDirection.Start,
+                animationSpec = tween(
                     durationMillis = 450,
                     easing = EasingCurves.FastOutExtraSlowIn
                 )
@@ -44,8 +45,9 @@ fun NavGraphBuilder.animatedRouteComposable(
             )
         },
         exitTransition = {
-            slideOutHorizontally(
-                tween(
+            slideOutOfContainer(
+                towards = AnimatedContentScope.SlideDirection.End,
+                animationSpec = tween(
                     durationMillis = 450,
                     easing = EasingCurves.FastOutExtraSlowIn
                 )
@@ -54,8 +56,9 @@ fun NavGraphBuilder.animatedRouteComposable(
             }
         },
         popEnterTransition = {
-            slideInHorizontally(
-                tween(
+            slideIntoContainer(
+                towards = AnimatedContentScope.SlideDirection.Start,
+                animationSpec = tween(
                     durationMillis = 450,
                     easing = EasingCurves.FastOutExtraSlowIn
                 )
@@ -64,8 +67,9 @@ fun NavGraphBuilder.animatedRouteComposable(
             }
         },
         popExitTransition = {
-            slideOutHorizontally(
-                tween(
+            slideOutOfContainer(
+                towards = AnimatedContentScope.SlideDirection.End,
+                animationSpec = tween(
                     durationMillis = 450,
                     easing = EasingCurves.FastOutExtraSlowIn
                 )
