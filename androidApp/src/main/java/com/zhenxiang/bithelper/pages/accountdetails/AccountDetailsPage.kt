@@ -1,5 +1,6 @@
 package com.zhenxiang.bithelper.pages.accountdetails
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import com.zhenxiang.bithelper.component.*
 import com.zhenxiang.bithelper.foundation.spacing
 import com.zhenxiang.bithelper.moko.composeResource
+import com.zhenxiang.bithelper.navigation.RootNavigationScreen
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
@@ -45,7 +47,9 @@ fun AccountDetailsPage(rootNavController: NavHostController, viewModel: AccountD
         TabItem(
             title = { Text(SharedRes.strings.assets_title.composeResource()) }
         ) {
-            AssetsTab(viewModel.accountBalancesFlow)
+            AssetsTab(viewModel.accountBalancesFlow) {
+                rootNavController.navigate(RootNavigationScreen.WITHDRAW_ASSET.route + "/${viewModel.apiKeyId}" + "/${it.ticker}")
+            }
         }
     )
 
@@ -137,7 +141,7 @@ private fun OverviewTab(flow: StateFlow<ResultWrapper<ApiKey, Throwable>>) {
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
-private fun AssetsTab(flow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>) {
+private fun AssetsTab(flow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>, onAssetClicked: (AssetBalance) -> Unit) {
     val result by flow.collectAsStateWithLifecycle()
 
     when (val it = result) {
@@ -152,7 +156,9 @@ private fun AssetsTab(flow: StateFlow<ResultWrapper<List<AssetBalance>, Exchange
         ) {
             if (it is ResultWrapper.Success) {
                 items(it.data) { item ->
-                    AssetListItem(item)
+                    AssetListItem(item) {
+                        onAssetClicked(item)
+                    }
                 }
             } else {
                 items(6) {
@@ -173,8 +179,9 @@ private fun SkeletonAssetListItem() {
 }
 
 @Composable
-private fun AssetListItem(balance: AssetBalance) {
+private fun AssetListItem(balance: AssetBalance, onClick: () -> Unit) {
     SingleLineListDataItem(
+        modifier = Modifier.clickable(onClick = onClick),
         title = balance.ticker,
         value = SharedRes.strings.value_and_unit.format(balance.availableBalance, balance.ticker).composeResource()
     )

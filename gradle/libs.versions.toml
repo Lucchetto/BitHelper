@@ -2,10 +2,12 @@
 
 accompanistVersion = "0.27.1"
 androidXLifecycleVersion = "2.6.0-alpha01"
+bignumVersion = "0.3.7"
 composeMaterial3Version = "1.1.0-alpha01"
 composeMaterialIconsVersion = "1.3.1"
 composeNavigationVersion = "2.5.3"
 coroutinesVersion = "1.6.3-native-mt"
+dokar3SheetsVersion = "0.3.0"
 jkuatdscFormBuilderVersion = "1.0.5"
 mokoResourcesVersion="0.20.1"
 sqldelightVersion = "1.5.3"
@@ -21,6 +23,7 @@ ktorfitVersion = "1.0.0-beta16"
 buildscript-mokoResources = { module = "dev.icerock.moko:resources-generator", version.ref = "mokoResourcesVersion" }
 buildscript-sqlDelight = { module = "com.squareup.sqldelight:gradle-plugin", version.ref = "sqldelightVersion" }
 
+common-bignum = { module = "com.ionspin.kotlin:bignum", version.ref = "bignumVersion" }
 common-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutinesVersion" }
 common-koin = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 common-koinTest = { module = "io.insert-koin:koin-test", version.ref = "koinVersion" }
@@ -42,10 +45,13 @@ android-androidXLifecycle = { module = "androidx.lifecycle:lifecycle-runtime-com
 android-composeMaterial3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3Version" }
 android-composeMaterialIcons = { module = "androidx.compose.material:material-icons-extended", version.ref = "composeMaterialIconsVersion" }
 android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }
+android-dokar3Sheets = { module = "io.github.dokar3:sheets", version.ref = "dokar3SheetsVersion" }
 android-jkuatdscFormBuilder = { module = "com.github.jkuatdsc:form-builder", version.ref = "jkuatdscFormBuilderVersion" }
 android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinAndroidVersion" }
 android-koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinComposeVersion" }
 android-mokoResources = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResourcesVersion" }
 android-sqlDelight = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqldelightVersion" }
+
+jvm-bignum = { module = "com.ionspin.kotlin:bignum-jvm", version.ref = "bignumVersion" }
 
 native-sqlDelight = { module = "com.squareup.sqldelight:native-driver", version.ref = "sqldelightVersion" }

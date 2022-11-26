@@ -16,12 +16,12 @@ import com.dsc.form_builder.Validators
  *
  */
 class TypedChoiceState<T>(
-    initial: T,
+    initial: T?,
     name: String,
     validators: List<Validators> = listOf(),
-): BaseState<T>(initial, name, null, validators) {
+): BaseState<T?>(initial, name, null, validators) {
 
-    override var value: T by mutableStateOf(initial)
+    override var value: T? by mutableStateOf(initial)
 
     // TODO: implement other validators
     override fun validate(): Boolean {

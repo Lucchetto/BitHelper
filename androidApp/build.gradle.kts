@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.composeMaterialIcons)
     implementation(libs.android.composeNavigation)
+    implementation(libs.android.dokar3Sheets)
     implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
     implementation(libs.android.koinCompose)

@@ -15,6 +15,7 @@ fun BottomSheetContent(modifier: Modifier = Modifier, content: @Composable Colum
             .verticalScroll(rememberScrollState())
             .navigationBarsPadding()
             .imePadding()
+            .fillMaxWidth()
             .padding(ModalBottomSheetDefaults.contentPadding),
     ) {
         BottomSheetDragHandle()

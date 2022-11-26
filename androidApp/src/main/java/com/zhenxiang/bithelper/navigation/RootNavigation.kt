@@ -18,12 +18,10 @@ import com.zhenxiang.bithelper.foundation.top
 import com.zhenxiang.bithelper.navigation.model.NavigationRoute
 import com.zhenxiang.bithelper.pages.accountdetails.AccountDetailsPage
 import com.zhenxiang.bithelper.pages.accounts.AddAccountSheet
+import com.zhenxiang.bithelper.pages.withdraw.WithdrawPage
+import com.zhenxiang.bithelper.viewmodel.WithdrawPageViewModel
 import com.zhenxiang.bithelper.viewmodel.impl.AccountDetailsViewModelImpl
-import org.koin.androidx.compose.getStateViewModel
-import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.compose.koinViewModel
-import org.koin.androidx.viewmodel.ext.android.toExtras
-import org.koin.core.parameter.parametersOf
 
 @OptIn(ExperimentalMaterialNavigationApi::class)
 @Composable
@@ -31,7 +29,7 @@ fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navContr
 
     ModalBottomSheetLayout(
         bottomSheetNavigator,
-        sheetShape = MaterialTheme.shapes.extraLarge.top(),
+        sheetShape = ModalBottomSheetDefaults.shape,
         sheetElevation = ModalBottomSheetDefaults.elevation,
         sheetBackgroundColor = MaterialTheme.colorScheme.surface,
         sheetContentColor = contentColorFor(MaterialTheme.colorScheme.surface),
@@ -51,6 +49,16 @@ fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navContr
             ) {
                 AccountDetailsPage(navController, koinViewModel())
             }
+
+            composable(
+                RootNavigationScreen.WITHDRAW_ASSET.route + "/{${WithdrawPageViewModel.API_KEY_ID_ARG}}" + "/{${WithdrawPageViewModel.ASSET_TICKER_ARG}}",
+                arguments = listOf(
+                    navArgument(WithdrawPageViewModel.API_KEY_ID_ARG) { type = NavType.LongType },
+                    navArgument(WithdrawPageViewModel.ASSET_TICKER_ARG) { type = NavType.StringType }
+                )
+            ) {
+                WithdrawPage(navController, koinViewModel())
+            }
         }
     }
 }
@@ -61,5 +69,6 @@ enum class RootNavigationScreen(
 
     MAIN("."),
     ADD_ACCOUNT("add_account"),
-    ACCOUNT_DETAILS("account_details")
+    ACCOUNT_DETAILS("account_details"),
+    WITHDRAW_ASSET("withdraw_asset"),
 }

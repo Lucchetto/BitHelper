@@ -33,6 +33,7 @@ kotlin {
             dependencies {
                 api(libs.common.mokoResources)
 
+                implementation(libs.common.bignum)
                 implementation(libs.common.coroutines)
                 implementation(libs.common.kotlinDatetime)
                 implementation(libs.common.ktorContentNegotiation)
@@ -54,6 +55,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                api(libs.jvm.bignum)
+
                 implementation(libs.android.sqlDelight)
             }
         }

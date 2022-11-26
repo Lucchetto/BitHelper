@@ -7,12 +7,17 @@
     <string name="go_back_hint">Go back</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="free">Free</string>
     <string name="label_title">Label</string>
     <string name="api_key_title">API key</string>
     <string name="secret_key_title">Secret key</string>
     <string name="added_on_title">Added on</string>
     <string name="exchange_title">Exchange</string>
     <string name="select_an_exchange_hint">Select an exchange</string>
+    <string name="recipient_address_title">Recipient address</string>
+    <string name="memo_title">Memo</string>
+    <string name="withdraw_method_title">Withdraw method</string>
+    <string name="withdraw">Withdraw</string>
 
     <!-- Utils -->
     <string name="value_and_unit">%s %s</string>
@@ -27,4 +32,8 @@
 
     <!-- Account details -->
     <string name="account_details_page_title">Account details</string>
+
+    <!-- Withdraw asset -->
+    <string name="withdraw_page_title">Withdraw %s</string>
+    <string name="withdrawal_fee_value">Withdrawal fee: %s %s</string>
 </resources>

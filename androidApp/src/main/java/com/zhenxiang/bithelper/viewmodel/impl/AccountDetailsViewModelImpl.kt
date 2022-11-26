@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.*
 
 internal class AccountDetailsViewModelImpl(
     savedStateHandle: SavedStateHandle,
-    repository: AccountDataRepository
+    private val repository: AccountDataRepository
 ) : AccountDetailsViewModel(savedStateHandle) {
 
-    private val apiKeyId = savedStateHandle.get<Long>(API_KEY_ID_ARG)!!
+    override val apiKeyId = savedStateHandle.get<Long>(API_KEY_ID_ARG)!!
 
     private val _accountBalances = MutableStateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>>(ResultWrapper.Loading())
     override val accountBalancesFlow: StateFlow<ResultWrapper<List<AssetBalance>, ExchangeApiError>> = _accountBalances

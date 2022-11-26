@@ -7,7 +7,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.zhenxiang.bithelper.component.BottomSheetContent
 import com.zhenxiang.bithelper.form.StringTransformations
@@ -24,7 +23,7 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
 
     BottomSheetContent {
         TopAppBar(
-            windowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
+            windowInsets = ZeroWindowInsets(),
             title = {
                 Text(SharedRes.strings.add_account_sheet_title.composeResource())
             },
@@ -59,12 +58,12 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
             ),
             transform = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES,
         )
-        FormStateOutlinedDropDownMenu<Exchange?>(
+        FormStateOutlinedDropDownMenu(
             label = SharedRes.strings.exchange_title.composeResource(),
             options = viewModel.exchanges,
             state = formState.getState(AddAccountSheetViewModel.EXCHANGE_FORM_FIELD),
             toStringAdapter = {
-                it?.labelRes?.composeResource() ?: ""
+                it.labelRes.composeResource()
             }
         )
         ButtonBar(
