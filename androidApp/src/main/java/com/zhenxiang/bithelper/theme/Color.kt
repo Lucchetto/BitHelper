@@ -2,10 +2,76 @@ package com.zhenxiang.bithelper.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+/**
+ * Generated from https://m3.material.io/theme-builder#/custom with
+ *
+ * Primary: #00e9be
+ * Secondary: #00a577
+ * Ternary: #ffffff
+ * Neutral: #ffffff
+ */
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val md_theme_light_primary = Color(0xFF006B56)
+val md_theme_light_onPrimary = Color(0xFFFFFFFF)
+val md_theme_light_primaryContainer = Color(0xFF3DFED1)
+val md_theme_light_onPrimaryContainer = Color(0xFF002018)
+val md_theme_light_secondary = Color(0xFF006C4D)
+val md_theme_light_onSecondary = Color(0xFFFFFFFF)
+val md_theme_light_secondaryContainer = Color(0xFF7AFAC5)
+val md_theme_light_onSecondaryContainer = Color(0xFF002115)
+val md_theme_light_tertiary = Color(0xFF006874)
+val md_theme_light_onTertiary = Color(0xFFFFFFFF)
+val md_theme_light_tertiaryContainer = Color(0xFF97F0FF)
+val md_theme_light_onTertiaryContainer = Color(0xFF001F24)
+val md_theme_light_error = Color(0xFFBA1A1A)
+val md_theme_light_errorContainer = Color(0xFFFFDAD6)
+val md_theme_light_onError = Color(0xFFFFFFFF)
+val md_theme_light_onErrorContainer = Color(0xFF410002)
+val md_theme_light_background = Color(0xFFF8FDFF)
+val md_theme_light_onBackground = Color(0xFF001F25)
+val md_theme_light_surface = Color(0xFFF8FDFF)
+val md_theme_light_onSurface = Color(0xFF001F25)
+val md_theme_light_surfaceVariant = Color(0xFFDBE5DF)
+val md_theme_light_onSurfaceVariant = Color(0xFF3F4945)
+val md_theme_light_outline = Color(0xFF6F7975)
+val md_theme_light_inverseOnSurface = Color(0xFFD6F6FF)
+val md_theme_light_inverseSurface = Color(0xFF00363F)
+val md_theme_light_inversePrimary = Color(0xFF00E0B7)
+val md_theme_light_shadow = Color(0xFF000000)
+val md_theme_light_surfaceTint = Color(0xFF006B56)
+val md_theme_light_outlineVariant = Color(0xFFBFC9C3)
+val md_theme_light_scrim = Color(0xFF000000)
+
+val md_theme_dark_primary = Color(0xFF00E0B7)
+val md_theme_dark_onPrimary = Color(0xFF00382C)
+val md_theme_dark_primaryContainer = Color(0xFF005140)
+val md_theme_dark_onPrimaryContainer = Color(0xFF3DFED1)
+val md_theme_dark_secondary = Color(0xFF5CDDAA)
+val md_theme_dark_onSecondary = Color(0xFF003826)
+val md_theme_dark_secondaryContainer = Color(0xFF005139)
+val md_theme_dark_onSecondaryContainer = Color(0xFF7AFAC5)
+val md_theme_dark_tertiary = Color(0xFF4FD8EB)
+val md_theme_dark_onTertiary = Color(0xFF00363D)
+val md_theme_dark_tertiaryContainer = Color(0xFF004F58)
+val md_theme_dark_onTertiaryContainer = Color(0xFF97F0FF)
+val md_theme_dark_error = Color(0xFFFFB4AB)
+val md_theme_dark_errorContainer = Color(0xFF93000A)
+val md_theme_dark_onError = Color(0xFF690005)
+val md_theme_dark_onErrorContainer = Color(0xFFFFDAD6)
+val md_theme_dark_background = Color(0xFF001F25)
+val md_theme_dark_onBackground = Color(0xFFA6EEFF)
+val md_theme_dark_surface = Color(0xFF001F25)
+val md_theme_dark_onSurface = Color(0xFFA6EEFF)
+val md_theme_dark_surfaceVariant = Color(0xFF3F4945)
+val md_theme_dark_onSurfaceVariant = Color(0xFFBFC9C3)
+val md_theme_dark_outline = Color(0xFF89938E)
+val md_theme_dark_inverseOnSurface = Color(0xFF001F25)
+val md_theme_dark_inverseSurface = Color(0xFFA6EEFF)
+val md_theme_dark_inversePrimary = Color(0xFF006B56)
+val md_theme_dark_shadow = Color(0xFF000000)
+val md_theme_dark_surfaceTint = Color(0xFF00E0B7)
+val md_theme_dark_outlineVariant = Color(0xFF3F4945)
+val md_theme_dark_scrim = Color(0xFF000000)
+
+
+val seed = Color(0xFF00E9BE)
