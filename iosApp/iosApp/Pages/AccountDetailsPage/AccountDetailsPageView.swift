@@ -35,7 +35,10 @@ struct AccountDetailsPageView: View {
             }.pickerStyle(SegmentedPickerStyle())
             TabView(selection: $selectedTabId) {
                 Overview(viewModel.accountApiKey).tag(AccountDetailsPageView.tabs[0].id)
-                Assets(accountBalances: viewModel.accountBalances).tag(AccountDetailsPageView.tabs[1].id)
+                Assets(
+                    apiKeyId: viewModel.apiKeyId,
+                    accountBalances: viewModel.accountBalances
+                ).tag(AccountDetailsPageView.tabs[1].id)
             }.tabViewStyle(.page(indexDisplayMode: .never))
         }.navigationTitle(MokoText(MokoStrings.account_details_page_title)).onDisappear {
             viewModel.onDestroy()
@@ -64,6 +67,7 @@ private struct Overview: View {
 
 private struct Assets: View {
     
+    let apiKeyId: Int64
     let accountBalances: ResultWrapper<NSArray, ExchangeApiError>
     
     var body: some View {
@@ -71,10 +75,16 @@ private struct Assets: View {
         case let it as ResultWrapperSuccess<NSArray, ExchangeApiError>:
             let assetBalances = it.data as! [AssetBalance]
             List(assetBalances, id: \.self.ticker) { asset in
-                HStack {
-                    Text(verbatim: asset.ticker)
-                    Spacer()
-                    Text(verbatim: String(format: "%f", asset.availableBalance))
+                NavigationLink(
+                    destination: WithdrawPageView(
+                        viewModel: WithdrawPageViewModel(apiKeyId: apiKeyId, assetTicker: asset.ticker)
+                    )
+                ) {
+                    HStack {
+                        Text(verbatim: asset.ticker)
+                        Spacer()
+                        Text(verbatim: String(format: "%f", asset.availableBalance))
+                    }
                 }
             }
         default:

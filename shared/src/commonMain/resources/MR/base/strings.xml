@@ -8,6 +8,7 @@
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
     <string name="free">Free</string>
+    <string name="select_method_hint">Select method</string>
     <string name="label_title">Label</string>
     <string name="api_key_title">API key</string>
     <string name="secret_key_title">Secret key</string>

@@ -13,7 +13,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.parameter.parametersOf
 
-abstract class AccountDetailsPageBaseViewModel(apiKeyId: Long): CoroutineViewModel(), KoinComponent {
+abstract class AccountDetailsPageBaseViewModel(val apiKeyId: Long): CoroutineViewModel(), KoinComponent {
 
     private val repository: AccountDataRepository by inject{ parametersOf(apiKeyId) }
 
