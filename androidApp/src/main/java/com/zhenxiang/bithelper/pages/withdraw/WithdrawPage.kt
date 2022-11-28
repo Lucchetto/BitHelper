@@ -179,7 +179,7 @@ private fun WithdrawMethodCard(selected: Boolean, clicked: () -> Unit, assetTick
                     if (it.isZero()) {
                         SharedRes.strings.free.composeResource()
                     } else {
-                        SharedRes.strings.value_and_unit.format(it.toStringExpanded(), assetTicker).composeResource()
+                        SharedRes.strings.fee_value_and_unit.format(it.toStringExpanded(), assetTicker).composeResource()
                     }
                 )
             }

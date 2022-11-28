@@ -36,5 +36,6 @@
 
     <!-- Withdraw asset -->
     <string name="withdraw_page_title">Withdraw %s</string>
+    <string name="fee_value_and_unit">Fee %s %s</string>
     <string name="withdrawal_fee_value">Withdrawal fee: %s %s</string>
 </resources>

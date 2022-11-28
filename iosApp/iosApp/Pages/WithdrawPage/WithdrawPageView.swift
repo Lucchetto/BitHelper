@@ -68,7 +68,7 @@ struct WithdrawMethodView: View {
                     MokoText(MokoStrings.free).font(.subheadline)
                 } else {
                     Text(
-                        MokoStrings.value_and_unit.format(args_: [it.toStringExpanded(), assetTicker]).localized()
+                        MokoStrings.fee_value_and_unit.format(args_: [it.toStringExpanded(), assetTicker]).localized()
                     ).font(.subheadline)
                 }
             }
