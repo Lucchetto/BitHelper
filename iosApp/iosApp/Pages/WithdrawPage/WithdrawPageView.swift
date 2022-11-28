@@ -38,6 +38,10 @@ struct WithdrawPageView: View {
                 },
                 sheetItemDisabled: { !$0.available }
             ).disabled(methods.isEmpty)
+            
+            if let it = viewModel.selectedWithdrawMethod?.fee {
+                Text(MokoStrings.withdrawal_fee_value.format(args_: [it.toStringExpanded(), viewModel.assetTicker]).localized()).font(.headline)
+            }
         }
         .navigationTitle(MokoStrings.withdraw_page_title.format(args_: [viewModel.assetTicker]).localized())
         .navigationBarItems(

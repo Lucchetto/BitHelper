@@ -26,7 +26,7 @@ import shared
             
     }
     
-    private var selectedWithdrawMethod: WithdrawMethod? {
+    var selectedWithdrawMethod: WithdrawMethod? {
         let it = withdrawMethodId
         
         if (it.isBlank) {
