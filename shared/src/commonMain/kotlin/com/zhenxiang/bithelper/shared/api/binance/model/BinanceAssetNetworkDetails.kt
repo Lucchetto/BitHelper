@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 data class BinanceAssetNetworkDetails(
     val name: String,
     val network: String,
+    val specialTips: String?,
     val withdrawDesc: String?,
     val withdrawEnable: Boolean,
     val withdrawFee: String,
@@ -20,8 +21,9 @@ data class BinanceAssetNetworkDetails(
         name = name,
         exchangeInternalId = network,
         description = withdrawDesc?.nullIfBlank(),
+        hints = specialTips?.nullIfBlank(),
         available = withdrawEnable,
         fee = BigDecimal.parseString(withdrawFee),
-        memoRequired = sameAddress,
+        hasMemoField = sameAddress,
     )
 }

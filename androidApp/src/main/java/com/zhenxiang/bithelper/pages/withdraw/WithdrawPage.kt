@@ -207,7 +207,7 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 description = "Description of withdraw method",
                 fee = BigDecimal.parseString("0.005"),
                 available = true,
-                memoRequired = false
+                hasMemoField = false
             ),
             WithdrawMethod(
                 name = "Polygon",
@@ -215,7 +215,7 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 description = "Description of withdraw method",
                 fee = BigDecimal.parseString("0.00005"),
                 available = true,
-                memoRequired = false
+                hasMemoField = false
             ),
             WithdrawMethod(
                 name = "Metis",
@@ -223,7 +223,7 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 description = "Maintenance mode",
                 fee = BigDecimal.parseString("0"),
                 available = false,
-                memoRequired = false
+                hasMemoField = false
             )
         )
     )
@@ -241,6 +241,6 @@ private fun WithdrawMethodCardPreview() = WithdrawMethodCard(
         description = "Description of withdraw method",
         fee = BigDecimal.parseString("0.005"),
         available = true,
-        memoRequired = false
+        hasMemoField = false
     )
 )

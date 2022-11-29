@@ -6,7 +6,8 @@ data class WithdrawMethod(
     val name: String,
     val exchangeInternalId: String,
     val description: String?,
+    val hints: String?,
     val available: Boolean,
     val fee: BigDecimal?,
-    val memoRequired: Boolean?,
+    val hasMemoField: Boolean?,
 )
