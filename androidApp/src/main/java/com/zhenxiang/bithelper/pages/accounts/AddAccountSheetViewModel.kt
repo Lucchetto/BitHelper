@@ -32,6 +32,9 @@ class AddAccountSheetViewModel : ViewModel(), KoinComponent {
                 name = SECRET_KEY_FORM_FIELD,
                 validators = listOf(CustomValidators.notBlank()),
             ),
+            TextFieldState(
+                name = PASSWORD_FORM_FIELD,
+            ),
             TypedChoiceState<Exchange>(
                 initial = null,
                 name = EXCHANGE_FORM_FIELD,
@@ -48,6 +51,7 @@ class AddAccountSheetViewModel : ViewModel(), KoinComponent {
                 exchange = formState.getState<TypedChoiceState<Exchange>>(EXCHANGE_FORM_FIELD).value!!,
                 label = formState.getState<TextFieldState>(LABEL_FORM_FIELD).value,
                 secretKey = formState.getState<TextFieldState>(SECRET_KEY_FORM_FIELD).value,
+                password = formState.getState<TextFieldState>(PASSWORD_FORM_FIELD).value,
                 creationTimestamp = System.currentTimeMillis(),
                 readOnly = null,
             )
@@ -61,6 +65,7 @@ class AddAccountSheetViewModel : ViewModel(), KoinComponent {
         const val LABEL_FORM_FIELD = "label"
         const val API_KEY_FORM_FIELD = "apiKey"
         const val SECRET_KEY_FORM_FIELD = "secretKey"
+        const val PASSWORD_FORM_FIELD = "password"
         const val EXCHANGE_FORM_FIELD = "exchange"
     }
 }

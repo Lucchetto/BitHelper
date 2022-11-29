@@ -58,6 +58,12 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
             ),
             transform = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES,
         )
+        PasswordStateOutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = formState.getState(AddAccountSheetViewModel.PASSWORD_FORM_FIELD),
+            label = SharedRes.strings.password.composeResource(),
+            imeAction = ImeAction.Next,
+        )
         FormStateOutlinedDropDownMenu(
             label = SharedRes.strings.exchange_title.composeResource(),
             options = viewModel.exchanges,

@@ -31,6 +31,7 @@ class AccountDetailsViewModelPreviewImpl: AccountDetailsViewModel(SavedStateHand
                     exchange = Exchange.BINANCE,
                     label = "Sample API key",
                     secretKey = null,
+                    password = null,
                     creationTimestamp = 0,
                     readOnly = null,
                 )

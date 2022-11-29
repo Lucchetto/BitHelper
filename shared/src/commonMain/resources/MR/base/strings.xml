@@ -7,6 +7,9 @@
     <string name="go_back_hint">Go back</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="password">Password</string>
     <string name="free">Free</string>
     <string name="select_method_hint">Select method</string>
     <string name="label_title">Label</string>

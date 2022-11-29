@@ -2,13 +2,21 @@ package com.zhenxiang.bithelper.foundation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import com.dokar.sheets.BottomSheet
 import com.dokar.sheets.rememberBottomSheetState
 import com.dsc.form_builder.TextFieldState
@@ -25,20 +33,67 @@ fun FormStateOutlinedTextField(
     state: TextFieldState,
     enabled: Boolean = true,
     label: String,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     transform: ((String) -> String)? = null,
 ) {
     OutlinedTextField(
         modifier = modifier,
         value = state.value,
+        enabled = enabled,
         isError = state.hasError,
         label = { Text(label) },
+        trailingIcon = trailingIcon,
+        visualTransformation = visualTransformation,
         onValueChange = if (transform != null) {
             { state.change(transform(it)) }
         } else {
             { state.change(it) }
         },
         keyboardOptions = keyboardOptions,
+    )
+}
+
+@Composable
+fun PasswordStateOutlinedTextField(
+    modifier: Modifier = Modifier,
+    state: TextFieldState,
+    enabled: Boolean = true,
+    label: String,
+    imeAction: ImeAction = ImeAction.Default,
+)  {
+
+    var passwordVisible by rememberSaveable { mutableStateOf(false) }
+
+    FormStateOutlinedTextField(
+        modifier = modifier,
+        state = state,
+        enabled = enabled,
+        label = label,
+        trailingIcon = {
+            IconButton(
+                onClick = { passwordVisible = !passwordVisible }
+            ) {
+                if (passwordVisible) {
+                    Icon(
+                        imageVector = Icons.Outlined.VisibilityOff,
+                        contentDescription = SharedRes.strings.hide_password.composeResource()
+                    )
+                } else {
+                    Icon(
+                        imageVector = Icons.Outlined.Visibility,
+                        contentDescription = SharedRes.strings.show_password.composeResource()
+                    )
+                }
+            }
+        },
+        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(
+            autoCorrect = false,
+            keyboardType = KeyboardType.Password,
+            imeAction = imeAction
+        ),
     )
 }
 
