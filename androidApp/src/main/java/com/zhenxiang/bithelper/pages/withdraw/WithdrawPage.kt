@@ -190,6 +190,13 @@ private fun WithdrawMethodCard(selected: Boolean, clicked: () -> Unit, assetTick
                     style = MaterialTheme.typography.bodySmall
                 )
             }
+            method.hints?.let {
+                Text(
+                    it,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }
@@ -205,25 +212,28 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 name = "Ethereum (ERC20)",
                 exchangeInternalId = "ERC20",
                 description = "Description of withdraw method",
+                hints = "Hints for the withdraw method",
                 fee = BigDecimal.parseString("0.005"),
                 available = true,
-                memoRequired = false
+                hasMemoField = false
             ),
             WithdrawMethod(
                 name = "Polygon",
                 exchangeInternalId = "MATIC",
                 description = "Description of withdraw method",
+                hints = "Hints for the withdraw method",
                 fee = BigDecimal.parseString("0.00005"),
                 available = true,
-                memoRequired = false
+                hasMemoField = false
             ),
             WithdrawMethod(
                 name = "Metis",
                 exchangeInternalId = "METIS",
                 description = "Maintenance mode",
+                hints = null,
                 fee = BigDecimal.parseString("0"),
                 available = false,
-                memoRequired = false
+                hasMemoField = false
             )
         )
     )
@@ -239,8 +249,9 @@ private fun WithdrawMethodCardPreview() = WithdrawMethodCard(
         name = "Ethereum (ERC20)",
         exchangeInternalId = "ERC20",
         description = "Description of withdraw method",
+        hints = "Hints for the withdraw method",
         fee = BigDecimal.parseString("0.005"),
         available = true,
-        memoRequired = false
+        hasMemoField = false
     )
 )

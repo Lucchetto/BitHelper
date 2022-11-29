@@ -79,6 +79,9 @@ struct WithdrawMethodView: View {
             if let it = method.description_ {
                 Text(it).font(.caption)
             }
+            if let it = method.hints {
+                Text(it).font(.caption)
+            }
         }
     }
 }
