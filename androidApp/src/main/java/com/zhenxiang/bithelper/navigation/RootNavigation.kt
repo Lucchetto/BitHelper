@@ -1,9 +1,11 @@
 package com.zhenxiang.bithelper.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -33,7 +35,11 @@ fun RootNavigationComponent(bottomSheetNavigator: BottomSheetNavigator, navContr
         sheetBackgroundColor = MaterialTheme.colorScheme.surface,
         sheetContentColor = contentColorFor(MaterialTheme.colorScheme.surface),
     ) {
-        AnimatedNavHost(navController = navController, startDestination = RootNavigationScreen.MAIN.route) {
+        AnimatedNavHost(
+            modifier = Modifier.background(MaterialTheme.colorScheme.background),
+            navController = navController,
+            startDestination = RootNavigationScreen.MAIN.route
+        ) {
             animatedRouteComposable(RootNavigationScreen.MAIN.route) {
                 MainNavigationComponent(RootNavigationScreen.MAIN, navController)
             }
