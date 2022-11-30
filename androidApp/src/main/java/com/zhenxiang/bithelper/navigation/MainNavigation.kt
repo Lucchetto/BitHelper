@@ -50,6 +50,9 @@ fun MainNavigationComponent(
     }
 
     Scaffold(
+        modifier = currentRouteBuilder?.let {
+            Modifier.nestedScroll(it.scrollBehavior.nestedScrollConnection)
+        } ?: Modifier,
         topBar = { TopBar(currentScreen, currentRouteBuilder?.scrollBehavior) },
         floatingActionButton = currentRouteBuilder?.fab ?: {},
         bottomBar = {
@@ -58,14 +61,8 @@ fun MainNavigationComponent(
             }
         }
     ) { padding ->
-        val hostModifier = Modifier.padding(padding).let { modifier ->
-            currentRouteBuilder?.let {
-                modifier.nestedScroll(it.scrollBehavior.nestedScrollConnection)
-            } ?: modifier
-        }
-
         NavHost(
-            modifier = hostModifier,
+            modifier = Modifier.padding(padding),
             navController = navController,
             route = rootScreen.route,
             startDestination = MainNavigationScreen.ACCOUNTS.route
