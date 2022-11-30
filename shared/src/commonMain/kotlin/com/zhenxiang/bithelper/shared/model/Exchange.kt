@@ -10,7 +10,8 @@ enum class Exchange(
     val apiUrl: String,
     ) {
     BINANCE("binance", SharedRes.strings.binance_exchange, "https://api.binance.com/"),
-    FTX("ftx", SharedRes.strings.ftx_exchange, "none");
+    FTX("ftx", SharedRes.strings.ftx_exchange, "none"),
+    KUCOIN("kucoin", SharedRes.strings.kucoin_exchange, "https://api.kucoin.com/");
 
     class ColumnAdapter : CustomEnumColumnAdapter<Exchange> {
         override val enumValues: Array<Exchange> = values()

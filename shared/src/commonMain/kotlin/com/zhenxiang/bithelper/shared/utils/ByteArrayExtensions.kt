@@ -9,3 +9,5 @@ fun ByteArray.toHex() : String = joinToString(separator = "") {
 
     "${HEX_CHARS[firstIndex]}${HEX_CHARS[secondIndex]}"
 }
+
+expect fun ByteArray.toBase64String(): String

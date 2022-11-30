@@ -29,6 +29,7 @@
     <!-- Exchanges -->
     <string name="binance_exchange">Binance</string>
     <string name="ftx_exchange">FTX</string>
+    <string name="kucoin_exchange">KuCoin</string>
 
     <!-- Accounts page -->
     <string name="accounts_page_title">Accounts</string>
