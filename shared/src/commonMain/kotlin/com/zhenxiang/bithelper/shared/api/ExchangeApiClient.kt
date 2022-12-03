@@ -16,5 +16,7 @@ interface ExchangeApiClient {
 
     suspend fun getBalances(): ExchangeResultWrapper<List<AssetBalance>>
 
+    suspend fun getAssetBalance(assetTicker: String): ExchangeResultWrapper<AssetBalance>
+
     suspend fun getAssetWithdrawMethods(assetTicker: String): ExchangeResultWrapper<List<WithdrawMethod>>
 }

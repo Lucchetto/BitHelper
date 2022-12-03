@@ -24,6 +24,8 @@ class AccountDataRepository(
             }
         }
 
+    suspend fun getAssetBalance(apiKey: ApiKey, assetTicker: String) = apiClientProvider.getInstance(apiKey).getAssetBalance(assetTicker)
+
     suspend fun getBalances(apiKey: ApiKey) = apiClientProvider.getInstance(apiKey).getBalances()
 
     suspend fun getAssetWithdrawMethods(apiKey: ApiKey, assetTicker: String) = apiClientProvider.getInstance(apiKey).getAssetWithdrawMethods(assetTicker)

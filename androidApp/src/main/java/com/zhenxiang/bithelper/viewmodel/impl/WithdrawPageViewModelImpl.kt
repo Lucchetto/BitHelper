@@ -9,6 +9,7 @@ import com.zhenxiang.bithelper.form.CustomValidators
 import com.zhenxiang.bithelper.form.TypedChoiceState
 import com.zhenxiang.bithelper.form.ValidationMessages
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
 import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
@@ -23,11 +24,15 @@ internal class WithdrawPageViewModelImpl(
     private val apiKeyId = savedStateHandle.get<Long>(API_KEY_ID_ARG)!!
     override val assetTicker = savedStateHandle.get<String>(ASSET_TICKER_ARG)!!
 
+    private val _assetBalanceFlow = MutableStateFlow<ResultWrapper<AssetBalance, ExchangeApiError>>(ResultWrapper.Loading())
+    override val assetBalanceFlow: StateFlow<ResultWrapper<AssetBalance, ExchangeApiError>> = _assetBalanceFlow
+
     private val _withdrawMethodsFlow = MutableStateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>(ResultWrapper.Loading())
     override val withdrawMethodsFlow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>> = _withdrawMethodsFlow
 
     private val accountApiKeyFlow = repository.getApiKeyFlow(apiKeyId).onEach {
         if (it is ResultWrapper.Success) {
+            _assetBalanceFlow.emit(repository.getAssetBalance(it.data, assetTicker))
             _withdrawMethodsFlow.emit(repository.getAssetWithdrawMethods(it.data, assetTicker))
         }
     }.stateIn(

@@ -4,12 +4,10 @@ import com.zhenxiang.bithelper.shared.crypto.HmacHash
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.ktor.KtorfitFactory
 import com.zhenxiang.bithelper.shared.ktor.createApiInstance
-import com.zhenxiang.bithelper.shared.model.AssetBalance
-import com.zhenxiang.bithelper.shared.model.Exchange
-import com.zhenxiang.bithelper.shared.model.mapToResult
 import com.zhenxiang.bithelper.shared.api.BaseExchangeApiClientImpl
+import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.api.model.ExchangeResultWrapper
-import com.zhenxiang.bithelper.shared.model.WithdrawMethod
+import com.zhenxiang.bithelper.shared.model.*
 import com.zhenxiang.bithelper.shared.utils.toHex
 import kotlinx.datetime.Clock
 import org.koin.core.component.KoinComponent
@@ -37,12 +35,16 @@ internal class BinanceApiClientImpl(apiKey: ApiKey) : BaseExchangeApiClientImpl(
     override val exchange: Exchange
         get() = Exchange.BINANCE
 
+    override suspend fun getAssetBalance(assetTicker: String): ExchangeResultWrapper<AssetBalance> = apiInstance.getUserAssets(assetTicker).mapToResult {
+        it.firstOrNull()?.let { item -> ResultWrapper.Success(item.toAsset()) } ?: ResultWrapper.Error(ExchangeApiError.UnknownError)
+    }
+
     override suspend fun getBalances(): ExchangeResultWrapper<List<AssetBalance>> = apiInstance.getUserAssets().mapToResult {
-        it.map { item -> item.toAsset() }
+        ResultWrapper.Success(it.map { item -> item.toAsset() })
     }
 
     override suspend fun getAssetWithdrawMethods(assetTicker: String): ExchangeResultWrapper<List<WithdrawMethod>> = apiInstance.getAllAssetsDetails().mapToResult { result ->
-        result.first { it.coin == assetTicker }.networkList.map { it.toWithdrawMethod() }
+        ResultWrapper.Success(result.first { it.coin == assetTicker }.networkList.map { it.toWithdrawMethod() })
     }
 
     companion object {

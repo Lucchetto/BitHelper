@@ -29,15 +29,10 @@ struct SheetPicker<Data, ID, Content>: View where Data : RandomAccessCollection,
                     showSheet = true
                 }
         }, label: {
-            let content = HStack {
-                label
-                Spacer()
-                if (busy) {
-                    ProgressView()
-                } else {
-                    valueMapper(data.first { $0[keyPath: id] == selection }).foregroundColor(.secondary)
-                }
-            }
+            let content = LabelValueItem(
+                label: label,
+                value: busy ? nil : valueMapper(data.first { $0[keyPath: id] == selection })
+            )
             
             if (busy) {
                 content

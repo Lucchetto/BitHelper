@@ -9,6 +9,7 @@ import com.zhenxiang.bithelper.form.CustomValidators
 import com.zhenxiang.bithelper.form.TypedChoiceState
 import com.zhenxiang.bithelper.form.ValidationMessages
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
+import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +19,8 @@ abstract class WithdrawPageViewModel(
 ): ViewModel() {
 
     abstract val assetTicker: String
+
+    abstract val assetBalanceFlow: StateFlow<ResultWrapper<AssetBalance, ExchangeApiError>>
 
     abstract val withdrawMethodsFlow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>
 

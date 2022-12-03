@@ -15,6 +15,15 @@ struct WithdrawPageView: View {
     
     var body: some View {
         Form {
+            LabelValueItem(
+                label: MokoText(MokoStrings.available_balance_title),
+                value: ResultWrapperUtils.successDataOrNull(viewModel.assetBalance).map({
+                    Text(
+                        verbatim: MokoStrings.value_and_unit.format(args_: [$0.availableBalance, $0.ticker]).localized()
+                    )
+                })
+                
+            )
             TextField(MokoStrings.recipient_address_title.localized, text: $viewModel.recipientAddress)
             TextField(MokoStrings.memo_title.localized, text: $viewModel.recipientMemo)
             

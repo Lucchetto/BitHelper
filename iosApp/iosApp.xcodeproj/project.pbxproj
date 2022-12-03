@@ -12,6 +12,8 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10141F2917C79200A417E1 /* StringExtensions.swift */; };
 		AA10142329183C0600A417E1 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10142229183C0600A417E1 /* ViewExtensions.swift */; };
+		AA1B2ED1293E6E5000240E7E /* ResultWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B2ED0293E6E5000240E7E /* ResultWrapperExtensions.swift */; };
+		AA1B2ED3293E775000240E7E /* ScopedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1B2ED2293E775000240E7E /* ScopedFunctions.swift */; };
 		AA47E0A8290ED1C3007BCC1F /* AccountsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0A7290ED1C3007BCC1F /* AccountsPageViewModel.swift */; };
 		AA47E0AB290ED43C007BCC1F /* FlowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */; };
 		AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */; };
@@ -22,6 +24,7 @@
 		AA597A532932754500AD54F5 /* WithdrawPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA597A522932754500AD54F5 /* WithdrawPageView.swift */; };
 		AA597A552932853700AD54F5 /* WithdrawPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA597A542932853700AD54F5 /* WithdrawPageViewModel.swift */; };
 		AA597A572932B17500AD54F5 /* SheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA597A562932B17500AD54F5 /* SheetPicker.swift */; };
+		AA5A3723293D4F2000D1E426 /* LabelValueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5A3722293D4F2000D1E426 /* LabelValueItem.swift */; };
 		AA7247B429296C13007289C2 /* AccountDetailsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7247B329296C13007289C2 /* AccountDetailsPageView.swift */; };
 		AA7247B629296D84007289C2 /* AccountDetailsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7247B529296D84007289C2 /* AccountDetailsPageViewModel.swift */; };
 		AA7247B9292A29B3007289C2 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = AA7247B8292A29B3007289C2 /* Shimmer */; };
@@ -41,6 +44,8 @@
 		9A975EC182FCBCD554639C6E /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA10141F2917C79200A417E1 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		AA10142229183C0600A417E1 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		AA1B2ED0293E6E5000240E7E /* ResultWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultWrapperExtensions.swift; sourceTree = "<group>"; };
+		AA1B2ED2293E775000240E7E /* ScopedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopedFunctions.swift; sourceTree = "<group>"; };
 		AA47E0A7290ED1C3007BCC1F /* AccountsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPageViewModel.swift; sourceTree = "<group>"; };
 		AA47E0AA290ED43C007BCC1F /* FlowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowExtensions.swift; sourceTree = "<group>"; };
 		AA47E0AD290F0EFE007BCC1F /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 		AA597A522932754500AD54F5 /* WithdrawPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawPageView.swift; sourceTree = "<group>"; };
 		AA597A542932853700AD54F5 /* WithdrawPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawPageViewModel.swift; sourceTree = "<group>"; };
 		AA597A562932B17500AD54F5 /* SheetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPicker.swift; sourceTree = "<group>"; };
+		AA5A3722293D4F2000D1E426 /* LabelValueItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelValueItem.swift; sourceTree = "<group>"; };
 		AA7247B329296C13007289C2 /* AccountDetailsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsPageView.swift; sourceTree = "<group>"; };
 		AA7247B529296D84007289C2 /* AccountDetailsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsPageViewModel.swift; sourceTree = "<group>"; };
 		AABD6AC42915B9E2004F190D /* ResourcesExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesExtensions.swift; sourceTree = "<group>"; };
@@ -157,6 +163,8 @@
 				AA47E0B2290F13DF007BCC1F /* IdentifiableWrapper.swift */,
 				AA10141F2917C79200A417E1 /* StringExtensions.swift */,
 				AA10142229183C0600A417E1 /* ViewExtensions.swift */,
+				AA1B2ED0293E6E5000240E7E /* ResultWrapperExtensions.swift */,
+				AA1B2ED2293E775000240E7E /* ScopedFunctions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				AA597A562932B17500AD54F5 /* SheetPicker.swift */,
+				AA5A3722293D4F2000D1E426 /* LabelValueItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,11 +353,14 @@
 				AA47E0A8290ED1C3007BCC1F /* AccountsPageViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				AA7247B429296C13007289C2 /* AccountDetailsPageView.swift in Sources */,
+				AA1B2ED1293E6E5000240E7E /* ResultWrapperExtensions.swift in Sources */,
 				AA1014202917C79200A417E1 /* StringExtensions.swift in Sources */,
 				AA47E0AE290F0EFE007BCC1F /* ArrayUtils.swift in Sources */,
 				AA47E0B6290F1A20007BCC1F /* AddAccountSheetView.swift in Sources */,
+				AA5A3723293D4F2000D1E426 /* LabelValueItem.swift in Sources */,
 				AABD6AC52915B9E2004F190D /* ResourcesExtensions.swift in Sources */,
 				AAD04CBA292016580036104B /* MainNavigationView.swift in Sources */,
+				AA1B2ED3293E775000240E7E /* ScopedFunctions.swift in Sources */,
 				AA597A572932B17500AD54F5 /* SheetPicker.swift in Sources */,
 				AA597A552932853700AD54F5 /* WithdrawPageViewModel.swift in Sources */,
 				AA47E0B0290F0FD9007BCC1F /* AccountsPageView.swift in Sources */,

@@ -15,10 +15,15 @@ import shared
     @Published var recipientMemo: String = ""
     @Published var withdrawMethodId: String = ""
     
+    @Published var assetBalance: ResultWrapper<AssetBalance, ExchangeApiError> = ResultWrapperLoading()
     @Published var withdrawMethods: ResultWrapper<NSArray, ExchangeApiError> = ResultWrapperLoading()
     
     override init(apiKeyId: Int64, assetTicker: String) {
         super.init(apiKeyId: apiKeyId, assetTicker: assetTicker)
+        
+        asPublisher(assetBalanceFlow)
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$assetBalance)
         
         asPublisher(withdrawMethodsFlow)
             .receive(on: DispatchQueue.main)

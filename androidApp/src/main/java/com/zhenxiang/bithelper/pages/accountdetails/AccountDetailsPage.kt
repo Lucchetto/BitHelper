@@ -172,8 +172,8 @@ private fun AssetsTab(flow: StateFlow<ResultWrapper<List<AssetBalance>, Exchange
 @Composable
 private fun SkeletonAssetListItem() {
     SingleLineListDataItem(
-        title = "WBTC",
-        value = "69.000000 BTC",
+        title = AssetBalance.PLACEHOLDER_TICKER,
+        value = AssetBalance.PLACEHOLDER_BALANCE_WITH_TICKER,
         skeleton = true
     )
 }
