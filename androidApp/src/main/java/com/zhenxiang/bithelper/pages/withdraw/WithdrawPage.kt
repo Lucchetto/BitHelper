@@ -17,7 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.dsc.form_builder.FormState
 import com.google.accompanist.placeholder.PlaceholderHighlight
-import com.ionspin.kotlin.bignum.decimal.BigDecimal
+import com.ionspin.kotlin.bignum.decimal.toBigDecimal
 import com.zhenxiang.bithelper.component.NavBackButton
 import com.zhenxiang.bithelper.component.placeholder
 import com.zhenxiang.bithelper.component.shimmer
@@ -252,8 +252,10 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 exchangeInternalId = "ERC20",
                 description = "Description of withdraw method",
                 hints = "Hints for the withdraw method",
-                fee = BigDecimal.parseString("0.005"),
+                fee = "0.005".toBigDecimal(),
                 available = true,
+                decimalPrecision = 8,
+                minAmount = "0.001".toBigDecimal(),
                 hasMemoField = false
             ),
             WithdrawMethod(
@@ -261,8 +263,10 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 exchangeInternalId = "MATIC",
                 description = "Description of withdraw method",
                 hints = "Hints for the withdraw method",
-                fee = BigDecimal.parseString("0.00005"),
+                fee = "0.00005".toBigDecimal(),
                 available = true,
+                decimalPrecision = 8,
+                minAmount = "0.001".toBigDecimal(),
                 hasMemoField = false
             ),
             WithdrawMethod(
@@ -270,8 +274,10 @@ private fun WithdrawPagePreview() = WithdrawPage(
                 exchangeInternalId = "METIS",
                 description = "Maintenance mode",
                 hints = null,
-                fee = BigDecimal.parseString("0"),
+                fee = "0".toBigDecimal(),
                 available = false,
+                decimalPrecision = 8,
+                minAmount = "0.001".toBigDecimal(),
                 hasMemoField = false
             )
         )
@@ -289,8 +295,10 @@ private fun WithdrawMethodCardPreview() = WithdrawMethodCard(
         exchangeInternalId = "ERC20",
         description = "Description of withdraw method",
         hints = "Hints for the withdraw method",
-        fee = BigDecimal.parseString("0.005"),
+        fee = "0.005".toBigDecimal(),
         available = true,
+        decimalPrecision = 8,
+        minAmount = "0.001".toBigDecimal(),
         hasMemoField = false
     )
 )

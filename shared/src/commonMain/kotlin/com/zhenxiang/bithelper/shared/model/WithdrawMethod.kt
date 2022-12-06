@@ -9,5 +9,7 @@ data class WithdrawMethod(
     val hints: String?,
     val available: Boolean,
     val fee: BigDecimal?,
+    val decimalPrecision: Long,
+    val minAmount: BigDecimal,
     val hasMemoField: Boolean?,
 )
