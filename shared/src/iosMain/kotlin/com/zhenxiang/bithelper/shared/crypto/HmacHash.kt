@@ -6,26 +6,18 @@ import platform.CoreCrypto.CC_SHA256_DIGEST_LENGTH
 import platform.CoreCrypto.kCCHmacAlgSHA256
 import platform.posix.strlen
 
-actual class HmacHash {
+actual object HmacHash {
 
-    actual companion object {
-
-        actual fun sha256(message: String, key: String): ByteArray {
-            memScoped {
-                val targetLen = CC_SHA256_DIGEST_LENGTH
-                val hashedPtrArray: CArrayPointer<ByteVar> = nativeHeap.allocArray(targetLen)
-                CCHmac(
-                    kCCHmacAlgSHA256,
-                    key.cstr.getPointer(this),
-                    strlen(key),
-                    message.cstr.getPointer(this),
-                    strlen(message),
-                    hashedPtrArray
-                )
-                val result = (0 until targetLen).map { hashedPtrArray[it] }.toByteArray()
-                nativeHeap.free(hashedPtrArray)
-                return result
-            }
-        }
+    actual fun sha256(message: String, key: String): ByteArray = memScoped {
+        val hashedPtrArray: CArrayPointer<ByteVar> = allocArray(CC_SHA256_DIGEST_LENGTH)
+        CCHmac(
+            kCCHmacAlgSHA256,
+            key.cstr.getPointer(this),
+            strlen(key),
+            message.cstr.getPointer(this),
+            strlen(message),
+            hashedPtrArray
+        )
+        (0 until CC_SHA256_DIGEST_LENGTH).map { hashedPtrArray[it] }.toByteArray()
     }
 }
