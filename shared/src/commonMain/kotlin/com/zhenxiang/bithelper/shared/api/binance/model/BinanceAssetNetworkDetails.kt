@@ -28,7 +28,7 @@ data class BinanceAssetNetworkDetails(
         available = withdrawEnable,
         // withdrawIntegerMultiple is in format 0.0001 so we can calculate the precision from
         // it's exponent (always negative, but coerce to 0 just for safety) and make it positive
-        decimalPrecision = withdrawIntegerMultiple.toBigDecimal().exponent.coerceAtMost(0).absoluteValue,
+        decimalPrecision = withdrawIntegerMultiple.toBigDecimal().exponent.coerceAtMost(0).absoluteValue.toInt(),
         fee = withdrawFee.toBigDecimal(),
         minAmount = withdrawMin.toBigDecimal(),
         hasMemoField = sameAddress,

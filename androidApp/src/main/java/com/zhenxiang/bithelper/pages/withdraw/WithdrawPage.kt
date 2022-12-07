@@ -9,7 +9,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -19,6 +25,7 @@ import com.dsc.form_builder.FormState
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.ionspin.kotlin.bignum.decimal.toBigDecimal
 import com.zhenxiang.bithelper.component.NavBackButton
+import com.zhenxiang.bithelper.component.SuffixTransformation
 import com.zhenxiang.bithelper.component.placeholder
 import com.zhenxiang.bithelper.component.shimmer
 import com.zhenxiang.bithelper.form.StringTransformations
@@ -110,6 +117,22 @@ private fun LazyListScope.Form(
     formState: FormState<*>,
     flow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>,
 ) {
+    item {
+        val selectedWithdrawMethod = formState.getState<TypedChoiceState<WithdrawMethod>>(WithdrawPageViewModel.WITHDRAW_METHOD_FORM_FIELD).value
+
+        DecimalFormStateOutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            state = formState.getState(WithdrawPageViewModel.AMOUNT_FORM_FIELD),
+            precision = selectedWithdrawMethod?.decimalPrecision ?: 0,
+            enabled = selectedWithdrawMethod != null,
+            label = SharedRes.strings.amount_title.composeResource(),
+            visualTransformation = SuffixTransformation(
+                assetTicker,
+                SpanStyle(fontWeight = FontWeight.Bold)
+            ),
+            imeAction = ImeAction.Next,
+        )
+    }
     item {
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),

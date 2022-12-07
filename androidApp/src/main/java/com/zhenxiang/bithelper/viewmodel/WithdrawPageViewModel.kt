@@ -26,6 +26,10 @@ abstract class WithdrawPageViewModel(
 
     val formState = FormState(listOf(
         TextFieldState(
+            name = AMOUNT_FORM_FIELD,
+            validators = listOf(CustomValidators.notBlank()),
+        ),
+        TextFieldState(
             name = RECIPIENT_ADDRESS_FORM_FIELD,
             validators = listOf(CustomValidators.notBlank()),
         ),
@@ -45,6 +49,7 @@ abstract class WithdrawPageViewModel(
         const val API_KEY_ID_ARG = "apiKeyId"
         const val ASSET_TICKER_ARG = "assetTicker"
 
+        const val AMOUNT_FORM_FIELD = "amount"
         const val RECIPIENT_ADDRESS_FORM_FIELD = "receivingAddress"
         const val RECIPIENT_ADDRESS_MEMO_FORM_FIELD = "receivingAddressMemo"
         const val WITHDRAW_METHOD_FORM_FIELD = "method"

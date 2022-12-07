@@ -9,6 +9,7 @@ composeNavigationVersion = "2.5.3"
 coroutinesVersion = "1.6.3-native-mt"
 dokar3SheetsVersion = "0.3.0"
 jkuatdscFormBuilderVersion = "1.0.5"
+junitVersion = "4.13.2"
 mokoResourcesVersion="0.20.1"
 sqldelightVersion = "1.5.3"
 koinVersion = "3.2.2"
@@ -48,6 +49,7 @@ android-composeMaterialIcons = { module = "androidx.compose.material:material-ic
 android-composeNavigation = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigationVersion" }
 android-dokar3Sheets = { module = "io.github.dokar3:sheets", version.ref = "dokar3SheetsVersion" }
 android-jkuatdscFormBuilder = { module = "com.github.jkuatdsc:form-builder", version.ref = "jkuatdscFormBuilderVersion" }
+android-junit = { module = "junit:junit", version.ref = "junitVersion" }
 android-koin = { module = "io.insert-koin:koin-android", version.ref = "koinAndroidVersion" }
 android-koinCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinComposeVersion" }
 android-mokoResources = { module = "dev.icerock.moko:resources-compose", version.ref = "mokoResourcesVersion" }

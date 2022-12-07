@@ -53,4 +53,6 @@ dependencies {
     implementation(libs.android.koin)
     implementation(libs.android.koinCompose)
     implementation(libs.android.mokoResources)
+
+    testImplementation(libs.android.junit)
 }

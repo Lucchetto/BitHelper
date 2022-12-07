@@ -19,6 +19,7 @@
     <string name="memo_title">Memo</string>
     <string name="withdraw_method_title">Withdraw method</string>
     <string name="withdraw">Withdraw</string>
+    <string name="amount_title">Amount</string>
 
     <!-- Utils -->
     <string name="value_and_unit">%s %s</string>

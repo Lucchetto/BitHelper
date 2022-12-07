@@ -9,13 +9,17 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import com.dokar.sheets.BottomSheet
 import com.dokar.sheets.rememberBottomSheetState
 import com.dsc.form_builder.TextFieldState
 import com.zhenxiang.bithelper.component.BottomSheetContent
+import com.zhenxiang.bithelper.form.DecimalStringTransform
 import com.zhenxiang.bithelper.form.TypedChoiceState
-import com.zhenxiang.bithelper.moko.composeResource
-import com.zhenxiang.bithelper.shared.res.SharedRes
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,23 +28,50 @@ fun FormStateOutlinedTextField(
     modifier: Modifier = Modifier,
     state: TextFieldState,
     enabled: Boolean = true,
+    textStyle: TextStyle = LocalTextStyle.current,
     label: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    transform: ((String) -> String)? = null,
+    transform: ((String) -> String?)? = null,
 ) {
     OutlinedTextField(
         modifier = modifier,
         value = state.value,
         isError = state.hasError,
+        textStyle = textStyle,
         label = { Text(label) },
+        visualTransformation = visualTransformation,
         onValueChange = if (transform != null) {
-            { state.change(transform(it)) }
+            { newValue -> transform(newValue)?.let { state.change(it) } }
         } else {
             { state.change(it) }
         },
         keyboardOptions = keyboardOptions,
     )
 }
+
+@Composable
+fun DecimalFormStateOutlinedTextField(
+    modifier: Modifier = Modifier,
+    state: TextFieldState,
+    precision: Int,
+    enabled: Boolean = true,
+    label: String,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    imeAction: ImeAction = ImeAction.Default,
+) = FormStateOutlinedTextField(
+    modifier = modifier,
+    state = state,
+    enabled = enabled,
+    textStyle = TextStyle(textAlign = TextAlign.End),
+    label = label,
+    visualTransformation = visualTransformation,
+    keyboardOptions = KeyboardOptions(
+        keyboardType = KeyboardType.Decimal,
+        imeAction = imeAction
+    ),
+    transform = { DecimalStringTransform.transform(it, precision) }
+)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
