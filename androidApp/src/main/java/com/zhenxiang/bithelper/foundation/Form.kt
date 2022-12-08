@@ -28,6 +28,7 @@ fun FormStateOutlinedTextField(
     modifier: Modifier = Modifier,
     state: TextFieldState,
     enabled: Boolean = true,
+    readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
     label: String,
     visualTransformation: VisualTransformation = VisualTransformation.None,
@@ -37,6 +38,8 @@ fun FormStateOutlinedTextField(
     OutlinedTextField(
         modifier = modifier,
         value = state.value,
+        enabled = enabled,
+        readOnly = readOnly,
         isError = state.hasError,
         textStyle = textStyle,
         label = { Text(label) },
@@ -56,6 +59,7 @@ fun DecimalFormStateOutlinedTextField(
     state: TextFieldState,
     precision: Int,
     enabled: Boolean = true,
+    readOnly: Boolean = false,
     label: String,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     imeAction: ImeAction = ImeAction.Default,
@@ -63,6 +67,7 @@ fun DecimalFormStateOutlinedTextField(
     modifier = modifier,
     state = state,
     enabled = enabled,
+    readOnly = readOnly,
     textStyle = TextStyle(textAlign = TextAlign.End),
     label = label,
     visualTransformation = visualTransformation,
@@ -90,18 +95,19 @@ fun <T> FormStateOutlinedDropDownMenu(
         modifier = modifier,
         expanded = expanded,
         onExpandedChange = {
-            expanded = !expanded
+            expanded = enabled && !expanded
         }
     ) {
         OutlinedTextField(
             modifier = Modifier
                 .menuAnchor()
                 .onFocusChanged {
-                    if (it.isFocused) {
+                    if (it.isFocused && enabled) {
                         expanded = true
                     }
                 }
                 .fillMaxWidth(),
+            enabled = enabled,
             readOnly = true,
             value = state.value?.let { toStringAdapter(it) } ?: "",
             onValueChange = { },
