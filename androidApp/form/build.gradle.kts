@@ -39,7 +39,6 @@ dependencies {
 
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.dokar3Sheets)
-    implementation(libs.android.jkuatdscFormBuilder)
 
     testImplementation(libs.android.junit)
 }

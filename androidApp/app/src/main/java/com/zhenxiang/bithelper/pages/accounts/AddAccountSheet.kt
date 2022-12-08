@@ -34,14 +34,14 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
                 modifier = Modifier
                     .fillMaxWidth()
                     .focusRequester(it),
-                state = formState.getState(AddAccountSheetViewModel.LABEL_FORM_FIELD),
+                state = formState.label,
                 label = SharedRes.strings.label_title.composeResource(),
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next)
             )
         }
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            state = formState.getState(AddAccountSheetViewModel.API_KEY_FORM_FIELD),
+            state = formState.apiKey,
             label = SharedRes.strings.api_key_title.composeResource(),
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
@@ -51,7 +51,7 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
         )
         FormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            state = formState.getState(AddAccountSheetViewModel.SECRET_KEY_FORM_FIELD),
+            state = formState.secretKey,
             label = SharedRes.strings.secret_key_title.composeResource(),
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
@@ -62,7 +62,7 @@ fun AddAccountSheet(navController: NavHostController, viewModel: AddAccountSheet
         FormStateOutlinedDropDownMenu(
             label = SharedRes.strings.exchange_title.composeResource(),
             options = viewModel.exchanges,
-            state = formState.getState(AddAccountSheetViewModel.EXCHANGE_FORM_FIELD),
+            state = formState.exchange,
             toStringAdapter = {
                 it.labelRes.composeResource()
             }

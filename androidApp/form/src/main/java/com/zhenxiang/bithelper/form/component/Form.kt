@@ -16,10 +16,12 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import com.dokar.sheets.BottomSheet
 import com.dokar.sheets.rememberBottomSheetState
-import com.dsc.form_builder.TextFieldState
 import com.zhenxiang.bithelper.ui.component.BottomSheetContent
 import com.zhenxiang.bithelper.form.DecimalStringTransform
-import com.zhenxiang.bithelper.form.TypedChoiceState
+import com.zhenxiang.bithelper.form.state.EnumFormFieldState
+import com.zhenxiang.bithelper.form.state.StringFormFieldState
+import com.zhenxiang.bithelper.form.state.TextFormFieldState
+import com.zhenxiang.bithelper.form.state.isNotValid
 import com.zhenxiang.bithelper.ui.foundation.ModalBottomSheetDefaults
 import com.zhenxiang.bithelper.ui.foundation.ZeroWindowInsets
 import kotlinx.coroutines.launch
@@ -28,7 +30,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun FormStateOutlinedTextField(
     modifier: Modifier = Modifier,
-    state: TextFieldState,
+    state: TextFormFieldState,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     textStyle: TextStyle = LocalTextStyle.current,
@@ -42,14 +44,14 @@ fun FormStateOutlinedTextField(
         value = state.value,
         enabled = enabled,
         readOnly = readOnly,
-        isError = state.hasError,
+        isError = state.isNotValid,
         textStyle = textStyle,
         label = { Text(label) },
         visualTransformation = visualTransformation,
         onValueChange = if (transform != null) {
-            { newValue -> transform(newValue)?.let { state.change(it) } }
+            { newValue -> transform(newValue.text)?.let { state.value = newValue.copy(text = it) } }
         } else {
-            { state.change(it) }
+            { state.value = it }
         },
         keyboardOptions = keyboardOptions,
     )
@@ -58,7 +60,7 @@ fun FormStateOutlinedTextField(
 @Composable
 fun DecimalFormStateOutlinedTextField(
     modifier: Modifier = Modifier,
-    state: TextFieldState,
+    state: TextFormFieldState,
     precision: Int,
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -82,9 +84,9 @@ fun DecimalFormStateOutlinedTextField(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T> FormStateOutlinedDropDownMenu(
+fun <T: Enum<*>> FormStateOutlinedDropDownMenu(
     modifier: Modifier = Modifier,
-    state: TypedChoiceState<T>,
+    state: EnumFormFieldState<T?>,
     enabled: Boolean = true,
     label: String,
     options: List<T>,
@@ -113,7 +115,7 @@ fun <T> FormStateOutlinedDropDownMenu(
             readOnly = true,
             value = state.value?.let { toStringAdapter(it) } ?: "",
             onValueChange = { },
-            isError = state.hasError,
+            isError = state.isNotValid,
             label = { Text(label) },
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(
@@ -134,7 +136,7 @@ fun <T> FormStateOutlinedDropDownMenu(
                         Text(text = toStringAdapter(selectionOption))
                     },
                     onClick = {
-                        state.change(selectionOption)
+                        state.value = selectionOption
                         expanded = false
                     }
                 )
@@ -147,11 +149,12 @@ fun <T> FormStateOutlinedDropDownMenu(
 @Composable
 fun <T> FormStateOutlinedBottomSheetMenu(
     modifier: Modifier = Modifier,
-    state: TypedChoiceState<T>,
+    state: StringFormFieldState,
     enabled: Boolean = true,
     label: String,
     options: List<T>,
-    toStringAdapter: @Composable (T) -> String,
+    toStringIdAdapter: (T) -> String,
+    toStringValueAdapter: @Composable (T) -> String,
     trailingIconOverride: @Composable (() -> Unit)? = null,
     bottomSheetListItem: @Composable (ColumnScope.(selected: Boolean, clicked: () -> Unit, value: T) -> Unit),
 ) {
@@ -160,6 +163,8 @@ fun <T> FormStateOutlinedBottomSheetMenu(
     val sheetState = rememberBottomSheetState()
     val focusRequester = remember { FocusRequester() }
     val focusManager = LocalFocusManager.current
+
+    val selectedOption = options.firstOrNull { toStringIdAdapter(it) == state.value }
 
     OutlinedTextField(
         modifier = modifier
@@ -173,9 +178,9 @@ fun <T> FormStateOutlinedBottomSheetMenu(
             .fillMaxWidth(),
         enabled = enabled,
         readOnly = true,
-        value = state.value?.let { toStringAdapter(it) } ?: "",
+        value = selectedOption?.let { toStringValueAdapter(it) } ?: "",
         onValueChange = { },
-        isError = state.hasError,
+        isError = state.isNotValid,
         label = { Text(label) },
         trailingIcon = trailingIconOverride ?: {
             ExposedDropdownMenuDefaults.TrailingIcon(expanded = sheetState.visible)
@@ -197,13 +202,15 @@ fun <T> FormStateOutlinedBottomSheetMenu(
             )
             options.forEach {
 
+                val optionId = toStringIdAdapter(it)
+
                 val clicked = {
-                    state.change(it)
+                    state.value = optionId
                     scope.launch { sheetState.collapse() }
                     Unit
                 }
 
-                bottomSheetListItem(state.value == it, clicked, it)
+                bottomSheetListItem(state.value == optionId, clicked, it)
             }
         }
     }

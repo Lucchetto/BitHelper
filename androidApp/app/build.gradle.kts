@@ -49,7 +49,6 @@ dependencies {
     implementation(libs.android.composeUi)
     implementation(libs.android.composeUiTooling)
     implementation(libs.android.composeUiToolingPreview)
-    implementation(libs.android.jkuatdscFormBuilder)
     implementation(libs.android.koin)
     implementation(libs.android.koinCompose)
 
