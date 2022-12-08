@@ -19,5 +19,7 @@ dependencyResolutionManagement {
 enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "BitHelper"
-include(":androidApp")
+include(":androidApp:app")
 include(":shared")
+include(":androidApp:form")
+include(":androidApp:ui")
