@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
@@ -58,7 +57,7 @@ fun WithdrawPage(rootNavController: NavHostController, viewModel: WithdrawPageVi
                 viewModel.assetTicker,
                 viewModel.formState,
                 viewModel.withdrawMethodsFlow,
-                viewModel.selectedWithdrawMethodState
+                viewModel.selectedWithdrawMethodFlow
             )
             ActionsBar(
                 onWithdraw = { viewModel.withdraw() },
@@ -118,10 +117,10 @@ private fun LazyListScope.Form(
     assetTicker: String,
     form: WithdrawPageViewModel.Form,
     flow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>,
-    selectedWithdrawMethodState: State<WithdrawMethod?>
+    selectedWithdrawMethodFlow: StateFlow<WithdrawMethod?>
 ) {
     item {
-        val selectedWithdrawMethod by selectedWithdrawMethodState
+        val selectedWithdrawMethod by selectedWithdrawMethodFlow.collectAsStateWithLifecycle()
 
         DecimalFormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -183,7 +182,7 @@ private fun LazyListScope.Form(
     }
 
     item {
-        val selectedWithdrawMethod by selectedWithdrawMethodState
+        val selectedWithdrawMethod by selectedWithdrawMethodFlow.collectAsStateWithLifecycle()
 
         selectedWithdrawMethod?.fee?.let {
             Text(

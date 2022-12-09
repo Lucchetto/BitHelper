@@ -21,5 +21,8 @@ internal class WithdrawPageViewModelPreview(
     override val withdrawMethodsFlow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>> =
         MutableStateFlow(ResultWrapper.Success(mockWithdrawMethods))
 
+    override val selectedWithdrawMethodFlow: StateFlow<WithdrawMethod?> =
+        MutableStateFlow(mockWithdrawMethods.firstOrNull())
+
     override fun withdraw() = Unit
 }

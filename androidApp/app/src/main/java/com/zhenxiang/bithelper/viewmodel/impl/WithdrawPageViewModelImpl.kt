@@ -1,12 +1,15 @@
 package com.zhenxiang.bithelper.viewmodel.impl
 
+import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.zhenxiang.bithelper.form.DecimalStringTransformation
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
 import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
+import com.zhenxiang.bithelper.utils.successDataOrNull
 import com.zhenxiang.bithelper.viewmodel.WithdrawPageViewModel
 import kotlinx.coroutines.flow.*
 
@@ -23,6 +26,13 @@ internal class WithdrawPageViewModelImpl(
 
     private val _withdrawMethodsFlow = MutableStateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>(ResultWrapper.Loading())
     override val withdrawMethodsFlow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>> = _withdrawMethodsFlow
+
+    override val selectedWithdrawMethodFlow: StateFlow<WithdrawMethod?> =
+        snapshotFlow { formState.withdrawMethodId.value }.combine(withdrawMethodsFlow) { id, methodsResult ->
+            methodsResult.successDataOrNull()?.firstOrNull { it.exchangeInternalId == id }?.also {
+                formState.amount.transformation = DecimalStringTransformation(it.decimalPrecision)
+            }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 
     private val accountApiKeyFlow = repository.getApiKeyFlow(apiKeyId).onEach {
         if (it is ResultWrapper.Success) {

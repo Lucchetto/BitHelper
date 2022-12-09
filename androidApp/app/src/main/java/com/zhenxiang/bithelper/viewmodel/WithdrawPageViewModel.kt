@@ -1,15 +1,12 @@
 package com.zhenxiang.bithelper.viewmodel
 
-import androidx.compose.runtime.derivedStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.zhenxiang.bithelper.form.DecimalStringTransformation
 import com.zhenxiang.bithelper.form.state.*
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
-import com.zhenxiang.bithelper.utils.successDataOrNull
 import kotlinx.coroutines.flow.StateFlow
 
 abstract class WithdrawPageViewModel(
@@ -22,18 +19,7 @@ abstract class WithdrawPageViewModel(
 
     abstract val withdrawMethodsFlow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>
 
-    val selectedWithdrawMethodState = derivedStateOf {
-        formState.withdrawMethodId.value.let {
-            val method = withdrawMethodsFlow.value.successDataOrNull()?.firstOrNull { item ->
-                item.exchangeInternalId == it
-            }
-            method?.let {
-                formState.amount.transformation = DecimalStringTransformation(it.decimalPrecision)
-            }
-
-            method
-        }
-    }
+    abstract val selectedWithdrawMethodFlow: StateFlow<WithdrawMethod?>
 
     val formState = Form()
 
