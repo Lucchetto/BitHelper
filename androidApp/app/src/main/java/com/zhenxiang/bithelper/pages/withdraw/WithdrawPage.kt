@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
@@ -19,7 +20,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.ionspin.kotlin.bignum.decimal.toBigDecimal
-import com.zhenxiang.bithelper.form.StringTransformations
 import com.zhenxiang.bithelper.form.component.DecimalFormStateOutlinedTextField
 import com.zhenxiang.bithelper.form.component.FormStateOutlinedBottomSheetMenu
 import com.zhenxiang.bithelper.form.component.FormStateOutlinedTextField
@@ -54,7 +54,12 @@ fun WithdrawPage(rootNavController: NavHostController, viewModel: WithdrawPageVi
                 .fillMaxWidth()
         ) {
             AssetBalance(viewModel.assetBalanceFlow)
-            Form(viewModel.assetTicker, viewModel.formState, viewModel.withdrawMethodsFlow)
+            Form(
+                viewModel.assetTicker,
+                viewModel.formState,
+                viewModel.withdrawMethodsFlow,
+                viewModel.selectedWithdrawMethodState
+            )
             ActionsBar(
                 onWithdraw = { viewModel.withdraw() },
                 onCancel = { rootNavController.popBackStack() }
@@ -109,29 +114,18 @@ private fun LazyListScope.AssetBalance(
 }
 
 @OptIn(ExperimentalLifecycleComposeApi::class)
-@Composable
-private fun selectedWithdrawMethod(
-    form: WithdrawPageViewModel.Form,
-    flow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>,
-): WithdrawMethod? {
-    val methods by flow.collectAsStateWithLifecycle()
-    val selectedMethodId = form.withdrawMethodId.value
-    return methods.successDataOrNull()?.firstOrNull { it.exchangeInternalId == selectedMethodId }
-}
-
-@OptIn(ExperimentalLifecycleComposeApi::class)
 private fun LazyListScope.Form(
     assetTicker: String,
     form: WithdrawPageViewModel.Form,
     flow: StateFlow<ResultWrapper<List<WithdrawMethod>, ExchangeApiError>>,
+    selectedWithdrawMethodState: State<WithdrawMethod?>
 ) {
     item {
-        val selectedWithdrawMethod = selectedWithdrawMethod(form, flow)
+        val selectedWithdrawMethod by selectedWithdrawMethodState
 
         DecimalFormStateOutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             state = form.amount,
-            precision = selectedWithdrawMethod?.decimalPrecision ?: 0,
             enabled = selectedWithdrawMethod != null,
             label = SharedRes.strings.amount_title.composeResource(),
             visualTransformation = SuffixTransformation(
@@ -146,7 +140,6 @@ private fun LazyListScope.Form(
             modifier = Modifier.fillMaxWidth(),
             state = form.recipientAddress,
             label = SharedRes.strings.recipient_address_title.composeResource(),
-            transform = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES,
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Next,
                 autoCorrect = false,
@@ -190,7 +183,9 @@ private fun LazyListScope.Form(
     }
 
     item {
-        selectedWithdrawMethod(form, flow)?.fee?.let {
+        val selectedWithdrawMethod by selectedWithdrawMethodState
+
+        selectedWithdrawMethod?.fee?.let {
             Text(
                 modifier = Modifier.padding(top = MaterialTheme.spacing.level5),
                 text = SharedRes.strings.withdrawal_fee_value.format(it.toStringExpanded(), assetTicker).composeResource(),

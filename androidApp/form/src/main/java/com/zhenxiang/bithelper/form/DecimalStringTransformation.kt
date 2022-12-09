@@ -1,20 +1,19 @@
 package com.zhenxiang.bithelper.form
 
+import androidx.compose.ui.text.input.TextFieldValue
+import com.zhenxiang.bithelper.form.state.FormFieldValueTransformation
 import com.zhenxiang.bithelper.shared.utils.removeSpacesAndNewLines
 
-object DecimalStringTransform {
+class DecimalStringTransformation(val precision: Int): FormFieldValueTransformation<TextFieldValue> {
 
-    private const val DECIMAL_POINT_SYMBOL: Char = '.'
-    private const val ALT_DECIMAL_POINT_SYMBOL: Char = ','
-
-    private val DECIMAL_REGEX = "^\\d*\\$DECIMAL_POINT_SYMBOL?\\d*\$".toRegex()
-
-    fun transform(input: String, precision: Int): String? {
+    init {
         if (precision < 0) {
             throw IllegalArgumentException("Precision must ge greater than 0 !")
         }
+    }
 
-        val trimmedInput = input
+    override fun transform(value: TextFieldValue): TextFieldValue? {
+        val trimmedInput = value.text
             .removeSpacesAndNewLines()
             .replace(ALT_DECIMAL_POINT_SYMBOL, DECIMAL_POINT_SYMBOL)
 
@@ -34,10 +33,19 @@ object DecimalStringTransform {
             }
         }
 
-        return if (decimalPart == null || precision == 0) {
-            integerPart
-        } else {
-            "$integerPart$DECIMAL_POINT_SYMBOL$decimalPart"
-        }
+        return value.copy(
+            text = if (decimalPart == null || precision == 0) {
+                integerPart
+            } else {
+                "$integerPart$DECIMAL_POINT_SYMBOL$decimalPart"
+            }
+        )
+    }
+
+    companion object {
+        private const val DECIMAL_POINT_SYMBOL: Char = '.'
+        private const val ALT_DECIMAL_POINT_SYMBOL: Char = ','
+
+        private val DECIMAL_REGEX = "^\\d*\\$DECIMAL_POINT_SYMBOL?\\d*\$".toRegex()
     }
 }

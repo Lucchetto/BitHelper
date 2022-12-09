@@ -1,10 +1,7 @@
 package com.zhenxiang.bithelper.pages.accounts
 
 import androidx.lifecycle.ViewModel
-import com.zhenxiang.bithelper.form.state.EnumFormFieldState
-import com.zhenxiang.bithelper.form.state.FormFieldValidator
-import com.zhenxiang.bithelper.form.state.FormState
-import com.zhenxiang.bithelper.form.state.TextFormFieldState
+import com.zhenxiang.bithelper.form.state.*
 import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.repository.ApiKeysRepository
@@ -37,9 +34,15 @@ class AddAccountSheetViewModel : ViewModel(), KoinComponent {
 
     class Form: FormState() {
 
-        val label = TextFormFieldState(initialValidators = listOf(FormFieldValidator.Required))
-        val apiKey = TextFormFieldState(initialValidators = listOf(FormFieldValidator.Required))
-        val secretKey = TextFormFieldState(initialValidators = listOf(FormFieldValidator.Required))
+        val label = TextFormFieldState(initialValidators = listOf(FormFieldValidator.Required),)
+        val apiKey = TextFormFieldState(
+            initialValidators = listOf(FormFieldValidator.Required),
+            initialTransformation = FormFieldValueTransformation.RemoveSpacesAndNewlines
+        )
+        val secretKey = TextFormFieldState(
+            initialValidators = listOf(FormFieldValidator.Required),
+            initialTransformation = FormFieldValueTransformation.RemoveSpacesAndNewlines
+        )
         val exchange = EnumFormFieldState<Exchange?>(
             initialValue = null,
             initialValidators = listOf(FormFieldValidator.Required)

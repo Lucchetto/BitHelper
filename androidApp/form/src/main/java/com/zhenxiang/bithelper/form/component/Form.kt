@@ -17,7 +17,6 @@ import androidx.compose.ui.text.style.TextAlign
 import com.dokar.sheets.BottomSheet
 import com.dokar.sheets.rememberBottomSheetState
 import com.zhenxiang.bithelper.ui.component.BottomSheetContent
-import com.zhenxiang.bithelper.form.DecimalStringTransform
 import com.zhenxiang.bithelper.form.state.EnumFormFieldState
 import com.zhenxiang.bithelper.form.state.StringFormFieldState
 import com.zhenxiang.bithelper.form.state.TextFormFieldState
@@ -37,7 +36,6 @@ fun FormStateOutlinedTextField(
     label: String,
     visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    transform: ((String) -> String?)? = null,
 ) {
     OutlinedTextField(
         modifier = modifier,
@@ -48,11 +46,7 @@ fun FormStateOutlinedTextField(
         textStyle = textStyle,
         label = { Text(label) },
         visualTransformation = visualTransformation,
-        onValueChange = if (transform != null) {
-            { newValue -> transform(newValue.text)?.let { state.value = newValue.copy(text = it) } }
-        } else {
-            { state.value = it }
-        },
+        onValueChange = { state.value = it },
         keyboardOptions = keyboardOptions,
     )
 }
@@ -61,7 +55,6 @@ fun FormStateOutlinedTextField(
 fun DecimalFormStateOutlinedTextField(
     modifier: Modifier = Modifier,
     state: TextFormFieldState,
-    precision: Int,
     enabled: Boolean = true,
     readOnly: Boolean = false,
     label: String,
@@ -79,7 +72,6 @@ fun DecimalFormStateOutlinedTextField(
         keyboardType = KeyboardType.Decimal,
         imeAction = imeAction
     ),
-    transform = { DecimalStringTransform.transform(it, precision) }
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
