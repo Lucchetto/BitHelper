@@ -2,6 +2,7 @@ package com.zhenxiang.bithelper.form
 
 import androidx.compose.ui.text.input.TextFieldValue
 import com.zhenxiang.bithelper.form.state.FormFieldValueTransformation
+import com.zhenxiang.bithelper.form.utils.copyPreserveTextRange
 import com.zhenxiang.bithelper.shared.utils.removeSpacesAndNewLines
 
 class DecimalStringTransformation(val precision: Int): FormFieldValueTransformation<TextFieldValue> {
@@ -33,13 +34,13 @@ class DecimalStringTransformation(val precision: Int): FormFieldValueTransformat
             }
         }
 
-        return value.copy(
-            text = if (decimalPart == null || precision == 0) {
-                integerPart
-            } else {
-                "$integerPart$DECIMAL_POINT_SYMBOL$decimalPart"
-            }
-        )
+        val newValue = if (decimalPart == null || precision == 0) {
+            integerPart
+        } else {
+            "$integerPart$DECIMAL_POINT_SYMBOL$decimalPart"
+        }
+
+        return value.copyPreserveTextRange(newValue)
     }
 
     companion object {

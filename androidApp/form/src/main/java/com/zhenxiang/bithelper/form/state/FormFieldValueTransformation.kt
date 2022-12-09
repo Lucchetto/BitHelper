@@ -1,6 +1,7 @@
 package com.zhenxiang.bithelper.form.state
 
 import androidx.compose.ui.text.input.TextFieldValue
+import com.zhenxiang.bithelper.form.utils.copyPreserveTextRange
 import com.zhenxiang.bithelper.shared.utils.removeSpacesAndNewLines
 
 /**
@@ -17,8 +18,8 @@ interface FormFieldValueTransformation<T> {
 
         val RemoveSpacesAndNewlines = object: FormFieldValueTransformation<TextFieldValue> {
 
-            override fun transform(value: TextFieldValue) = value.copy(
-                text = value.text.removeSpacesAndNewLines()
+            override fun transform(value: TextFieldValue) = value.copyPreserveTextRange(
+                value.text.removeSpacesAndNewLines()
             )
         }
     }
