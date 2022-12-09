@@ -36,6 +36,7 @@ android {
 
 dependencies {
     implementation(project(":androidApp:ui"))
+    implementation(project(":shared"))
 
     implementation(libs.android.composeMaterial3)
     implementation(libs.android.dokar3Sheets)

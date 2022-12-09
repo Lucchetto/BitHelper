@@ -1,5 +1,7 @@
 package com.zhenxiang.bithelper.form
 
+import com.zhenxiang.bithelper.shared.utils.removeSpacesAndNewLines
+
 object DecimalStringTransform {
 
     private const val DECIMAL_POINT_SYMBOL: Char = '.'
@@ -12,7 +14,8 @@ object DecimalStringTransform {
             throw IllegalArgumentException("Precision must ge greater than 0 !")
         }
 
-        val trimmedInput = StringTransformations.REMOVE_WHITESPACES_AND_NEWLINES(input)
+        val trimmedInput = input
+            .removeSpacesAndNewLines()
             .replace(ALT_DECIMAL_POINT_SYMBOL, DECIMAL_POINT_SYMBOL)
 
         // No point going ahead if it doesn't match a decimal number
