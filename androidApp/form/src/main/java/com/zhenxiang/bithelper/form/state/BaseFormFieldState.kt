@@ -1,6 +1,5 @@
 package com.zhenxiang.bithelper.form.state
 
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -12,23 +11,19 @@ abstract class BaseFormFieldState<T, V>(
 ): FormFieldState<T, V> {
 
     private var _value by mutableStateOf(initialValue)
-    private val transformedValueState by derivedStateOf {
-        transformationState.value?.transform(_value) ?: _value
-    }
     override var value: T
-    get() = transformedValueState
-    set(value) {
-        _value = value
-        _isValid = true
-    }
+        get() = _value
+        set(value) {
+            setValueInternal(value)
+            _isValid = true
+        }
 
     override var validators by mutableStateOf(initialValidators)
 
-    private var transformationState = mutableStateOf(initialTransformation)
-    override var transformation: FormFieldValueTransformation<T>?
-        get() = transformationState.value
+    override var transformation: FormFieldValueTransformation<T>? = initialTransformation
         set(value) {
-            transformationState.value = value
+            field = value
+            setValueInternal(_value)
         }
 
     private var _isValid by mutableStateOf(true)
@@ -45,6 +40,18 @@ abstract class BaseFormFieldState<T, V>(
         }
         _isValid = true
         return true
+    }
+
+    private fun setValueInternal(value: T) {
+        transformation?.let {
+            val transformedValue = it.transform(value)
+            // Value shouldn't be updated if transformedValue is null
+            if (transformedValue != null) {
+                _value = transformedValue
+            }
+        } ?: run {
+            _value = value
+        }
     }
 
     protected abstract fun runValidator(validator: FormFieldValidator<V>, value: T): Boolean
