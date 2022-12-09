@@ -5,11 +5,15 @@ import com.zhenxiang.bithelper.shared.db.ApiKey
 import com.zhenxiang.bithelper.shared.ktor.KtorfitFactory
 import com.zhenxiang.bithelper.shared.ktor.createApiInstance
 import com.zhenxiang.bithelper.shared.api.BaseExchangeApiClientImpl
+import com.zhenxiang.bithelper.shared.api.binance.model.BinanceWithdrawRequest
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.api.model.ExchangeResultWrapper
 import com.zhenxiang.bithelper.shared.model.*
 import com.zhenxiang.bithelper.shared.utils.toHex
+import io.ktor.content.*
+import io.ktor.http.*
 import kotlinx.datetime.Clock
+import kotlinx.serialization.json.*
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
 
@@ -46,6 +50,9 @@ internal class BinanceApiClientImpl(apiKey: ApiKey) : BaseExchangeApiClientImpl(
     override suspend fun getAssetWithdrawMethods(assetTicker: String): ExchangeResultWrapper<List<WithdrawMethod>> = apiInstance.getAllAssetsDetails().mapToResult { result ->
         ResultWrapper.Success(result.first { it.coin == assetTicker }.networkList.map { it.toWithdrawMethod() })
     }
+
+    override suspend fun withdraw(withdrawRequest: WithdrawRequest): ExchangeResultWrapper<Unit> =
+        apiInstance.withdraw(BinanceWithdrawRequest(withdrawRequest)).mapToResult { ResultWrapper.Success(Unit) }
 
     companion object {
         private const val API_KEY_HEADER = "X-MBX-APIKEY"

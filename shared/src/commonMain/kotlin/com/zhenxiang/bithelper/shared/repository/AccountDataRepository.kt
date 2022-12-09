@@ -6,7 +6,7 @@ import com.zhenxiang.bithelper.shared.db.StorageDb
 import com.zhenxiang.bithelper.shared.db.mapToOneOrNullOnIO
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.api.ExchangeApiClientProvider
-import com.zhenxiang.bithelper.shared.model.AssetBalance
+import com.zhenxiang.bithelper.shared.model.WithdrawRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -29,4 +29,6 @@ class AccountDataRepository(
     suspend fun getBalances(apiKey: ApiKey) = apiClientProvider.getInstance(apiKey).getBalances()
 
     suspend fun getAssetWithdrawMethods(apiKey: ApiKey, assetTicker: String) = apiClientProvider.getInstance(apiKey).getAssetWithdrawMethods(assetTicker)
+
+    suspend fun withdraw(apiKey: ApiKey, withdrawRequest: WithdrawRequest) = apiClientProvider.getInstance(apiKey).withdraw(withdrawRequest)
 }

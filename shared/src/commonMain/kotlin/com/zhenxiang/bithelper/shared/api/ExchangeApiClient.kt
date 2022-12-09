@@ -5,6 +5,7 @@ import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.Exchange
 import com.zhenxiang.bithelper.shared.api.model.ExchangeResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
+import com.zhenxiang.bithelper.shared.model.WithdrawRequest
 
 interface ExchangeApiClient {
 
@@ -19,4 +20,6 @@ interface ExchangeApiClient {
     suspend fun getAssetBalance(assetTicker: String): ExchangeResultWrapper<AssetBalance>
 
     suspend fun getAssetWithdrawMethods(assetTicker: String): ExchangeResultWrapper<List<WithdrawMethod>>
+
+    suspend fun withdraw(withdrawRequest: WithdrawRequest): ExchangeResultWrapper<Unit>
 }

@@ -3,15 +3,20 @@ package com.zhenxiang.bithelper.viewmodel.impl
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.ionspin.kotlin.bignum.decimal.BigDecimal
 import com.zhenxiang.bithelper.form.DecimalStringTransformation
 import com.zhenxiang.bithelper.shared.api.model.ExchangeApiError
 import com.zhenxiang.bithelper.shared.model.AssetBalance
 import com.zhenxiang.bithelper.shared.model.ResultWrapper
 import com.zhenxiang.bithelper.shared.model.WithdrawMethod
+import com.zhenxiang.bithelper.shared.model.WithdrawRequest
 import com.zhenxiang.bithelper.shared.repository.AccountDataRepository
+import com.zhenxiang.bithelper.shared.utils.nullIfBlank
 import com.zhenxiang.bithelper.utils.successDataOrNull
 import com.zhenxiang.bithelper.viewmodel.WithdrawPageViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 internal class WithdrawPageViewModelImpl(
     savedStateHandle: SavedStateHandle,
@@ -46,5 +51,21 @@ internal class WithdrawPageViewModelImpl(
     )
 
     override fun withdraw() {
+        val apiKey = accountApiKeyFlow.value.successDataOrNull()
+        if (apiKey != null && formState.validate()) {
+            viewModelScope.launch(Dispatchers.IO) {
+                formState.apply {
+                    repository.withdraw(
+                        apiKey,
+                        WithdrawRequest(
+                            assetTicker,
+                            recipientAddress.value.text,
+                            recipientMemo.value.text.nullIfBlank(),
+                            BigDecimal.parseString(amount.value.text)
+                        )
+                    )
+                }
+            }
+        }
     }
 }
